@@ -1,0 +1,17 @@
+<link rel="preload" href="{{ 'collection-v1.css' | asset_url }}" as="style">
+<div class="collection-banner-container">
+  <h2 class="collection-banner_heading">{{ collection.title }}</h2>
+  <img class="collection-banner_img" src="{{ collection.metafields.custom.banner |  image_url  }}">
+</div>
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}
