@@ -33,7 +33,7 @@
     "enable_cart_redirection": false,
     "media_borders": true,
     "show-brand-names": true,
-    "show_atc": true,
+    "show_atc": false,
     "show_product_secondary_image": true,
     "enable_product_details_overlay": false,
     "product_grid_aspect_ratio": "default",
