@@ -1,0 +1,5 @@
+# Ignore generated theme.css to prevent overwrite conflicts
+# Shopify CLI will try to generate this from theme.css.liquid,
+# but we want to keep the static compiled version
+assets/theme.css
+
