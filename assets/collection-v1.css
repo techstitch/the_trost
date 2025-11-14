@@ -12,3 +12,8 @@
     text-align: center;
     width: fit-content;
 }
+
+.collection-banner_img {
+    width: 100%;
+    height: auto;
+}
