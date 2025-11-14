@@ -1,12 +1,12 @@
 .collection-banner-container {
     background-color: #F4F4F4;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .collection-banner-container div {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
     justify-content: center;
     align-items: center;
 }
