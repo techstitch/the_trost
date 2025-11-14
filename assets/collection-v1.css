@@ -1,4 +1,4 @@
-.collection-banner-container {
+.collection-banner-container div {
     display: flex;
     flex-direction: column;
     gap: 80px;
