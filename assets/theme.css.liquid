@@ -14755,6 +14755,8 @@ body:not(.user-is-tabbing) .shopify-model-viewer-ui .shopify-model-viewer-ui__bu
   bottom: 0;
   left: 0;
   z-index: 2000;
+  opacity: 1;
+  transform: unset;
 }
 .product figure > a:focus {
   outline: auto 5px -webkit-focus-ring-color;
@@ -14931,10 +14933,10 @@ body:not(.user-is-tabbing) .shopify-model-viewer-ui .shopify-model-viewer-ui__bu
 .product figure > .product-card-overlay {
   top: auto;
 }
-.product-card-overlay .product-card-overlay-content {
+/* .product-card-overlay .product-card-overlay-content {
   opacity: 0;
   transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 .product-card-alt .product-card-overlay .product-card-overlay-content {
   opacity: 1;
 }
