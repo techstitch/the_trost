@@ -31,7 +31,7 @@
     "show_quantity_selector": true,
     "show_payment_button": true,
     "enable_cart_redirection": false,
-    "media_borders": true,
+    "media_borders": false,
     "show-brand-names": false,
     "show_atc": true,
     "show_product_secondary_image": true,
