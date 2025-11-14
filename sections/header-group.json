@@ -28,11 +28,11 @@
       "type": "static-header",
       "settings": {
         "image": "shopify://shop_images/logo_inverse.png",
-        "logo_width": 210,
+        "logo_width": 180,
         "header-layout": "minimal-sticky",
         "center-header": false,
         "social-icons": false,
-        "show-labels": false,
+        "show-labels": true,
         "cart-icon": "cart",
         "live_search_enabled": true,
         "menu": "main-menu-nov25",
