@@ -68,7 +68,7 @@
         %}
       {% endif %}
 
-      <header
+      {% comment %} <header
         class="
           collection-title-header
           {% if collectionSidebar and collectionSorting or sidebarMenu != empty or filterEnabled %}
@@ -87,7 +87,7 @@
             <div class="rte description">{{ collection.description }}</div>
           {% endif %}
         </div>
-      </header>
+      </header> {% endcomment %}
 
       <div class="content-area clearfix">
         <div class="collection-header clearfix">
