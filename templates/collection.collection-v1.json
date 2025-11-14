@@ -1,0 +1,203 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_slideshow_C9ebLJ": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "feature_7ynn7M": {
+          "type": "feature",
+          "settings": {
+            "image": "{{ collection.image }}",
+            "slide_title": "{{ collection.title }}",
+            "caption": "Enhance well-being with Trost Hemp Herbal Cigarettes, featuring a range of delightful variants.",
+            "button": "",
+            "link": "",
+            "alignment": "center-center",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "feature_7ynn7M"
+      ],
+      "custom_css": [
+        ".home-section {padding: 0px; margin: 0px;}"
+      ],
+      "settings": {
+        "desktop_height": "small",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": false,
+        "transition": "slide",
+        "autoplay_interval": 5
+      }
+    },
+    "main": {
+      "type": "static-collection",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true,
+        "show-collection-image": false,
+        "rows": 11,
+        "products_per_row": 3,
+        "enable-sorting": true,
+        "enable_filter": true,
+        "collection-sidebar": true,
+        "collection-sidebar-menu": "",
+        "pagination-style": "jump-to-page"
+      }
+    },
+    "dynamic_image_with_text_GrPcH6": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/What_are_hemp_herbal_cigarettes.png",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What are hemp herbal cigarettes and how are they different?",
+        "content": "<p>Hemp herbal cigarettes are made from hemp leaves, which are high in cannabidiol (CBD) and low in tetrahydrocannabinol (THC), the psychoactive compound found in marijuana.</p><p>One of the main differences between hemp herbal cigarettes and traditional cigarettes is that <a href=\"https://thetrost.com/blogs/blogs/dive-into-indias-safest-cigarette-brand-free-from-tobacco-and-nicotine\" title=\"https://thetrost.com/blogs/blogs/dive-into-indias-safest-cigarette-brand-free-from-tobacco-and-nicotine\">hemp cigarettes</a> do not contain tobacco. Traditional cigarettes are made with tobacco, which is highly addictive and contains many harmful chemicals, including nicotine and tar, that can cause various health problems such as lung cancer, heart disease, and respiratory illnesses.<br/><br/>Hemp cigarettes, on the other hand, contain only hemp leaves and no tobacco. They are non-addictive, do not produce a \"high\" like marijuana. They are often used as a smoking cessation aid, as a substitute for traditional cigarettes, or as a way to relax and unwind without the harmful effects of tobacco.</p>"
+      }
+    },
+    "dynamic_image_with_text_bqhWdk": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/What_s_Inside_A_Trost_Hemp_Herbal_Cigarette.png",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What’s Inside A Trost Hemp Herbal Cigarette?",
+        "content": "<p>Trost Hemp Herbal Cigarettes are meticulously crafted to offer a unique and natural smoking experience. Our cigarettes are made from Swiss herbs, using high-quality Swiss technology. The key ingredients in Hemp Herbal Cigarettes include Cannabis leaf, Damiana, Lavender, Chamomile, Peppermint, Verbena, and a hint of Inverted Sugar. These carefully selected ingredients work together to provide a soothing and relaxing smoking experience that promotes a sense of wellness.</p><p>We believe in the power of nature to enhance well-being, and that's why we've chosen these specific herbs known for their calming and soothing properties. Whether you're looking to unwind after a long day or simply enjoy a moment of relaxation, Trost Hemp Herbal Cigarettes offer a natural and enjoyable way to do so. Experience the harmony of nature with every smoke, and discover the benefits of wellness through our premium herbal cigarettes.</p>"
+      }
+    },
+    "dynamic_image_with_text_q8Hbgw": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/What_are_the_health_benefits_of_hemp_herbal_cigarettes.png",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What are the health benefits of hemp herbal cigarettes?",
+        "content": "<p>Hemp herbal cigarettes are often marketed as a safer and more natural alternative to traditional cigarettes. Here are a few potential benefits:<br/><br/><strong>Non-Addictive</strong>: Hemp herbal cigarettes are non-addictive, as they do not contain nicotine or other addictive substances found in traditional cigarettes. This make them a helpful tool for quitting smoking.</p><p><strong>Potential for Relaxation:</strong> CBD, the main active ingredient in hemp herbal cigarettes, has been shown to have potential relaxing and calming effects on the body and mind.</p><p><strong>Potential Pain Relief:</strong> CBD has also been shown to have potential pain-relieving properties. It can be used as a natural way to manage chronic pain or discomfort.</p>"
+      }
+    },
+    "dynamic_image_with_text_MDBmKr": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Why_Smoke_Hemp_Herbal_Cigarettes.png",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Why Smoke Hemp Herbal Cigarettes?",
+        "content": "<p>Trost hemp herbal cigarettes are a natural and non-addictive alternative to traditional cigarettes. They are made from high-quality, organic hemp leaves that are low in THC and high in CBD, providing potential relaxation and pain-relieving benefits without the psychoactive effects of marijuana.<br/><br/>Trost hemp herbal cigarettes are also free of tobacco and nicotine, which are highly addictive and can cause various health problems. They are designed to be<a href=\"https://thetrost.com/blogs/blogs/hemp-herbal-cigarettes-a-journey-to-quit-smoking-and-find-inner-peace\" title=\"https://thetrost.com/blogs/blogs/hemp-herbal-cigarettes-a-journey-to-quit-smoking-and-find-inner-peace\">a smoking cessation aid</a>, helping smokers gradually wean off traditional cigarettes without the harsh side effects of nicotine withdrawal.</p>"
+      }
+    },
+    "dynamic_faq_BnxPJx": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "faq_iTgV7U": {
+          "type": "faq",
+          "settings": {
+            "title": "Want to know anything else?",
+            "content": "<p>Save yourself the time and trouble of writing the same email over and over again by listing your most commonly asked questions and answers here. A dedicated FAQ page should help address the basic needs of your customers, cutting down on customer service emails, increasing conversions, and creating a more satisfying shopping experience!</p>"
+          }
+        },
+        "faq_zCcjrn": {
+          "type": "faq",
+          "settings": {
+            "title": "Are Trost hemp herbal cigarettes available in different flavors?",
+            "content": "<p>The trost hemp herbal cigarettes are available in four different flavors including Woody, Earthy, Smoky and Fruity.</p>"
+          }
+        },
+        "faq_WgDECj": {
+          "type": "faq",
+          "settings": {
+            "title": "How long do Hemp cigarettes stay in your system?",
+            "content": "<p>The length of time that hemp cigarettes stay in your system depends on various factors, including the frequency and amount of use, your metabolism, and other individual factors.</p>"
+          }
+        },
+        "faq_EbnUDz": {
+          "type": "faq",
+          "settings": {
+            "title": "Are Trost rollens safe?",
+            "content": "<p>The Trost rollens are made up of 100% plant-based ingredients and do not cause any severe side effects. Hence, they are completely safe to use.</p>"
+          }
+        },
+        "faq_dFpV8y": {
+          "type": "faq",
+          "settings": {
+            "title": "Is hemp safer than tobacco?",
+            "content": "<p>Yes, hemp is relatively better than tobacco as smoking hemp cigarettes help replace traditional cigarettes that have severe health impacts due to tobacco and nicotine. Do note that smoking hemp comes with a host of medicinal benefits, too, but it won't get you high like a typical joint of marijuana or hemp will. Furthermore, hemp cigarettes aren't addictive.</p>"
+          }
+        },
+        "faq_ReCDTn": {
+          "type": "faq",
+          "settings": {
+            "title": "Do hemp cigarettes show on drug test?",
+            "content": "<p>\"No, ideally, hemp cigarettes do not show in drug test because it doesn't induce intoxicating effects and isn't addictive. Furthermore, it's not an illegal controlled substance. However, many CBD products may contain delta-9-tetrahydrocannabinol (THC) in trace amounts which is marijuana's principal active ingredient. If enough THC is present, it may lead to a positive drug test. The Trost Hemp Cigarettes are strictly for health purposes and also curb smoking addiction. It neither will intoxicate you nor will show on drug test.\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_iTgV7U",
+        "faq_zCcjrn",
+        "faq_WgDECj",
+        "faq_EbnUDz",
+        "faq_dFpV8y",
+        "faq_ReCDTn"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Frequently asked questions",
+        "show_border": false
+      }
+    }
+  },
+  "order": [
+    "dynamic_slideshow_C9ebLJ",
+    "main",
+    "dynamic_image_with_text_GrPcH6",
+    "dynamic_image_with_text_bqhWdk",
+    "dynamic_image_with_text_q8Hbgw",
+    "dynamic_image_with_text_MDBmKr",
+    "dynamic_faq_BnxPJx"
+  ]
+}
