@@ -28,7 +28,6 @@
       "type": "static-header",
       "settings": {
         "image": "shopify://shop_images/logo_inverse.png",
-        "image_inverse": "shopify://shop_images/Trost_Logo.png",
         "logo_width": 210,
         "header-layout": "minimal-sticky",
         "center-header": false,
