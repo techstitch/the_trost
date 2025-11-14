@@ -1,0 +1,394 @@
+{% if settings.x-url.size > 0 or
+  settings.facebook-url.size > 0 or
+  settings.tiktok-url.size > 0 or
+  settings.snapchat-url.size > 0 or
+  settings.messenger-url.size > 0 or
+  settings.spotify-url.size > 0 or
+  settings.discord-url.size > 0 or
+  settings.reddit-url.size > 0 or
+  settings.whatsapp-url.size > 0 or
+  settings.dribbble-url.size > 0 or
+  settings.twitch-url.size > 0 or
+  settings.clubhouse-url.size > 0 or
+  settings.behance-url.size > 0 or
+  settings.flickr-url.size > 0 or
+  settings.houzz-url.size > 0 or
+  settings.opensea-url.size > 0 or
+  settings.pinterest-url.size > 0 or
+  settings.instagram-url.size > 0 or
+  settings.tumblr-url.size > 0 or
+  settings.linkedin-url.size > 0 or
+  settings.email-url.size > 0 or
+  settings.rss-url.size > 0 or
+  settings.kickstarter-url.size > 0 or
+  settings.medium-url.size > 0 or
+  settings.pinterest-url.size > 0 or
+  settings.youtube-url.size > 0 or
+  settings.vimeo-url.size > 0
+%}
+  <aside class="social-links">
+    {% if settings.behance-url.size > 0 %}
+      <a
+        class="
+          social-link
+          behance
+        "
+        href="{{ settings.behance-url | escape }}"
+        aria-label="Behance"
+        target="_blank"
+      >
+        {% render 'icon' with 'behance' %}
+      </a>
+    {% endif %}
+
+    {% if settings.clubhouse-url.size > 0 %}
+      <a
+        class="
+          social-link
+          clubhouse
+        "
+        href="{{ settings.clubhouse-url | escape }}"
+        aria-label="Clubhouse"
+        target="_blank"
+      >
+        {% render 'icon' with 'clubhouse' %}
+      </a>
+    {% endif %}
+
+    {% if settings.discord-url.size > 0 %}
+      <a
+        class="
+          social-link
+          discord
+        "
+        href="{{ settings.discord-url | escape }}"
+        aria-label="Discord"
+        target="_blank"
+      >
+        {% render 'icon' with 'discord' %}
+      </a>
+    {% endif %}
+
+    {% if settings.dribbble-url.size > 0 %}
+      <a
+        class="
+          social-link
+          dribbble
+        "
+        href="{{ settings.dribbble-url | escape }}"
+        aria-label="Dribbble"
+        target="_blank"
+      >
+        {% render 'icon' with 'dribbble' %}
+      </a>
+    {% endif %}
+
+    {% if settings.email-url.size > 0 %}
+      <a
+        class="
+          social-link
+          email
+        "
+        href="mailto:{{ settings.email-url }}"
+        aria-label="Email"
+        target="_blank"
+      >
+        {% render 'icon' with 'email' %}
+      </a>
+    {% endif %}
+
+    {% if settings.facebook-url.size > 0 %}
+      <a
+        class="
+          social-link
+          facebook
+        "
+        href="{{ settings.facebook-url | escape }}"
+        aria-label="Facebook"
+        target="_blank"
+      >
+        {% render 'icon' with 'facebook' %}
+      </a>
+    {% endif %}
+
+    {% if settings.flickr-url.size > 0 %}
+      <a
+        class="
+          social-link
+          flickr
+        "
+        href="{{ settings.flickr-url | escape }}"
+        aria-label="Flickr"
+        target="_blank"
+      >
+        {% render 'icon' with 'flickr' %}
+      </a>
+    {% endif %}
+
+    {% if settings.houzz-url.size > 0 %}
+      <a
+        class="
+          social-link
+          houzz
+        "
+        href="{{ settings.houzz-url | escape }}"
+        aria-label="Houzz"
+        target="_blank"
+      >
+        {% render 'icon' with 'houzz' %}
+      </a>
+    {% endif %}
+
+    {% if settings.instagram-url.size > 0 %}
+      <a
+        class="
+          social-link
+          instagram
+        "
+        href="{{ settings.instagram-url | escape }}"
+        aria-label="Instagram"
+        target="_blank"
+      >
+        {% render 'icon' with 'instagram' %}
+      </a>
+    {% endif %}
+
+    {% if settings.kickstarter-url.size > 0 %}
+      <a
+        class="
+          social-link
+          kickstarter
+        "
+        href="{{ settings.kickstarter-url | escape }}"
+        aria-label="Kickstarter"
+        target="_blank"
+      >
+        {% render 'icon' with 'kickstarter' %}
+      </a>
+    {% endif %}
+
+    {% if settings.linkedin-url.size > 0 %}
+      <a
+        class="
+          social-link
+          linkedin
+        "
+        href="{{ settings.linkedin-url | escape }}"
+        aria-label="LinkedIn"
+        target="_blank"
+      >
+        {% render 'icon' with 'linkedin' %}
+      </a>
+    {% endif %}
+
+    {% if settings.medium-url.size > 0 %}
+      <a
+        class="
+          social-link
+          medium
+        "
+        href="{{ settings.medium-url | escape }}"
+        aria-label="Medium"
+        target="_blank"
+      >
+        {% render 'icon' with 'medium' %}
+      </a>
+    {% endif %}
+
+    {% if settings.messenger-url.size > 0 %}
+      <a
+        class="
+          social-link
+          messenger
+        "
+        href="{{ settings.messenger-url | escape }}"
+        aria-label="Messenger"
+        target="_blank"
+      >
+        {% render 'icon' with 'messenger' %}
+      </a>
+    {% endif %}
+
+    {% if settings.opensea-url.size > 0 %}
+      <a
+        class="
+          social-link
+          opensea
+        "
+        href="{{ settings.opensea-url | escape }}"
+        aria-label="OpenSea"
+        target="_blank"
+      >
+        {% render 'icon' with 'opensea' %}
+      </a>
+    {% endif %}
+
+    {% if settings.pinterest-url.size > 0 %}
+      <a
+        class="
+          social-link
+          pinterest
+        "
+        href="{{ settings.pinterest-url | escape }}"
+        aria-label="Pinterest"
+        target="_blank"
+      >
+        {% render 'icon' with 'pinterest' %}
+      </a>
+    {% endif %}
+
+    {% if settings.reddit-url.size > 0 %}
+      <a
+        class="
+          social-link
+          reddit
+        "
+        href="{{ settings.reddit-url | escape }}"
+        aria-label="Reddit"
+        target="_blank"
+      >
+        {% render 'icon' with 'reddit' %}
+      </a>
+    {% endif %}
+
+    {% if settings.rss-url.size > 0 %}
+      <a
+        class="
+          social-link
+          rss
+        "
+        href="{{ settings.rss-url | escape }}"
+        aria-label="RSS"
+        target="_blank"
+      >
+        {% render 'icon' with 'rss' %}
+      </a>
+    {% endif %}
+
+    {% if settings.snapchat-url.size > 0 %}
+      <a
+        class="
+          social-link
+          snapchat
+        "
+        href="{{ settings.snapchat-url | escape }}"
+        aria-label="Snapchat"
+        target="_blank"
+      >
+        {% render 'icon' with 'snapchat' %}
+      </a>
+    {% endif %}
+
+    {% if settings.spotify-url.size > 0 %}
+      <a
+        class="
+          social-link
+          spotify
+        "
+        href="{{ settings.spotify-url | escape }}"
+        aria-label="Spotify"
+        target="_blank"
+      >
+        {% render 'icon' with 'spotify' %}
+      </a>
+    {% endif %}
+
+    {% if settings.tiktok-url.size > 0 %}
+      <a
+        class="
+          social-link
+          tiktok
+        "
+        href="{{ settings.tiktok-url | escape }}"
+        aria-label="TikTok"
+        target="_blank"
+      >
+        {% render 'icon' with 'tiktok' %}
+      </a>
+    {% endif %}
+
+    {% if settings.tumblr-url.size > 0 %}
+      <a
+        class="
+          social-link
+          tumblr
+        "
+        href="{{ settings.tumblr-url | escape }}"
+        aria-label="Tumblr"
+        target="_blank"
+      >
+        {% render 'icon' with 'tumblr' %}
+      </a>
+    {% endif %}
+
+    {% if settings.twitch-url.size > 0 %}
+      <a
+        class="
+          social-link
+          twitch
+        "
+        href="{{ settings.twitch-url | escape }}"
+        aria-label="Twitch"
+        target="_blank"
+      >
+        {% render 'icon' with 'twitch' %}
+      </a>
+    {% endif %}
+
+    {% if settings.x-url.size > 0 %}
+      <a
+        class="
+          social-link
+          x
+        "
+        href="{{ settings.x-url | escape }}"
+        aria-label="X"
+        target="_blank"
+      >
+        {% render 'icon' with 'x' %}
+      </a>
+    {% endif %}
+
+    {% if settings.vimeo-url.size > 0 %}
+      <a
+        class="
+          social-link
+          vimeo
+        "
+        href="{{ settings.vimeo-url | escape }}"
+        aria-label="Vimeo"
+        target="_blank"
+      >
+        {% render 'icon' with 'vimeo' %}
+      </a>
+    {% endif %}
+
+    {% if settings.whatsapp-url.size > 0 %}
+      <a
+        class="
+          social-link
+          whatsapp
+        "
+        href="{{ settings.whatsapp-url | escape }}"
+        aria-label="WhatsApp"
+        target="_blank"
+      >
+        {% render 'icon' with 'whatsapp' %}
+      </a>
+    {% endif %}
+
+    {% if settings.youtube-url.size > 0 %}
+      <a
+        class="
+          social-link
+          youtube
+        "
+        href="{{ settings.youtube-url | escape }}"
+        aria-label="Youtube"
+        target="_blank"
+      >
+        {% render 'icon' with 'youtube' %}
+      </a>
+    {% endif %}
+  </aside>
+{% endif %}

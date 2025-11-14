@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-collection-list",
+      "custom_css": [
+        "section.collections.row-of-3 {display: none;}"
+      ],
+      "settings": {
+        "show_breadcrumbs": true,
+        "show_collection_descriptions": false,
+        "rows": 6,
+        "collections-per-row": 3,
+        "pagination-style": "standard"
+      }
+    },
+    "dynamic_custom_liquid_xjarL6": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        "@media (max-width: 600px) {.container {display: flex; flex-wrap: wrap; justify-content: center; } .image {width: 100%; /* Adjust as needed */ margin: 10px; text-align: center; } .image img {max-width: 100%; height: auto; } .image p {margin-top: 16px; font-family: \"Montserrat\"; font-size: 14px; }}"
+      ],
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Images with Text</title>\n<style>\n.container {\n  display: flex;\n}\n.image {\n  margin-right: 20px; /* Adjust as needed for spacing between images */\n  text-align: center;\n}\n.image img {\n  max-width: 100%;\n  height: auto;\n}\n.image p {\n  margin-top: 15px;\nfont-family: \"Montserrat\";\n  font-size: 16px;\n}\n.home-section {\n  padding-top: 0px;\n  margin-bottom: 100px;\n  padding-bottom: 0px;\n  margin-top: 0px;\n}\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"image\">\n            <a href=\"https://thetrost.com/collections/trost-rollens\"><img src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/1_4_1.jpg?v=1714925682\" alt=\"Image 1\"></a>\n            <p>Trost Rollens</p>\n        </div>\n        <div class=\"image\">\n            <a href=\"https://thetrost.com/collections/hemp-nutrition\"><img src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/Post_10_2.jpg?v=1714925681\" alt=\"Image 2\"></a>\n            <p>Hemp Nutrition</p>\n        </div>\n        <div class=\"image\">\n            <a href=\"https://thetrost.com/collections/trost-gummies\"><img src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/WhatsApp_Image_2024-02-02_at_12.37.24_PM_5_3_1.jpg?v=1714925680\" alt=\"Image 3\"></a>\n            <p>Trost Gummies</p>\n        </div>\n        <div class=\"image\">\n    <a href=\"https://thetrost.com/collections/cbd-oils\"><img src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/Post_15_1.jpg?v=1714925681\" alt=\"Image 4\"></a>\n            <p>CBD Oils</p>\n        </div>\n    </div>\n</body>\n</html>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "dynamic_custom_liquid_xjarL6"
+  ]
+}

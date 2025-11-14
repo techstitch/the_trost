@@ -1,0 +1,306 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-product",
+      "blocks": {
+        "text_kNtjYY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.sub_headline.value }}</p>",
+            "show_border": false
+          }
+        },
+        "title_3EtjXB": {
+          "type": "title",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "rating_TFUFEF": {
+          "type": "rating",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "price_nqHJ8P": {
+          "type": "price",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "description_d7A9hd": {
+          "type": "description",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "file_uploads_by_uploadkit_app_block_UqW9pq": {
+          "type": "shopify://apps/file-uploads-by-uploadkit/blocks/app-block/d7b05810-6170-4288-808a-df45248c4d28",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "share_GctT3H": {
+          "type": "share",
+          "settings": {
+            "show_border": true
+          }
+        },
+        "collapsible_tab_Ahhze9": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Prescription Required!",
+            "collapsible_tab_text": "<p>After you add the products to the cart & post checkout, you will get a free consultation call from an Ayurvedic doctor.</p><p>Purchase only as advised by the doctor. In case you already have a prescription you can upload and proceed to check out.</p>"
+          }
+        },
+        "collapsible_tab_aAzKfF": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Discreet Packaging",
+            "collapsible_tab_text": "<p><a href=\"/pages/discreet-packaging\" title=\"Discreet Packaging\">We deliver all our products without any branding. The nature of the contents inside the package will be nowhere mentioned. The only description present on the packaging would be the carrier label.</a></p>"
+          }
+        },
+        "collapsible_tab_bhEBPa": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Shipping & Pickup",
+            "collapsible_tab_text": "<p><strong>Pickup: <br/></strong>Pickup available at store. Usually ready in 1 hour. <br/><br/><strong>Shipping:</strong><br/>Estimated dispatch time is around 1-2 working days. </p>"
+          }
+        },
+        "custom_liquid_JHcNB8": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Colored Button</title>\n <style>\n.button-container {\n  display: flex;\nflex-wrap: wrap;\n}\n\n.button-container button {\n  padding: 10px 20px;\n  margin-right: 10px;\n  border: solid;\n  border-width: 0.5px;\n  background-color: white; \n  color: black;\n  font-size: 16px;\n  cursor: pointer;\n    font-family: Montserrat, sans-serif;\nfont-size: 14px;\n}\n.button-container button:hover{\nbackground-color: #BE5B04!important;\ncolor: white!important;\n}\n\n.special-button {\n  background-color: #BE5B04!important;\ncolor: white!important;\n}\n\n.button-container button:last-child {\n  margin-right: 10px;\nmargin-top: 10px;\n}\n.title {\nfont-size: 14px!important;\nfont-weight: 400!important;\npadding-bottom: 10px;\n}\n@media screen and (max-width: 600px) {\n  .button-container {\n    flex-direction: flex;\n    flex-wrap: wrap;\n  }\n\n  .button-container button {\n    margin-right: 10;\nmargin-top: 10px;\n  }\n}\n</style>\n</head>\n<body>\n<p class=\"title\">Choose your Flavour:</p>\n  <div class=\"button-container\">\n    <a href=\"https://thetrost.com/collections/trost-rollens/products/hemp-herbal-cigarette-fruity-rollen\"><button> Fruity Rollen</button></a>\n    <a href=\"https://thetrost.com/collections/trost-rollens/products/earthy-rollen-dhoom-dandika\"><button> Earthy Rollen</button></a>\n    <a href=\"https://thetrost.com/collections/trost-rollens/products/hemp-herbal-cigarette-smoky-rollen\"><button class=\"special-button\">Smoky Rollen</button></a>\n    <a href=\"https://thetrost.com/collections/trost-rollens/products/woody-rollen-dhoom-dandika\"><button>Woody Rollen</button></a>\n  </div>\n</body>\n</html>"
+          }
+        },
+        "form_jMWDeh": {
+          "type": "form",
+          "settings": {
+            "show_border": false,
+            "show_gift_card_recipient_form": false
+          }
+        }
+      },
+      "block_order": [
+        "text_kNtjYY",
+        "title_3EtjXB",
+        "rating_TFUFEF",
+        "price_nqHJ8P",
+        "description_d7A9hd",
+        "file_uploads_by_uploadkit_app_block_UqW9pq",
+        "share_GctT3H",
+        "collapsible_tab_Ahhze9",
+        "collapsible_tab_aAzKfF",
+        "collapsible_tab_bhEBPa",
+        "custom_liquid_JHcNB8",
+        "form_jMWDeh"
+      ],
+      "custom_css": [
+        ".product__title {margin: 8px 0 0; font-size: 25px;}"
+      ],
+      "settings": {
+        "details_alignment": "left",
+        "show_breadcrumbs": true,
+        "gallery_layout": "gallery-below",
+        "gallery_enable_image_zoom": true,
+        "gallery_enable_video_autoplay": true,
+        "gallery_enable_video_looping": true
+      }
+    },
+    "dynamic_logo_list_6fUcTe": {
+      "type": "dynamic-logo-list",
+      "blocks": {
+        "feature_3BLpmE": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/plant_based.png",
+            "link": ""
+          }
+        },
+        "feature_yDNUMN": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/top_quality_products.png",
+            "link": ""
+          }
+        },
+        "feature_KWjafy": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/ayurveda_2.png",
+            "link": ""
+          }
+        },
+        "feature_pxjnqm": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/clinically.png",
+            "link": ""
+          }
+        },
+        "feature_9eGYEQ": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/all_based.png",
+            "link": ""
+          }
+        },
+        "feature_a8VcTU": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/eco_friendly.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_3BLpmE",
+        "feature_yDNUMN",
+        "feature_KWjafy",
+        "feature_pxjnqm",
+        "feature_9eGYEQ",
+        "feature_a8VcTU"
+      ],
+      "custom_css": [
+        ".home-section {position: relative; padding-top: 0px; margin-top: 0px; margin-bottom: 30px;}",
+        "h2 {font-size: 28px; padding-top: 0px;}",
+        ".logo-list-item {width: 15%;}",
+        "@media only screen and (max-width: 600px) {.logo-list-item {width: 33.33%; }}"
+      ],
+      "settings": {
+        "title": "PRODUCT FEATURES",
+        "border": false,
+        "logos_per_row": 5
+      }
+    },
+    "dynamic_image_with_text_fKb4cW": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 10px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "{{ product.metafields.custom.product_detail_img_1.value }}",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Product Details",
+        "content": "<p><strong>{{ product.metafields.custom.title_2_new.value }}</strong><br/></p>{{ product.metafields.custom.rich_text_2_new | metafield_tag }}<p><strong>{{ product.metafields.custom.title_3_new.value }}</strong><strong><br/></strong></p>{{ product.metafields.custom.rich_text_3_new | metafield_tag }}<p><strong>{{ product.metafields.custom.title_4_new.value }}</strong><strong><br/></strong></p>{{ product.metafields.custom.rich_text_4_new | metafield_tag }}"
+      }
+    },
+    "dynamic_custom_liquid_eXVcfG": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.video-section {display: flex; flex-direction: column; align-items: center; } .video-container {width: 100%; max-width: 100%; overflow: hidden; } .video-container img {width: 100%; height: auto; } .content {padding: 20px; text-align: left; } /* Style heading and paragraph */ h2 {font-size: 24px; margin-bottom: 10px; font-family: \"Montserrat\"; } p {font-size: 16px; line-height: 1.5; font-family: \"Montserrat\"; }}"
+      ],
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Video Section</title>\n<style>\n.video-section {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 50px;\n}\n.video-container {\n  flex: 1;\n}\n.video-container img {\n  width: 100%;\n  height: auto;\n}\n.content {\n  flex: 1;\n  padding: 30px;\n} /* Style heading and paragraph */\nh2 {\n  font-size: 30px;\n  margin-bottom: 10px;\n  font-family: 'Montserrat';\n}\np {\n  font-size: 16px;\n  line-height: 1.5;\n  font-family: 'Montserrat';\n}\n.home-section {\n  position: relative;\n  padding-top: 50px;\n  margin-top: 0px;\n</style>\n</head>\n<body>\n    <section class=\"video-section\">\n        <div class=\"video-container\">\n<img src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/smoke_video_1.gif\">\n        </div>\n        <div class=\"content\">\n            <h2>In every puff, find peace</h2>\n            <p>Trost hemp cigarettes - made from high-quality hemp leaves, carefully crafted for smooth experience.\nWhen you light up a Trost, it's not just about taking a break – it's about finding a moment of calm. With each puff, you can enjoy the natural taste and relax without the usual cigarette stuff.\nSo, if you're craving a break that's a little different, Trost hemp cigarettes are a simple and perfect choice.\n</p>\n        </div>\n    </section>\n</body>\n</html>"
+      }
+    },
+    "dynamic_image_with_text_tbi3Ti": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/1_4_1.jpg",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "{{ product.metafields.custom.title_1_new.value }}",
+        "content": "{{ product.metafields.custom.rich_text_1_new | metafield_tag }}"
+      }
+    },
+    "dynamic_faq_atjHVn": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "faq_CRUaWU": {
+          "type": "faq",
+          "settings": {
+            "title": "Are Trost hemp herbal cigarettes available in different flavors?",
+            "content": "<p>The trost hemp herbal cigarettes are available in four different flavors including Woody, Earthy, Smoky and Fruity.</p>"
+          }
+        },
+        "faq_YyWVec": {
+          "type": "faq",
+          "settings": {
+            "title": "How long do Hemp cigarettes stay in your system?",
+            "content": "<p>The length of time that hemp cigarettes stay in your system depends on various factors, including the frequency and amount of use, your metabolism, and other individual factors.</p>"
+          }
+        },
+        "faq_EUfnqp": {
+          "type": "faq",
+          "settings": {
+            "title": "Are Trost rollens safe?",
+            "content": "<p>The Trost rollens are made up of 100% plant-based ingredients and do not cause any severe side effects. Hence, they are completely safe to use.</p>"
+          }
+        },
+        "faq_UAbA3R": {
+          "type": "faq",
+          "settings": {
+            "title": "Is hemp safer than tobacco?",
+            "content": "<p>Yes, hemp is relatively better than tobacco as smoking hemp cigarettes help replace traditional cigarettes that have severe health impacts due to tobacco and nicotine. Do note that smoking hemp comes with a host of medicinal benefits, too, but it won't get you high like a typical joint of marijuana or hemp will. Furthermore, hemp cigarettes aren't addictive.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_CRUaWU",
+        "faq_YyWVec",
+        "faq_EUfnqp",
+        "faq_UAbA3R"
+      ],
+      "custom_css": [
+        ".home-section {position: relative; padding-top: 60px; margin-top: 0px;}",
+        "h2 {font-size: 28px; padding-bottom: 20px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "show_border": false
+      }
+    },
+    "169589804148a2b928": {
+      "type": "apps",
+      "blocks": {
+        "e43e389c-3001-4c49-b73f-c7e5e83df91a": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "e43e389c-3001-4c49-b73f-c7e5e83df91a"
+      ],
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "static-product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "dynamic_logo_list_6fUcTe",
+    "dynamic_image_with_text_fKb4cW",
+    "dynamic_custom_liquid_eXVcfG",
+    "dynamic_image_with_text_tbi3Ti",
+    "dynamic_faq_atjHVn",
+    "169589804148a2b928",
+    "product-recommendations"
+  ]
+}

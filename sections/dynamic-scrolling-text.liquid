@@ -1,0 +1,246 @@
+{% liquid
+  assign background_color = section.settings.background_color
+  assign full_width = section.settings.full_width
+  assign scroll_pause = section.settings.scroll_pause
+  assign scroll_speed = section.settings.scroll_speed
+  assign scroll_direction = section.settings.scroll_direction
+  assign show_space = section.settings.show_space
+  assign text_color = section.settings.text_color
+  assign text_size = section.settings.text_size
+%}
+
+<script
+  type="application/json"
+  data-section-type="dynamic-scrolling-text"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+>
+</script>
+
+{% comment %}Inject @pixelunion/scrolling-text/scrolling-text begin{% endcomment %}
+{% comment %}
+  @param background_color {Color}
+    The background color.
+
+  @param full_width {Boolean}
+    If true, expand section to full-width.
+
+  @param scroll_pause {Boolean}
+    If true, pause scrolling on hover.
+
+  @param scroll_direction {String}
+    The scrolling direction.
+
+  @param scroll_speed {Number}
+    The scrolling speed.
+
+  @param show_space {Boolean}
+    If true, show space above section.
+
+  @param text_color {Color}
+    The text color.
+
+  @param text_size {Number}
+    The text size.
+{% endcomment %}
+
+{% liquid
+  assign background_color = background_color | default: 'rgba(0,0,0,0)'
+  assign full_width = full_width | default: true, allow_false: true
+  assign scroll_pause = scroll_pause | default: true, allow_false: true
+  assign scroll_direction = scroll_direction | default: 'reverse'
+  assign scroll_speed = scroll_speed | default: 25
+  assign show_space = show_space | default: true, allow_false: true
+  assign text_color = text_color | default: 'rgba(0,0,0,0)'
+  assign text_color_alpha = text_color | color_extract: 'alpha'
+  assign text_size = text_size | default: 2
+
+  if text_color_alpha == 0
+    assign text_color = 'inherit'
+  endif
+
+  if scroll_pause
+    assign scroll_pause = 'paused'
+  else
+    assign scroll_pause = 'running'
+  endif
+
+  for block in section.blocks
+    if block.settings.text != blank
+      assign block_content = true
+    endif
+  endfor
+%}
+
+{%- if section.blocks.size > 0 and block_content -%}
+  <section
+    class="
+      marquee
+      marquee--is-wide-{{ full_width }}
+      marquee--is-spaced-{{ show_space }}
+      marquee--text-size-{{ text_size }}
+    "
+    style="
+      --marquee-text-color: {{ text_color }};
+      --marquee-play-state: {{ scroll_pause }};
+      --marquee-scroll-speed: {{ scroll_speed }}s;
+      --marquee-scroll-direction: {{ scroll_direction }};
+      --marquee-background-color: {{ background_color }};
+    "
+    data-marquee
+  >
+    {%- capture marquee -%}
+      <div class="marquee__items" data-marquee-items>
+        {%- for block in section.blocks -%}
+          {% liquid
+            assign text_color = block.settings.text_color
+            assign text_color_alpha = text_color | color_extract: 'alpha'
+          %}
+
+          {%- if text_color_alpha != 0 -%}
+            {%- style -%}
+              .marquee__item--{{ block.id }} {
+                --marquee-text-color: {{ text_color }};
+              }
+            {%- endstyle -%}
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <div
+              class="
+                marquee__item
+                marquee__item--{{ block.id }}
+              "
+              data-marquee-item
+              {{ block.shopify_attributes }}
+            >
+              {{- block.settings.text -}}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endcapture -%}
+
+    <div class="marquee__container">
+      {{- marquee -}}
+      {{- marquee -}}
+    </div>
+  </section>
+{%- endif -%}
+{% comment %}Inject @pixelunion/scrolling-text/scrolling-text end{% endcomment %}
+
+
+{% schema %}
+{
+  "name": "Scrolling text",
+  "class": "shopify-section--scrolling-text",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_space",
+      "label": "Show spacing",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 90,
+      "step": 1,
+      "unit": "s",
+      "label": "Scrolling speed",
+      "default": 25,
+      "info": "The duration (in seconds) for one complete cycle of text."
+    },
+    {
+      "type": "select",
+      "id": "scroll_direction",
+      "label": "Scroll direction",
+      "options": [
+        {
+          "value": "reverse",
+          "label": "Left to right"
+        },
+        {
+          "value": "normal",
+          "label": "Right to left"
+        }
+      ],
+      "default": "reverse"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Text size",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "scroll_pause",
+      "label": "Pause scrolling on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Share a promotion here</p>"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "rgba(0,0,0,0)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Scrolling text",
+      "blocks": [
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

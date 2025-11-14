@@ -1,0 +1,738 @@
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.81949fa0ac9fd2021e16436151e8eaa539321637.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.a6c632ca7b62da89c3594789ba828388aac693fe.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.5a4ea298b4789e064f62a29aafc18d41f09ae59b.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.072b5869c5e0ed5b9d2021e4c2af132e16681ad2.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.3c434e22befd5c18a6b4afadb1e3d77c128c7939.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.5d9fa6e2cae713c8fb539a9876489d86207fe957.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.a0d4a463df4f146567d871890ffb3c80408e7732.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.f6ec9f2a0681acc6f8152c40921d2a4d2e1a2c78.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n6.1326b3e84230700ef15b3a29fb520639977513e0.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n6.652f051080eb14192330daceed8cd53dfdc5ead9.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i6.e90155dd2f004112a61c0322d66d1f59dadfa84b.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i6.41470518d8e9d7f1bcdd29a447c2397e5393943f.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n9.680ded1be351aa3bf3b3650ac5f6df485af8a07c.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n9.0cc5aaeff26ef35c23b69a061997d78c9697a382.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i9.cd566e55c5982a3a39b3949665a79c881e095b14.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i9.b18527943b7f5bc1488b82e39deb595a73d3e645.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.81949fa0ac9fd2021e16436151e8eaa539321637.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.a6c632ca7b62da89c3594789ba828388aac693fe.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.5a4ea298b4789e064f62a29aafc18d41f09ae59b.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.072b5869c5e0ed5b9d2021e4c2af132e16681ad2.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.81949fa0ac9fd2021e16436151e8eaa539321637.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.a6c632ca7b62da89c3594789ba828388aac693fe.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.5a4ea298b4789e064f62a29aafc18d41f09ae59b.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.072b5869c5e0ed5b9d2021e4c2af132e16681ad2.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.3c434e22befd5c18a6b4afadb1e3d77c128c7939.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.5d9fa6e2cae713c8fb539a9876489d86207fe957.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.a0d4a463df4f146567d871890ffb3c80408e7732.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.f6ec9f2a0681acc6f8152c40921d2a4d2e1a2c78.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.81949fa0ac9fd2021e16436151e8eaa539321637.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n4.a6c632ca7b62da89c3594789ba828388aac693fe.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.5a4ea298b4789e064f62a29aafc18d41f09ae59b.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i4.072b5869c5e0ed5b9d2021e4c2af132e16681ad2.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.3c434e22befd5c18a6b4afadb1e3d77c128c7939.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n7.5d9fa6e2cae713c8fb539a9876489d86207fe957.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.a0d4a463df4f146567d871890ffb3c80408e7732.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i7.f6ec9f2a0681acc6f8152c40921d2a4d2e1a2c78.woff") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_n1.2f0714cbd41857ba00d5d4fafdce92c40aadb8e6.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_n1.7bec1bf4c4d0f77c37dc95cf9616413eceba9082.woff") format("woff");
+}
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+  src: url("//thetrost.com/cdn/fonts/montserrat/montserrat_i1.9b40a9d3a0c01d36941e389cd64a63103055c80e.woff2") format("woff2"),
+       url("//thetrost.com/cdn/fonts/montserrat/montserrat_i1.27282f568267f77d06827c3bb45844a9294ff8e0.woff") format("woff");
+}
+
+
+
+  
+
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+
+@keyframes placeholder-pulse {
+  from {
+    background-color: 
+
+
+
+
+
+
+#f2f2f2
+
+
+
+
+;
+  }
+  to {
+    background-color: #e5e5e5;
+  }
+}
+.template-gift_card {
+  font-family: Montserrat,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.template-gift_card a {
+  text-decoration: none;
+}
+.template-gift_card .btn {
+  display: inline-block;
+  order: 2;
+  width: max-content;
+  padding: 1.5em;
+  font-size: 0.875em;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  background-color: #58686f;
+  border-radius: 4px;
+  zoom: 1;
+}
+.template-gift_card .btn:hover {
+  background-color: #414d53;
+}
+.template-gift_card .wrap {
+  width: 95%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.template-gift_card .wrap::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+@keyframes slideup {
+  0% {
+    opacity: 0;
+    transform: translateY(2000px) rotate(10deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  80% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes container-slide {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+.template-gift_card header {
+  padding: 3em 0;
+  text-align: center;
+  animation: fadein 0.5s ease-in-out both 0.4s;
+}
+.template-gift_card .shop-title {
+  font-family: Montserrat,sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 2.25em;
+  color: #bfbfbf;
+  word-break: break-word;
+}
+.template-gift_card .shop-title:hover {
+  color: #999;
+}
+.template-gift_card .shop-title img {
+  max-height: 100%;
+  margin: 0 auto;
+}
+.template-gift_card main {
+  padding-bottom: 3em;
+  animation: slideup 0.8s ease-in-out;
+}
+.template-gift_card .gift-card-outer-container {
+  padding: 1em;
+  background-color: #34aadc;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+  animation: container-slide 0.8s ease-in-out;
+}
+.template-gift_card .gift-card-inner-container {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  animation: cardslide 0.8s ease-in-out;
+}
+.template-gift_card .gift-card-inner-container::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.template-gift_card .gift-card-header {
+  position: relative;
+  display: block;
+  padding: 0.75em;
+  overflow: hidden;
+  border-bottom: 1px solid #f2f2f2;
+}
+.template-gift_card .gift-card-header h2 {
+  float: left;
+  margin: 0.12em 0;
+  font-family: Montserrat,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.template-gift_card .gift-card-header .tag {
+  float: right;
+}
+.template-gift_card .tag {
+  padding: 0.5em;
+  padding-bottom: 0.35em;
+  font-size: 0.75em;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #bfbfbf;
+  border-radius: 4px;
+}
+.template-gift_card .tag.light {
+  color: #bfbfbf;
+  background: transparent;
+  border: 1px solid #d9d9d9;
+}
+.template-gift_card .gift-card-holder {
+  position: relative;
+  margin: 1.25em 0.75em;
+}
+.template-gift_card .gift-card-holder .corner {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 47px;
+  height: 47px;
+}
+.template-gift_card .gift-card-holder .corner.top-left {
+  top: -1px;
+  left: -1px;
+  background: url("//cdn.shopify.com/s/assets/gift-card/corner-top-left-1585103bdd46bf1297b88f31bdfce999.png") 0 0 no-repeat;
+}
+.template-gift_card .gift-card-holder .corner.bottom-right {
+  right: -1px;
+  bottom: -1px;
+  background: url("//cdn.shopify.com/s/assets/gift-card/corner-bottom-right-ba899b18631cb91859e186c2cc1c6970.png") 0 0 no-repeat;
+}
+.template-gift_card .gift-card {
+  position: relative;
+  box-sizing: border-box;
+}
+.template-gift_card .gift-card::before {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 10px;
+  content: "";
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;
+          user-select: none;
+}
+.template-gift_card .gift-card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.template-gift_card .gift-card-code-outer {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+  text-align: center;
+}
+.template-gift_card .gift-card-code-outer.medium {
+  font-size: 0.875em;
+}
+.template-gift_card .gift-card-code-outer.small {
+  font-size: 0.75em;
+}
+.template-gift_card .gift-card-code-inner {
+  display: inline-block;
+  max-width: 450px;
+  padding: 0.5em;
+  vertical-align: baseline;
+  background-color: #fff;
+  border-radius: 4px;
+  zoom: 1;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+.template-gift_card .gift-card-code-inner strong {
+  font-style: normal;
+  font-weight: 400;
+  display: inline-block;
+  padding: 0.4em 0.5em;
+  font-size: 1.875em;
+  line-height: 1;
+  color: #777;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  border: 1px dashed #e5e5e5;
+  border-radius: 2px;
+  zoom: 1;
+}
+.template-gift_card .small .gift-card-code-inner {
+  overflow: auto;
+}
+.template-gift_card .disabled .gift-card-code-inner strong {
+  color: #999;
+  text-decoration: line-through;
+}
+.template-gift_card .gift-card-code-inner span + span {
+  margin-left: 0.25em;
+}
+.template-gift_card .gift-card-amount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.4em 0.5em;
+  font-size: 2.75em;
+  color: #fff;
+}
+.template-gift_card .gift-card-amount.medium {
+  font-size: 2.25em;
+}
+.template-gift_card .gift-card-amount strong {
+  display: block;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+.template-gift_card .tooltip {
+  position: relative;
+}
+.template-gift_card .tooltip:hover .tooltip-container {
+  display: block;
+}
+.template-gift_card .tooltip-container {
+  position: absolute;
+  top: -50%;
+  right: 50%;
+  z-index: 3;
+  display: block;
+  margin-top: 0.25em;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  animation: popup 0.5s ease-in-out both 0.7s;
+}
+.template-gift_card .tooltip-triangle {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  display: block;
+  width: 0;
+  height: 0;
+  margin-bottom: -5px;
+  margin-left: -5px;
+  border-top: 5px solid rgba(51, 51, 51, 0.9);
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  content: "";
+}
+.template-gift_card .tooltip-label {
+  font-family: Montserrat,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  position: relative;
+  right: -50%;
+  display: block;
+  min-height: 14px;
+  padding: 0.5em 0.75em;
+  margin-left: 0.25em;
+  font-size: 0.4em;
+  font-weight: 400;
+  line-height: 16px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+  background: rgba(51, 51, 51, 0.9);
+  border: 0;
+  border-radius: 4px;
+}
+.template-gift_card .gift-card-instructions {
+  margin: 0 0.75em 1.5em;
+  font-size: 0.875em;
+  color: #999;
+  text-align: center;
+}
+.template-gift_card .gift-card-qr-code {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+.template-gift_card .gift-card-qr-code img {
+  padding: 1.25em;
+  margin: 0 auto 1.25em;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+}
+.template-gift_card .gift-card-actions {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1.25em 0.75em;
+  overflow: hidden;
+  text-align: center;
+  border-top: 1px solid #f2f2f2;
+}
+.template-gift_card .action-link {
+  order: 1;
+  margin-top: 1.75em;
+  font-size: 0.875em;
+  text-align: left;
+  letter-spacing: 0.2em;
+  color: #bfbfbf;
+  text-transform: uppercase;
+}
+.template-gift_card .action-link:hover {
+  color: #999;
+}
+.template-gift_card .action-link:hover .ico-16 {
+  opacity: 0.4;
+}
+.template-gift_card .ico-16 {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  margin-right: 0.5em;
+  margin-bottom: -1px;
+  vertical-align: bottom;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  zoom: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.template-gift_card .ico-16.print {
+  background-image: url("//cdn.shopify.com/s/assets/gift-card/icon-print-164daa1ae32d10d1f9b83ac21b6f2c70.png");
+}
+.template-gift_card footer[role=contentinfo] {
+  padding-bottom: 3em;
+  text-align: center;
+  animation: fadein 0.5s ease-in-out both 0.4s;
+}
+.template-gift_card .gift-card-apple-wallet-badge {
+  display: inline-block;
+}
+.template-gift_card .gift-card-apple-wallet-badge-image {
+  display: block;
+}
+@media screen and (max-width: 580px) {
+  .template-gift_card body {
+    font-size: 15px;
+  }
+  .template-gift_card h2 {
+    font-size: 1.5em;
+  }
+  .template-gift_card .gift-card-outer-container {
+    padding: 0.5em;
+  }
+  .template-gift_card .tooltip-container {
+    top: -65%;
+  }
+  .template-gift_card .gift-card-actions {
+    grid-template-columns: 1fr;
+  }
+  .template-gift_card .gift-card-actions .btn {
+    order: 1;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 1.125em;
+  }
+  .template-gift_card .action-link {
+    order: 2;
+    font-size: 1.125em;
+    text-align: center;
+  }
+  .template-gift_card .action-link + .action-link {
+    margin-left: 1.5em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .template-gift_card h2 {
+    font-size: 1.25em;
+  }
+  .template-gift_card .gift-card {
+    font-size: 10px;
+  }
+  .template-gift_card .gift-card-holder .corner {
+    display: none;
+  }
+  .template-gift_card .gift-card-holder .corner.bottom-right {
+    background-position: bottom right !important;
+  }
+  .template-gift_card .gift-card-amount strong {
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+  .template-gift_card .tooltip-container {
+    top: -75%;
+  }
+}
+@media screen and (max-height: 800px) {
+  .template-gift_card .shop-title {
+    max-height: 100px;
+  }
+}
+@media screen and (max-height: 750px) {
+  .template-gift_card .shop-title {
+    max-height: 80px;
+  }
+  .template-gift_card header {
+    padding: 2em 0;
+  }
+  .template-gift_card footer[role=contentinfo],
+  .template-gift_card main {
+    padding-bottom: 2em;
+  }
+}
+@media print {
+  @page {
+    .template-gift_card {
+      margin: 0.5cm;
+    }
+  }
+  .template-gift_card p,
+  .template-gift_card h2,
+  .template-gift_card h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  .template-gift_card h2,
+  .template-gift_card h3 {
+    page-break-after: avoid;
+  }
+  .template-gift_card body {
+    background-color: #fff;
+  }
+  .template-gift_card .gift-card-actions,
+  .template-gift_card .gift-card-holder .corner,
+  .template-gift_card .tooltip-container,
+  .template-gift_card .gift-card::before {
+    display: none;
+  }
+  .template-gift_card .gift-card-code-inner strong {
+    color: #555;
+  }
+  .template-gift_card .gift-card-amount .tooltip {
+    color: #fff !important;
+  }
+  .template-gift_card .shop-title {
+    color: #58686f;
+  }
+  .template-gift_card .gift-card-outer-container,
+  .template-gift_card .gift-card-inner-container,
+  .template-gift_card .gift-card-code-inner,
+  .template-gift_card .gift-card::before {
+    box-shadow: none;
+  }
+}

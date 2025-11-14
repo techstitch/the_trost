@@ -1,0 +1,161 @@
+{% liquid
+  assign display_tags = section.settings.tag-list
+  assign should_display_sidebar = false
+  assign display_recent_posts = section.settings.recent_posts
+
+  if display_recent_posts
+    assign should_display_sidebar = true
+  elsif display_tags and blog.all_tags.size > 0
+    assign should_display_sidebar = true
+  endif
+%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="static-blog"
+  data-section-index="{{ section.index }}"
+>
+  <main
+    class="
+      content
+      content-area
+      {% if should_display_sidebar %}
+        blog-sidebar-active
+      {% endif %}
+    "
+  >
+    {% if section.settings.show_breadcrumbs %}
+      {% render 'breadcrumbs' %}
+    {% endif %}
+
+    <div class="page-title">
+      <h1 class="label">{{ blog.title }}</h1>
+    </div>
+
+    <div class="content-wrap blog">
+      {% paginate blog.articles by 10 %}
+        <section class="blog-articles">
+          {% for article in blog.articles %}
+            {%
+              render 'article-item',
+              article_item: true,
+              article: article,
+              show_date: section.settings.show_date,
+              show_excerpt: section.settings.show_excerpt,
+              show_featured_image: section.settings.show_featured_image,
+              show_author: section.settings.show_author,
+              show_tags: section.settings.show_tags,
+              paginate: paginate,
+            %}
+          {% endfor %}
+
+          {% if paginate.previous or paginate.next %}
+            {%
+              render 'pagination',
+              paginate: paginate,
+              paginationStyle: section.settings.pagination-style
+            %}
+          {% endif %}
+        </section>
+      {% endpaginate %}
+
+      {% if should_display_sidebar %}
+        {%
+          render 'blog-sidebar',
+          blog: blog,
+          display_recent_posts: display_recent_posts,
+          display_tags: display_tags,
+        %}
+      {% endif %}
+    </div>
+  </main>
+</div>
+
+{% schema %}
+{
+  "name": "Blog pages",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Blog posts"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_image",
+      "label": "Show featured image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show post tags",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "checkbox",
+      "id": "recent_posts",
+      "label": "Show recent posts",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "tag-list",
+      "label": "Show all tags",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "select",
+      "id": "pagination-style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard pagination"
+        },
+        {
+          "value": "jump-to-page",
+          "label": "Jump-to-page pagination"
+        }
+      ],
+      "default": "standard"
+    }
+  ]
+}
+
+{% endschema %}

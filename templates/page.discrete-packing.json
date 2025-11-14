@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "9d5e32c6-689c-4963-a8d1-eebeb0c488d2": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "settings": {
+        "margin": "regular",
+        "image": "shopify://shop_images/pack-slip.png",
+        "alignment": "left",
+        "desktop_height": "medium",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "",
+        "content": "<p>How will the Outer Packaging look?</p><p>We deliver all our products without <br/>any branding. The nature of the contents inside the package will be <br/>nowhere mentioned. The only description present on the packaging would <br/>be the carrier label.</p><p>To avoid damage our products are very carefully packed so they will not shake inside the parcel boxes.</p><p>For further questions, contact us through email.</p><p>Will there be the product name mentioned on the Invoice?</p><p>The highlighted section below <br/>indicates the Sold By and Description of Goods which don’t indicate any <br/>information about the Brand or the products that have been purchased.</p>"
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "9d5e32c6-689c-4963-a8d1-eebeb0c488d2"
+  ]
+}

@@ -1,0 +1,301 @@
+{% assign fixed_height_mobile = true %}
+{% assign fixed_height_desktop = true %}
+{% if section.settings.mobile_height == 'natural' %}
+  {% assign fixed_height_mobile = false %}
+{% endif %}
+{% if section.settings.desktop_height == 'natural' %}
+  {% assign fixed_height_desktop = false %}
+{% endif %}
+
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-image-block"
+  data-section-data
+  data-section-index="{{ section.index }}"
+>
+  {
+    "parallax": {{ section.settings.parallax | json }},
+    "fixedHeightMobile": {{ fixed_height_mobile | json }},
+    "fixedHeightDesktop": {{ fixed_height_desktop | json }}
+  }
+</script>
+
+{%- assign image = section.settings.image -%}
+{%- assign heading = section.settings.title | escape -%}
+{%- assign content = section.settings.content -%}
+{%- assign alignment = section.settings.alignment -%}
+
+{% if heading or image %}
+  {%- capture image_tag -%}
+    {%- if section.settings.image != blank -%}
+      {%
+        render 'rimg'
+        img: image,
+        alt: heading,
+        lazy: true,
+        class: "main-image"
+      %}
+    {%- else -%}
+      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {% assign placeholder_style = 'collection-2' %}
+  {% assign color = settings['accent-colour'] %}
+  {% assign color_string = 'fill="' | append: color | append: '" xmlns' %}
+  {% capture demo_image %}{%- render 'placeholder_svg_uri', placeholder: placeholder_style, color_string: color_string -%}{% endcapture %}
+
+  <section
+    class="
+      home-section
+      clearfix
+      content-area
+      picture-block
+      picture-block-{{ alignment }}
+      picture-block--is-spaced-{{ section.settings.margin }}
+      picture-block--desktop-height-{{ section.settings.desktop_height }}
+      picture-block--mobile-height-{{ section.settings.mobile_height }}
+      {% if section.settings.parallax %}
+        picture-block--parallax
+      {% endif %}
+    "
+  >
+    <div class="picture-block-image">
+      {{ image_tag }}
+    </div>
+
+    <div class="picture-block-wrapper">
+      <div class="picture-block-content">
+        <h2 class="picture-block-heading">
+          {% if heading != blank %}
+            {{ heading }}
+          {% endif %}
+        </h2>
+
+        {% for block in section.blocks %}
+          <div class="icon">
+            {% render 'rimg',
+              img: block.settings.icon_img,
+              alt: heading,
+              size: '60x60',
+              lazy: true,
+              focal_point: block.settings.icon_img.presentation.focal_point,
+              class: "icon-img"
+            %}
+            <span class="icon-text">{{ block.settings.icon_text }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% else %}
+  <section class="home-section clearfix content-area picture-block picture-block-left has-border">
+    {% assign placeholder_style = 'collection-1' %}
+    {% assign color = settings['accent-colour'] %}
+    {% assign color_string = 'fill="' | append: color | append: '" xmlns' %}
+    {% capture demo_image %}{%- render 'placeholder_svg_uri', placeholder: placeholder_style, color_string: color_string -%}{% endcapture %}
+
+    <div class="picture-block-wrapper">
+      <div class="picture-block-content">
+        <h2 class="picture-block-heading">{{ 'onboarding.image_block_title' | t }}</h2>
+        {% for block in section.blocks %}
+          <div class="icon">
+            {% render 'rimg',
+              img: block.icon_img,
+              alt: heading,
+              size: '40x40',
+              lazy: true,
+              focal_point: block.icon_img.presentation.focal_point,
+              class: "icon-img"
+            %}
+            <span class="icon-text">{{ block.icon_text }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="picture-block-image" style="background-image: url('{{ demo_image }}')">
+      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  </section>
+{% endif %}
+
+<style>
+  #shopify-section-{{ section.id }} .picture-block-heading{
+    font-size: 36px;
+  }
+  #shopify-section-{{ section.id }} .picture-block{
+    background-color: unset;
+  }
+  #shopify-section-{{ section.id }} .picture-block-wrapper{
+    justify-content: start;
+  }
+  #shopify-section-{{ section.id }} .picture-block-content{
+    text-align: left;
+  }
+  #shopify-section-{{ section.id }} .picture-block-content{
+    max-width: 95%;
+  }
+  @media (max-width: 719px){
+    #shopify-section-{{ section.id }} .picture-block-content{
+      text-align: unset;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 15px;
+    }
+  }
+  #shopify-section-{{ section.id }} .main-image{
+    object-fit: contain;
+  }
+  #shopify-section-{{ section.id }} .icon{
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 4px solid #D9D9D9;
+  }
+  #shopify-section-{{ section.id }} .icon:first-of-type{
+    border-top: 4px solid #D9D9D9;
+  }
+  #shopify-section-{{ section.id }} .icon .icon-img{
+    display: block;
+    max-width: 30px;
+    width: 100%;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image with Icon List",
+  "class": "shopify-section--image-with-text",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "margin",
+      "label": "Show spacing",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "500px"
+        },
+        {
+          "value": "medium",
+          "label": "600px"
+        },
+        {
+          "value": "large",
+          "label": "700px"
+        },
+        {
+          "value": "extra-large",
+          "label": "800px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "300px"
+        },
+        {
+          "value": "medium",
+          "label": "400px"
+        },
+        {
+          "value": "large",
+          "label": "500px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "Enable parallax",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image with text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image with Icon List"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["*"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+{% comment %}
+@param headerLayout {String}
+  The header layout setting: can be one of normal, minimal, minimal-sticky, expanded
+
+@param headerCenter {Boolean}
+  The center logo setting
+
+@param logo {Image}
+  Logo image (default logo)
+
+@param logoInverse {Image}
+  Inverse logo image (white logo for transparent header)
+
+@param logoWidth {Number}
+  The width of the logo set by the merchant
+
+@param isHomepage {Boolean}
+  Whether this is the homepage
+
+@param hiddenOnMobile {Boolean}
+  Whether the element will be hidden on desktop
+
+@param hiddenOnDesktop {Boolean}
+  Whether the element will be hidden on desktop
+{% endcomment %}
+
+{% assign heading = 'h2' %}
+{% if template == 'index' or template contains 'customers' %}
+  {% assign heading = 'h1' %}
+{% endif %}
+
+{%- assign defaultLogo = logo -%}
+{%- assign inverseLogo = logoInverse -%}
+
+<{{ heading }}
+  class="
+    store-title
+    {% if defaultLogo != blank or inverseLogo != blank %}store-logo{% endif %}
+    {% if hiddenOnDesktop %}store-title--hidden-on-desktop{% endif %}
+    {% if hiddenOnMobile %}store-title--hidden-on-mobile{% endif %}
+  "
+  {% if defaultLogo != blank or inverseLogo != blank %}
+    style="max-width: {{ logoWidth }}px;"
+  {% endif %}
+  data-logo-default="{% if defaultLogo != blank %}{{ defaultLogo | image_url: width: 800 }}{% endif %}"
+  data-logo-inverse="{% if inverseLogo != blank %}{{ inverseLogo | image_url: width: 800 }}{% endif %}"
+>
+  {% if defaultLogo != blank %}
+    <a
+      href="{{ routes.root_url }}"
+      style="max-width: {{ logoWidth }}px;"
+      aria-label="{{ shop.name }}"
+      class="store-logo-link"
+    >
+      {% comment %} Render default logo (dark logo - always shown on non-homepage, shown on homepage when scrolled) {% endcomment %}
+      {%
+        render 'rimg'
+        img: defaultLogo,
+        alt: shop.description,
+        size: '800x800',
+        focal_point: defaultLogo.presentation.focal_point,
+        class: 'logo-image-inverse'
+      %}
+      {% comment %} Render inverse logo (white/cream logo for transparent header - only on homepage) {% endcomment %}
+      {% if inverseLogo != blank %}
+        {%
+          render 'rimg'
+          img: inverseLogo,
+          alt: shop.description,
+          size: '800x800',
+          focal_point: inverseLogo.presentation.focal_point,
+          class: 'logo-image'
+        %}
+      {% endif %}
+    </a>
+  {% elsif inverseLogo != blank %}
+    <a
+      href="{{ routes.root_url }}"
+      style="max-width: {{ logoWidth }}px;"
+      aria-label="{{ shop.name }}"
+      class="store-logo-link"
+    >
+      {% comment %} Fallback: if only inverse logo exists, show it {% endcomment %}
+      {%
+        render 'rimg'
+        img: inverseLogo,
+        alt: shop.description,
+        size: '800x800',
+        focal_point: inverseLogo.presentation.focal_point,
+        class: 'logo-image'
+      %}
+    </a>
+  {% else %}
+    {{ shop.name | link_to: routes.root_url }}
+  {% endif %}
+</{{ heading }}>

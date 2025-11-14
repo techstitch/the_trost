@@ -1,0 +1,108 @@
+{% comment %}
+  @param product {Object}
+    The product object.
+
+  @param variant {Object}
+    The variant object.
+
+  @param inventory_status {String}
+    When to show the inventory status ('Always' or 'Low stock only').
+
+  @param inventory_status_attributes {String}
+    Inventory status attributes.
+
+  @param inventory_status_bar {Boolean}
+    If true, show the inventory status bar.
+
+  @param inventory_status_low_stock_threshold {Number}
+    The low stock threshold (0-20).
+
+  @param inventory_status_inventory_quantity {Object}
+    The inventory quantity of the variant.
+
+  @param inventory_status_transfer_notice {Boolean}
+    If true, track and receive incoming inventory.
+
+  @param inventory_status_initial_stock_level {String}
+    The product's initial stock level.
+
+  @param inventory_status_quantity_status {String}
+    When to show the quantity status ('Always', 'Low stock only' or 'Never').
+{% endcomment %}
+
+{% liquid
+  if variant.incoming and inventory_status_transfer_notice
+    assign inventory_stock_level = 'incoming-stock'
+    assign variant_incoming_date = variant.next_incoming_date | date: '%B %d, %Y'
+  elsif variant.inventory_management == null or variant.inventory_policy == 'continue'
+    assign inventory_stock_level = 'untracked-or-continued-stock'
+  elsif inventory_status_inventory_quantity > inventory_status_low_stock_threshold
+    assign inventory_stock_level = 'in-stock'
+  elsif inventory_status_inventory_quantity > 0 and inventory_status_inventory_quantity <= inventory_status_low_stock_threshold
+    assign inventory_stock_level = 'low-stock'
+  endif
+
+  assign quantity = ''
+  if inventory_status_quantity_status == 'always'
+    assign quantity = inventory_status_inventory_quantity
+  elsif inventory_status_quantity_status == 'low_stock_only' and inventory_status_inventory_quantity <= inventory_status_low_stock_threshold
+    assign quantity = inventory_status_inventory_quantity
+  endif
+%}
+
+{% capture inventory_status_label %}
+  {% liquid
+    if inventory_stock_level == 'incoming-stock'
+      echo 'products.product.status.incoming_stock' | t: variant_incoming_date: variant_incoming_date
+    elsif inventory_stock_level == 'untracked-or-continued-stock'
+      echo 'products.product.status.in_stock' | t
+    elsif inventory_stock_level == 'in-stock'
+      if inventory_status_quantity_status == 'always'
+        echo 'products.product.status.in_stock_with_quantity' | t: quantity: quantity
+      elsif inventory_status_quantity_status == 'low_stock_only' or inventory_status_quantity_status == 'never'
+        echo 'products.product.status.in_stock' | t
+      endif
+    elsif inventory_stock_level == 'low-stock'
+      if inventory_status_quantity_status == 'always' or inventory_status_quantity_status == 'low_stock_only'
+        echo 'products.product.status.low_stock_with_quantity' | t: quantity: quantity
+      else
+        echo 'products.product.status.low_stock' | t: quantity: quantity
+      endif
+    endif
+  %}
+{% endcapture %}
+
+{% if
+  product.available and inventory_status == 'always'
+  or product.available and inventory_status == 'low_stock_only'
+  and inventory_status_inventory_quantity <= inventory_status_low_stock_threshold and variant.inventory_management
+%}
+  <div
+    class="
+      inventory-status
+      inventory-status--{{ inventory_stock_level }}
+      {% if inventory_status_bar and inventory_status_initial_stock_level != blank %}
+        {% unless variant.incoming and inventory_status_transfer_notice %}
+          inventory-status--has-status-bar
+        {% endunless %}
+      {% endif %}
+    "
+    style="
+      --inventory-status-inventory-quantity: {{ inventory_status_inventory_quantity }};
+      --inventory-status-initial-stock-level: {{ inventory_status_initial_stock_level }};
+    "
+    {{ inventory_status_attributes }}
+  >
+    <p class="inventory-status__label">
+      {{ inventory_status_label }}
+    </p>
+
+    {% if inventory_status_bar and inventory_status_initial_stock_level != blank %}
+      {% unless variant.incoming and inventory_status_transfer_notice %}
+        <div class="inventory-status__bar" aria-hidden="true">
+          <div class="inventory-status__bar-fill"></div>
+        </div>
+      {% endunless %}
+    {% endif %}
+  </div>
+{% endif %}

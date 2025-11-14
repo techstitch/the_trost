@@ -1,0 +1,173 @@
+{%- capture taxes_shipping_checkout -%}
+  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+    {{ 'cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+  {%- elsif cart.taxes_included -%}
+    {{ 'cart.taxes_included_but_shipping_at_checkout' | t }}
+  {%- elsif shop.shipping_policy.body != blank -%}
+    {{ 'cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+  {%- else -%}
+    {{ 'cart.tax_and_shipping' | t }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- assign shippingCalculator = section.settings.shipping-calculator -%}
+{%- assign shippingCalculatorDefaultCountry = section.settings.shipping-calculator-default-country | escape -%}
+
+<script
+  type="application/json"
+  data-section-type="static-cart"
+  data-section-id="{{ section.id }}"
+  data-section-data
+  data-section-index="{{ section.index }}"
+>
+  {
+    "settings": {
+      "stock_limit": {{ 'cart.stock_limit' | t: quantity: '** quantity **', title: '** title **' | json }},
+      "money_format": {{ shop.money_format | strip_html | json }},
+      "shipping": {{ shippingCalculator | json }}
+    }
+  }
+</script>
+
+<section
+  class="
+    content
+    content-area
+  "
+>
+  {% if section.settings.show_breadcrumbs %}
+    {% render 'breadcrumbs' %}
+  {% endif %}
+
+  <div class="page-title">
+    <h1 class="label">{{ 'cart.header' | t }}</h1>
+  </div>
+
+  {% if cart.item_count > 0 %}
+    <form class="cart" action="{{ routes.cart_url }}" method="post" data-cart-form>
+      {% render 'cart-table' %}
+
+      {% if shippingCalculator %}
+        {% render 'shipping-calculator', shippingCalculatorDefaultCountry: shippingCalculatorDefaultCountry %}
+      {% endif %}
+
+      <div class="cart-tools clearfix">
+        <div class="instructions">
+          <label for="cart__note">
+            {{- 'cart.note' | t -}}
+          </label>
+
+          <textarea
+            class="field"
+            id="cart__note"
+            name="note"
+          >
+            {{- cart.note -}}
+          </textarea>
+        </div>
+
+        <div class="totals">
+          <ul class="cart-discounts" data-cart-discounts>
+            {% render 'cart-discounts' %}
+          </ul>
+          <p class="price">
+            <span class="money" data-cart-total>
+              {{ cart.total_price | money }}
+            </span>
+          </p>
+
+          <p class="message">
+            {{ taxes_shipping_checkout }}
+          </p>
+
+          <div class="checkout">
+            <noscript>
+              <input
+                class="
+                  action-button
+                  desaturated
+                  cart-update
+                "
+                type="submit"
+                name="update"
+                value="{{ 'cart.update' | t }}"
+              >
+            </noscript>
+
+            <button
+              class="
+                action-button
+                cart-submit
+              "
+              type="submit"
+              name="checkout"
+              value="{{ 'cart.submit' | t }}"
+            >
+              {% if settings.enable_checkout_lock_icon %}
+                {% render 'icon' with 'checkout-lock' %}
+              {% endif %}
+              <span>{{ 'cart.submit' | t }}</span>
+            </button>
+
+            {% if additional_checkout_buttons %}
+              <div class="additional-checkout-buttons">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </form>
+  {% else %}
+    <p class="empty">
+      {{ 'cart.empty' | t }}
+
+      {%- if settings.enable_continue_shopping -%}
+        {% assign continue_shopping_link = settings.continue_shopping_link | default: routes.all_products_collection_url %}
+        <a href="{{ continue_shopping_link }}">
+          {{ 'cart.continue' | t }}
+        </a>
+      {%- endif -%}
+    </p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Cart pages",
+  "class": "section-cart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Shipping calculator"
+    },
+    {
+      "type": "checkbox",
+      "id": "shipping-calculator",
+      "label": "Enable shipping calculator",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "shipping-calculator-default-country",
+      "label": "Default country selection",
+      "default": "United States"
+    },
+    {
+      "type": "paragraph",
+      "content": "If your customer is logged in, the country in his or her default shipping address will be selected."
+    }
+  ]
+}
+
+{% endschema %}

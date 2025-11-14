@@ -1,0 +1,68 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-faq"
+  data-section-index="{{ section.index }}"
+>
+</script>
+
+<section
+  class="
+    faq
+    home-section
+    content-area
+    {% if section.settings.show_border %}
+      has-border
+    {% endif %}
+  "
+>
+  {%- if section.settings.heading != blank -%}
+    <h2 class="faq__section-heading">
+      {{- section.settings.heading | escape -}}
+    </h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="faq__container">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.title != blank or block.settings.content != blank -%}
+          <div class="faq__block">
+            <h3
+              class="
+                faq__heading
+                {% if forloop.first -%}
+                  active
+                {% endif %}
+              "
+              tabindex="0"
+              data-faq-toggle
+              {{ block.shopify_attributes }}
+            >
+              <span class="faq__title">
+                {{- block.settings.title | escape -}}
+              </span>
+
+              <div class="faq__icon">
+                {%- render 'icon' with 'down-arrow' -%}
+                {%- render 'icon' with 'minus' -%}
+              </div>
+            </h3>
+
+            <div
+              class="
+                faq__content
+                {% if forloop.first -%}
+                  active
+                {% endif %}
+              "
+            >
+              <div class="rte">
+                {{- block.settings.content -}}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>

@@ -1,0 +1,26 @@
+<section
+  class="
+    quickshop
+    {% if content != blank %}
+      quickshop-visible
+      quickshop-loaded
+    {% endif %}
+  "
+  data-quickshop
+>
+  <div class="quickshop-content" data-quickshop-content>
+    {% unless hide_close_button %}
+      <button class="quickshop-close" data-quickshop-close>
+        {% render 'icon' with 'close-thin' %}
+      </button>
+    {% endunless %}
+
+    <div class="quickshop-product" data-quickshop-product-inject>{{ content }}</div>
+  </div>
+
+  <span class="spinner quickshop-spinner">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</section>

@@ -1,0 +1,541 @@
+{% liquid
+  assign footerLogo = footerLogo
+  assign text = text
+  assign locale_selector = locale_selector
+  assign country_selector = country_selector
+  assign brand_description = brand_description
+  assign license_number = license_number
+  assign emblem_image = emblem_image
+  assign natural_badge = natural_badge
+  assign made_in_india_badge = made_in_india_badge
+  assign gmp_badge = gmp_badge
+%}
+
+<footer class="sc-footer-three" id="main-footer">
+  <div class="sc-footer-three__content content-area">
+    <div class="sc-footer-three__grid">
+      {% comment %} Column 1: Brand Information {% endcomment %}
+      <div class="sc-footer-three__column sc-footer-three__column--brand">
+        {% if footerLogo != blank %}
+          <div class="sc-footer-three__logo">
+            {% render 'rimg', img: footerLogo, size: '200x200' %}
+          </div>
+        {% else %}
+          <h2 class="sc-footer-three__brand-name">{{ shop.name }}</h2>
+        {% endif %}
+
+        {% if brand_description != blank %}
+          <p class="sc-footer-three__brand-description">{{ brand_description }}</p>
+        {% elsif text != blank %}
+          <div class="sc-footer-three__brand-description">{{ text }}</div>
+        {% endif %}
+
+        {% if locale_selector and localization.available_languages.size > 1 %}
+          <div class="sc-footer-three__language-selector">
+            {% comment %}Inject @pixelunion/shopify-cross-border/multi-language begin{% endcomment %}
+            {% assign unique_id = 'now' | date: '%N' | modulo: 1000 %}
+            <noscript>
+              {%- form 'localization' -%}
+                <details class="disclosure">
+                  <summary>
+                    <span class="disclosure__toggle sc-footer-three__language-toggle">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="currentColor"/>
+                        <circle cx="8" cy="4" r="1.5" fill="currentColor"/>
+                        <path d="M8 6.5c-1.5 0-2.5.8-2.5 1.5v.5h5v-.5c0-.7-1-1.5-2.5-1.5z" fill="currentColor"/>
+                      </svg>
+                      {{ form.current_locale.endonym_name | capitalize }}
+                    </span>
+                  </summary>
+                  <div class="disclosure-list disclosure-list--visible">
+                    {% for locale in form.available_locales %}
+                      <div class="disclosure-list__item-wrapper disclosure-list__item">
+                        <input
+                          type="radio"
+                          id="sc-footer-lang-{{ unique_id }}-{{ locale.iso_code }}"
+                          name="locale_code"
+                          value="{{ locale.iso_code }}"
+                          {% if locale.iso_code == form.current_locale.iso_code %}
+                            checked
+                          {% endif %}
+                        >
+                        <label
+                          class="disclosure-list__item--label"
+                          for="sc-footer-lang-{{ unique_id }}-{{ locale.iso_code }}"
+                        >
+                          {{- locale.endonym_name | capitalize -}}
+                        </label>
+                      </div>
+                    {% endfor %}
+                    <button class="disclosure__submit" type="submit">
+                      {{ 'general.language.submit_button_label' | t }}
+                    </button>
+                  </div>
+                </details>
+              {%- endform -%}
+            </noscript>
+
+            {%- form 'localization' -%}
+              <div class="selectors-form__item selectors-form--no-js-hidden">
+                <div class="disclosure" data-disclosure-locale>
+                  <h2 class="visually-hidden" id="lang-heading-{{ unique_id }}">
+                    {{ 'general.language.dropdown_label' | t }}
+                  </h2>
+
+                  <button
+                    type="button"
+                    class="disclosure__toggle sc-footer-three__language-toggle"
+                    aria-expanded="false"
+                    aria-controls="lang-list-{{ unique_id }}"
+                    aria-describedby="lang-heading-{{ unique_id }}"
+                    data-disclosure-toggle
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="sc-footer-three__globe-icon"
+                    >
+                      <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="currentColor"/>
+                      <circle cx="8" cy="4" r="1.5" fill="currentColor"/>
+                      <path d="M8 6.5c-1.5 0-2.5.8-2.5 1.5v.5h5v-.5c0-.7-1-1.5-2.5-1.5z" fill="currentColor"/>
+                    </svg>
+                    <span>{{ form.current_locale.endonym_name | capitalize }}</span>
+                  </button>
+                  <ul id="lang-list-{{ unique_id }}" class="disclosure-list" data-disclosure-list>
+                    {% for locale in form.available_locales %}
+                      <li>
+                        <a
+                          class="disclosure-list__item {% if locale.iso_code == form.current_locale.iso_code %}disclosure-list__item--current{% endif %}"
+                          href="#"
+                          lang="{{ locale.iso_code }}"
+                          {% if locale.iso_code == form.current_locale.iso_code %}
+                            aria-current="true"
+                          {% endif %}
+                          data-value="{{ locale.iso_code }}"
+                          data-disclosure-option
+                        >
+                          <span class="disclosure-list__option">{{ locale.endonym_name | capitalize }}</span>
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  <input
+                    type="hidden"
+                    name="locale_code"
+                    id="LocaleSelector-{{ unique_id }}"
+                    value="{{ form.current_locale.iso_code }}"
+                    data-disclosure-input
+                  >
+                </div>
+              </div>
+            {%- endform -%}
+            {% comment %}Inject @pixelunion/shopify-cross-border/multi-language end{% endcomment %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% comment %} Column 2: Products & Policies {% endcomment %}
+      <div class="sc-footer-three__column sc-footer-three__column--products">
+        <h3 class="sc-footer-three__heading">Products</h3>
+        {% assign footer_menu = section.settings.footer_menu %}
+        {% if footer_menu.links.size > 0 %}
+          <ul class="sc-footer-three__links">
+            {% for link in footer_menu.links %}
+              <li class="sc-footer-three__link-item">
+                <a href="{{ link.url }}" class="sc-footer-three__link">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      {% comment %} Column 3: Follow Us & Certifications {% endcomment %}
+      <div class="sc-footer-three__column sc-footer-three__column--social">
+        <h3 class="sc-footer-three__heading">Follow us</h3>
+        <div class="sc-footer-three__social-icons">
+          {% if settings['facebook-url'].size > 0 %}
+            <a
+              href="{{ settings.facebook-url | escape }}"
+              class="sc-footer-three__social-icon"
+              aria-label="Facebook"
+              target="_blank"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          {% endif %}
+          {% if settings['linkedin-url'].size > 0 %}
+            <a
+              href="{{ settings.linkedin-url | escape }}"
+              class="sc-footer-three__social-icon"
+              aria-label="LinkedIn"
+              target="_blank"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          {% endif %}
+          {% if settings['instagram-url'].size > 0 %}
+            <a
+              href="{{ settings.instagram-url | escape }}"
+              class="sc-footer-three__social-icon"
+              aria-label="Instagram"
+              target="_blank"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="sc-footer-three__certifications">
+          {% if natural_badge != blank %}
+            <div class="sc-footer-three__certification-badge">
+              {% render 'rimg', img: natural_badge, size: '100x100' %}
+            </div>
+          {% endif %}
+          {% if made_in_india_badge != blank %}
+            <div class="sc-footer-three__certification-badge">
+              {% render 'rimg', img: made_in_india_badge, size: '100x100' %}
+            </div>
+          {% endif %}
+          {% if gmp_badge != blank %}
+            <div class="sc-footer-three__certification-badge">
+              {% render 'rimg', img: gmp_badge, size: '100x100' %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% comment %} Column 4: Government & Legal {% endcomment %}
+      <div class="sc-footer-three__column sc-footer-three__column--legal">
+        {% if emblem_image != blank %}
+          <div class="sc-footer-three__emblem">
+            {% render 'rimg', img: emblem_image, size: '80x80' %}
+          </div>
+        {% endif %}
+        {% if license_number != blank %}
+          <p class="sc-footer-three__license">License Number: {{ license_number }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="sc-footer-three__bottom">
+    <div class="sc-footer-three__bottom-content content-area">
+      {% capture year %}{{ "now" | date: "%Y" }}{% endcapture %}
+      <p class="sc-footer-three__copyright">Copyright © {{ year }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+  .sc-footer-three {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 50px 0 0;
+    position: relative;
+  }
+
+  .sc-footer-three__content {
+    padding: 50px 20px;
+    max-width: 100%;
+  }
+
+  .sc-footer-three__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .sc-footer-three__column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .sc-footer-three__column--brand {
+    min-width: 0;
+  }
+
+  .sc-footer-three__column--products {
+    min-width: 0;
+  }
+
+  .sc-footer-three__column--social {
+    min-width: 0;
+  }
+
+  .sc-footer-three__column--legal {
+    min-width: 0;
+  }
+
+  .sc-footer-three__logo img,
+  .sc-footer-three__logo picture {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .sc-footer-three__brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+
+  .sc-footer-three__brand-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0 0 30px 0;
+  }
+
+  .sc-footer-three__brand-description p {
+    margin: 0;
+  }
+
+  .sc-footer-three__language-selector {
+    margin-top: auto;
+    padding-top: 20px;
+  }
+
+  .sc-footer-three__language-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .sc-footer-three__language-toggle svg,
+  .sc-footer-three__globe-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .sc-footer-three__language-toggle span {
+    display: inline-block;
+  }
+
+  .sc-footer-three__heading {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    text-transform: none;
+    letter-spacing: 0.5px;
+  }
+
+  .sc-footer-three__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sc-footer-three__link-item {
+    margin-bottom: 10px;
+  }
+
+  .sc-footer-three__link-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .sc-footer-three__link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+    display: inline-block;
+  }
+
+  .sc-footer-three__link:hover {
+    opacity: 0.7;
+  }
+
+  .sc-footer-three__social-icons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+
+  .sc-footer-three__social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .sc-footer-three__social-icon:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+
+  .sc-footer-three__social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  .sc-footer-three__certifications {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .sc-footer-three__certification-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sc-footer-three__certification-badge img,
+  .sc-footer-three__certification-badge picture {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sc-footer-three__emblem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sc-footer-three__emblem img,
+  .sc-footer-three__emblem picture {
+    width: 100px;
+    height: auto;
+    display: block;
+  }
+
+  .sc-footer-three__satyameva {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+  }
+
+  .sc-footer-three__ministry,
+  .sc-footer-three__government {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    line-height: 1.5;
+  }
+
+  .sc-footer-three__license {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 15px 0 0 0;
+    line-height: 1.5;
+  }
+
+  .sc-footer-three__column--legal {
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .sc-footer-three__bottom {
+    padding: 20px 20px;
+    background-color: #000000;
+  }
+
+  .sc-footer-three__bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sc-footer-three__copyright {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sc-footer-three__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 35px;
+    }
+    .sc-footer-three__column {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .sc-footer-three__column--social {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      & .sc-footer-three__heading {
+        width: 100%;
+      }
+      & .sc-footer-three__social-icons,
+      & .sc-footer-three__certifications {
+        width: 50%;
+        margin-bottom: 0;
+      }
+    }
+    .sc-footer-three__column--legal {
+      grid-column: span 2;
+    }
+    .sc-footer-three__content {
+      padding: 40px 20px;
+    }
+
+    .sc-footer-three {
+      padding: 20px 0;
+    }
+
+    .sc-footer-three__social-icons {
+      justify-content: flex-start;
+    }
+
+    .sc-footer-three__certifications {
+      justify-content: flex-start;
+    }
+
+    .sc-footer-three__bottom-content {
+      justify-content: center;
+    }
+
+    .sc-footer-three__copyright {
+      text-align: center;
+    }
+  }
+{% endstylesheet %}

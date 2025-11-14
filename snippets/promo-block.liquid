@@ -1,0 +1,52 @@
+{% comment %}
+  @param blocks {[Block]}
+  @param enable_quickshop {Boolean}
+  @param index {String}
+  @param collection_handle {String}
+  @param display_remaining {Boolean}
+    Renders all blocks with positions > index
+{% endcomment %}
+
+{% if blocks.size > 0 %}
+  {% for block in blocks %}
+    {% liquid
+      assign position = block.settings.position | plus: 0
+      assign should_render = false
+      if position != blank
+        if display_remaining
+          if position > index
+            assign should_render = true
+          endif
+        elsif position == index
+          assign should_render = true
+        endif
+      endif
+    %}
+    {% if should_render %}
+      {% unless block.settings.collection != empty and block.settings.collection != collection_handle %}
+          <div
+            class="
+              promo-block
+              promo-block--{{ block.settings.style }}
+              {% if enable_quickshop %}
+                promo-block--quickshop-enabled
+              {% endif %}
+              "
+            {{ block.shopify_attributes }}
+          >
+            <h3 class="rte promo-block--content">{{ block.settings.text }}</h3>
+
+            {% if block.settings.button != empty %}
+              <span class="promo-block--button">
+                {{ block.settings.button }}
+              </span>
+            {% endif %}
+
+            {% if block.settings.link %}
+              <a class="promo-block--link" href="{{ block.settings.link }}"></a>
+            {% endif %}
+          </div>
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

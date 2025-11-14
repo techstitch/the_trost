@@ -1,0 +1,88 @@
+{% capture slot_gallery %}
+  {% content_for 'block', type: '_section-flex-pdp-media-gallery', id: 'section-flex-pdp-media-gallery' %}
+{% endcapture %}
+
+{% capture slot_details %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+{%- render 'section.flex-pdp', slot_gallery: slot_gallery, slot_details: slot_details -%}
+
+<script>
+  window.CART_REDIRECTION_ENABLED = {{ settings.enable_cart_redirection | json }};
+</script>
+
+{% javascript %}
+  document.addEventListener('product-form:cart:navigate', (event) => {
+    if (!window.CART_REDIRECTION_ENABLED) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener('product-form:submit:success', (event) => {
+    if (window.CART_REDIRECTION_ENABLED) {
+      window.location.href = `${window.Shopify.routes.root}cart`;
+    } else {
+      setTimeout(() => {
+        const cartButton = document.querySelector('[data-cart-mini-toggle]');
+        if (cartButton) {
+          cartButton.click();
+        }
+      }, 1000);
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:flex_pdp.section.high_variant.name",
+  "settings": [
+    {
+      "type": "select",
+      "id": "padding",
+      "label": "t:flex_pdp.section.high_variant.settings.padding.label",
+      "default": "both",
+      "options": [
+        { "value": "none", "label": "t:flex_pdp.section.high_variant.settings.padding.options.none.label" },
+        { "value": "top", "label": "t:flex_pdp.section.high_variant.settings.padding.options.top.label" },
+        { "value": "bottom", "label": "t:flex_pdp.section.high_variant.settings.padding.options.bottom.label" },
+        { "value": "both", "label": "t:flex_pdp.section.high_variant.settings.padding.options.both.label" }
+      ]
+    }
+  ],
+  "blocks": [
+    {"type": "@app"},
+    {"type": "@theme"},
+    {"type": "_section-flex-pdp-buy-buttons"},
+    {"type": "_section-flex-pdp-description"},
+    {"type": "_section-flex-pdp-divider"},
+    {"type": "_section-flex-pdp-policies"},
+    {"type": "_section-flex-pdp-price"},
+    {"type": "_section-flex-pdp-quantity-picker"},
+    {"type": "_section-flex-pdp-sku"},
+    {"type": "_section-flex-pdp-title"},
+    {"type": "_section-flex-pdp-variant-picker"},
+    {"type": "_section-flex-pdp-vendor"},
+    {"type": "_section-flex-pdp-pick-up"},
+    {"type": "_section-flex-pdp-installments"},
+    {"type": "_section-flex-pdp-inventory"}
+  ],
+  "presets": [
+    {
+      "name": "t:flex_pdp.section.high_variant.name",
+      "blocks": [
+        {"type": "_section-flex-pdp-title"},
+        {"type": "_section-flex-pdp-vendor"},
+        {"type": "_section-flex-pdp-price"},
+        {"type": "_section-flex-pdp-installments"},
+        {"type": "_section-flex-pdp-divider"},
+        {"type": "_section-flex-pdp-variant-picker"},
+        {"type": "_section-flex-pdp-quantity-picker"},
+        {"type": "_section-flex-pdp-buy-buttons"},
+        {"type": "_section-flex-pdp-pick-up"},
+        {"type": "_section-flex-pdp-description"},
+      ]
+    }
+  ]
+}
+{% endschema %}

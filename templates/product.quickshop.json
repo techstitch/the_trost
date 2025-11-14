@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-quickshop",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "callout": {
+          "type": "callout",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "form",
+        "description",
+        "callout"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

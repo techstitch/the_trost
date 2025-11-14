@@ -1,0 +1,436 @@
+{% liquid
+  assign fixed_height_mobile = true
+  assign fixed_height_desktop = true
+
+  if section.settings.mobile_height == 'natural'
+    assign fixed_height_mobile = false
+  endif
+
+  if section.settings.desktop_height == 'natural'
+    assign fixed_height_desktop = false
+  endif
+%}
+
+<script
+  type="application/json"
+  data-section-type="dynamic-slideshow"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+  data-section-data
+>
+  {
+    "transition": {{ section.settings.transition | json }},
+    "parallax": {{ section.settings.parallax | json }},
+    "fixedHeightMobile": {{ fixed_height_mobile | json }},
+    "fixedHeightDesktop": {{ fixed_height_desktop | json }}
+  }
+</script>
+
+<section
+  class="
+    home-section
+    slideshow
+    clearfix
+    slideshow--transition-{{ section.settings.transition }}
+    slideshow--desktop-height-{{ section.settings.desktop_height }}
+    slideshow--mobile-height-{{ section.settings.mobile_height }}
+    {% if section.settings.full-width == false %}
+      content-area
+    {% endif %}
+  "
+  {% if section.settings.autoplay_enable %}
+    data-autoplay="{{ section.settings.autoplay_interval | times: 1000 }}"
+  {% endif %}
+  {% if section.settings.parallax %}
+    data-parallax
+  {% endif %}
+  data-full-width="{{ section.settings.full-width }}"
+>
+  <span class="prev">
+    {% render 'icon' with 'arrow-thin-left' %}
+  </span>
+
+  <span class="next">
+    {% render 'icon' with 'arrow-thin-right' %}
+  </span>
+
+  <ul class="jump-to-slide"></ul>
+
+  <div
+    class="slideshow--viewport"
+    data-slideshow-viewport
+  >
+    {% for block in section.blocks %}
+      {% assign image = block.settings.image %}
+      {% assign link = block.settings.link %}
+      {% assign heading = block.settings.slide_title | escape %}
+      {% assign caption = block.settings.caption %}
+      {% assign button = block.settings.button | escape %}
+      {% assign alignment = block.settings.alignment %}
+      {% liquid
+        assign loading = 'lazy'
+        assign fetch_priority = 'auto'
+        if section.index <= 3 and forloop.first
+          assign loading = 'eager'
+          assign fetch_priority = 'high'
+        endif
+      %}
+
+      <div
+        class="
+          slide
+          {% if forloop.index == 1 %}
+            active
+          {% endif %}
+        "
+        {% if section.settings.desktop_height == 'natural' %}
+          style="--image-aspect-ratio: {{ image.aspect_ratio }}"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+        <div class="image-wrap">
+          {% if block.settings.show_overlay and block.settings.background != blank %}
+            {% assign opacity = block.settings.opacity | times: 0.01 %}
+            {% assign overlay = block.settings.background | color_modify: 'alpha', opacity %}
+            <div class="image-overlay" style="background-color: {{ overlay }};"></div>
+          {% endif %}
+
+          {% if link != blank %}
+            <a href="{{ link }}">
+              {% if image %}
+                {{
+                  image
+                  | image_url: width: 1400
+                  | image_tag: widths: '430, 780, 1400', sizes: '100vw', loading: loading, fetchpriority: fetch_priority
+                }}
+              {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>
+          {% else %}
+            {% if image %}
+              {{
+                image
+                | image_url: width: 1400
+                | image_tag: widths: '430, 780, 1400', sizes: '100vw', loading: loading, fetchpriority: fetch_priority
+              }}
+            {% else %}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          {% endif %}
+        </div>
+
+        {% if heading != blank or caption != blank or button != blank %}
+          <div class="content-outer-wrap">
+            <a class="mobile-link" href="{{ link }}"></a>
+
+            <div class="content-inner-wrap {{ alignment }}">
+              <div class="content">
+                <div class="content-inner">
+                  {% if heading != blank %}
+                    <h2 class="title">{{ heading }}</h2>
+                  {% endif %}
+                  {% if caption != blank %}
+                    <h3 class="tagline">{{ caption | escape }}</h3>
+                  {% endif %}
+                </div>
+                {% if button != blank %}
+                  <div class="call-to-action-wrap">
+                    <span class="call-to-action" href="{{ link }}">
+                      {{ button }}
+                    </span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if link != blank %}
+          <a class="slideshow-link" href="{{ link }}"></a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .slide {
+    position: relative;
+    & .content-inner-wrap {
+      height: 100% !important;
+    }
+    & .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 40px !important;
+      & .title,
+      & .tagline {
+        color: #f2e9d7 !important;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .content-outer-wrap {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      padding: 10% 0 0 !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title{
+      font-size: 24px !important;
+    }
+    .tagline{
+      font-size: 16px !important;
+    }
+  }
+  .slide .content-inner-wrap.top {
+    top: 0 !important;
+    padding: 12% 0 0 !important;
+  }
+  .call-to-action-wrap {
+    .call-to-action {
+      color: var(--color-primary) !important;
+      background-color: transparent !important;
+      border: 1px solid var(--color-primary) !important;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "shopify-section--slideshow",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "500px"
+        },
+        {
+          "value": "medium",
+          "label": "600px"
+        },
+        {
+          "value": "large",
+          "label": "700px"
+        },
+        {
+          "value": "extra-large",
+          "label": "800px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "300px"
+        },
+        {
+          "value": "medium",
+          "label": "400px"
+        },
+        {
+          "value": "large",
+          "label": "500px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-width",
+      "label": "Enable full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "Enable parallax",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enable",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "transition",
+      "label": "Slide transition",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Rotation interval",
+      "unit": "sec",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Heading",
+          "default": "Slideshow"
+        },
+        {
+          "type": "textarea",
+          "id": "caption",
+          "label": "Subheading",
+          "default": "Introduce customers to your shop with lifestyle imagery and product photography."
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button text",
+          "default": "Your call to action button"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Slide link URL"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "center-center",
+              "label": "Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center top"
+            },
+            {
+              "value": "left middle",
+              "label": "Left center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left bottom"
+            },
+            {
+              "value": "left top",
+              "label": "Left top"
+            },
+            {
+              "value": "right middle",
+              "label": "Right center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right top"
+            }
+          ],
+          "default": "center-center"
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "id": "show_overlay",
+          "type": "checkbox",
+          "label": "Show overlay"
+        },
+        {
+          "id": "background",
+          "type": "color",
+          "label": "Color",
+          "default": "#000"
+        },
+        {
+          "id": "opacity",
+          "type": "range",
+          "label": "Opacity",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 20
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Slideshow",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["*"]
+  }
+}
+{% endschema %}

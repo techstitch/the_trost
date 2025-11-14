@@ -1,0 +1,138 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="logo-list"
+  data-section-index="{{ section.index }}"
+>
+
+  {%- assign sectionHeading = section.settings.title | escape -%}
+  {%- assign border = section.settings.border -%}
+  {%- assign logosPerRow = section.settings.logos_per_row -%}
+
+  <section class="home-section logo-list clearfix rows-of-{{ logosPerRow }} content-area
+    {% if sectionHeading != blank %}has-heading{% endif %}
+    {% if border %}has-border{% endif %}">
+
+    {% if sectionHeading != blank %}
+      <h2 class="section-title">{{ sectionHeading }}</h2>
+    {% endif %}
+
+    <div class="logo-list-container">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {%- assign link = block.settings.link -%}
+          {%- assign logo = block.settings.logo -%}
+
+          {% if logo %}
+            <div class="logo-list-item">
+              <div class="logo-list-item-wrap">
+                {% if link %}
+                  <a href="{{ link | escape }}" target="_blank">
+                    {%
+                      render 'rimg'
+                      img: logo,
+                      size: '240x240',
+                      lazy: true,
+                      focal_point: logo.presentation.focal_point,
+                    %}
+                  </a>
+                {% else %}
+                  {%
+                    render 'rimg'
+                    img: logo,
+                    size: '240x240',
+                    lazy: true,
+                    focal_point: logo.presentation.focal_point,
+                  %}
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            {% render 'logo-list-onboarding' %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for i in (1..logosPerRow) %}
+          {% render 'logo-list-onboarding' %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Logo list",
+  "class": "shopify-section--logo-list content-area",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Logo list"
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Show border",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "logos_per_row",
+      "label": "Logos per row",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Image",
+          "info": "480 x 480px .jpg recommended"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Logo list",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+
+{% endschema %}

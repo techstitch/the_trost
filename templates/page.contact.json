@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-page-contact",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true
+      }
+    },
+    "17174940612e0b2bfe": {
+      "type": "apps",
+      "blocks": {
+        "qikify_form_builder_embed_form_WK4K6p": {
+          "type": "shopify://apps/qikify-form-builder/blocks/embed-form/753fa0d7-50d4-480a-b094-cff26e632c36",
+          "settings": {
+            "type": "form",
+            "formId": 363289
+          }
+        }
+      },
+      "block_order": [
+        "qikify_form_builder_embed_form_WK4K6p"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".bcontact-watermark {display: none !important;}",
+        ".bcontact-title {display: none !important;}",
+        ".bcontact-description {display: none;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "17174940612e0b2bfe"
+  ]
+}

@@ -1,0 +1,32 @@
+<div
+  class="
+    back-to-top
+    back-to-top--desktop
+    back-to-top-position--{{ settings.back_to_top_desktop_position }}
+  "
+  data-back-to-top
+>
+  <a
+    class="back-to-top__button"
+    href="#"
+    role="button"
+    aria-label="{{ 'general.back_to_top' | t }}"
+    aria-hidden="true"
+    data-back-to-top-button
+  >
+    {% render 'icon' with 'down-arrow' %}
+  </a>
+</div>
+
+<div class="back-to-top back-to-top--mobile">
+  <a
+    class="back-to-top__button"
+    href="#"
+    role="button"
+  >
+    <span>{{ 'general.back_to_top' | t }}</span>
+    <span class="back-to-top__icon-wrapper">
+      {% render 'icon' with 'arrow-thin-left' %}
+    </span>
+  </a>
+</div>

@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "static-product",
+      "blocks": {
+        "title_aXRBD9": {
+          "type": "title",
+          "settings": {
+            "show_border": false
+          }
+        },
+        "price_fP48hL": {
+          "type": "price",
+          "settings": {
+            "show_border": true
+          }
+        },
+        "form_XRFzWT": {
+          "type": "form",
+          "settings": {
+            "show_border": true,
+            "show_gift_card_recipient_form": false
+          }
+        }
+      },
+      "block_order": [
+        "title_aXRBD9",
+        "price_fP48hL",
+        "form_XRFzWT"
+      ],
+      "settings": {
+        "details_alignment": "left",
+        "show_breadcrumbs": true,
+        "gallery_layout": "gallery-below",
+        "gallery_enable_image_zoom": true,
+        "gallery_enable_video_autoplay": true,
+        "gallery_enable_video_looping": true
+      }
+    },
+    "judgeme_section_review_widget_6b50": {
+      "type": "apps",
+      "blocks": {
+        "judgeme_review_widget_a44755a0": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judgeme_review_widget_a44755a0"
+      ],
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "static-product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like"
+      }
+    },
+    "loox-product-reviews-app-section": {
+      "type": "apps",
+      "settings": {}
+    },
+    "168394731775fd0a1b": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "judgeme_section_review_widget_6b50",
+    "product-recommendations",
+    "loox-product-reviews-app-section",
+    "168394731775fd0a1b"
+  ]
+}

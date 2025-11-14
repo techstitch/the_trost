@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "aba75409-b6dd-4330-88e1-f5c0cc72e941": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        ".banner3 {max-width: 100%; height: 50px;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"banner3\">\n  <img class=\"desktop-image\" src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/44.jpg?v=1685426478\" alt=\"Desktop Banner Image\">\n  <img class=\"mobile-image\" src=\"https://cdn.shopify.com/s/files/1/0542/5217/5555/files/Untitled_design_3.png?v=1685985921\" alt=\"Mobile Banner Image\">\n</div>"
+      }
+    },
+    "9b67bc09-6748-4fdf-8270-128d2fc92676": {
+      "type": "dynamic-logo-list",
+      "blocks": {
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-0": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Save_Money_180-removebg-preview.png",
+            "link": ""
+          }
+        },
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-1": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Calender_180-removebg-preview.png",
+            "link": ""
+          }
+        },
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-2": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Shipping_180-removebg-preview.png",
+            "link": ""
+          }
+        },
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-3": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Bills_180-removebg-preview.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-0",
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-1",
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-2",
+        "template--18893042483477__9b67bc09-6748-4fdf-8270-128d2fc92676-1684948802331be348-3"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px;}",
+        ".logo-list-item img {width: 100px; height: 100x;}",
+        "p {font-style: normal;}"
+      ],
+      "settings": {
+        "title": "Subscribe & Save",
+        "border": false,
+        "logos_per_row": 4
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "content": ""
+      }
+    },
+    "172613b2-1200-4fc9-a86e-c7502dbc0a21": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-0": {
+          "type": "feature",
+          "settings": {
+            "collection": "cbd-oils"
+          }
+        },
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-1": {
+          "type": "feature",
+          "settings": {
+            "collection": "hemp-nutrition"
+          }
+        },
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-2": {
+          "type": "feature",
+          "settings": {
+            "collection": "trost-rollens"
+          }
+        }
+      },
+      "block_order": [
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-0",
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-1",
+        "template--18893042483477__172613b2-1200-4fc9-a86e-c7502dbc0a21-1685078991f4da4750-2"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px;}"
+      ],
+      "settings": {
+        "title": "Collection list",
+        "border": true
+      }
+    },
+    "72008d53-f379-4fc6-821a-995d7e8a94a9": {
+      "type": "dynamic-collection",
+      "settings": {
+        "collection": "cbd-oils",
+        "title": "Featured collection",
+        "border": true,
+        "rows": 1,
+        "products_per_row": 4
+      }
+    }
+  },
+  "order": [
+    "aba75409-b6dd-4330-88e1-f5c0cc72e941",
+    "9b67bc09-6748-4fdf-8270-128d2fc92676",
+    "main",
+    "172613b2-1200-4fc9-a86e-c7502dbc0a21",
+    "72008d53-f379-4fc6-821a-995d7e8a94a9"
+  ]
+}

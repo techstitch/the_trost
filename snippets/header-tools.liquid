@@ -1,0 +1,147 @@
+{% comment %}
+  @param layout {String}
+    The header layout setting: can be one of normal, expanded, minimal, minimal-sticky
+
+  @param logoCentered {Boolean}
+    Whether the logo should be centered
+
+  @param cartIcon {String}
+    The setting indicating which icon should be used for the cart. Can be one of: bag, cart
+{% endcomment %}
+
+{% assign type = 'header-minimal' %}
+
+{% if layout == 'normal' %}
+  {% assign type = 'header-normal' %}
+{% elsif layout == 'expanded' %}
+  {% assign type = 'header-expanded' %}
+{% endif %}
+
+<div class="main-header--tools tools clearfix">
+  <div class="main-header--tools-group">
+    <div class="main-header--tools-left">
+      {% if type == 'header-minimal' %}
+        {% if section.settings['social-icons'] %}
+          {% render 'social-links' %}
+        {% endif %}
+      {% endif %}
+
+      <div class="tool-container">
+        {% assign alignment = 'left' %}
+        {% if layout == 'minimal' %}
+          {% assign alignment = 'right' %}
+        {% elsif layout == 'minimal-sticky' %}
+          {% assign alignment = 'right' %}
+        {% elsif layout == 'normal' %}
+          {% if logoCentered %}
+            {% assign alignment = 'left' %}
+          {% else %}
+            {% assign alignment = 'right' %}
+          {% endif %}
+        {% endif %}
+
+        {% render 'live-search', show_label: section.settings['show-labels'], alignment: alignment %}
+        
+        {% unless type == 'header-minimal' %}
+          {% if section.settings['social-icons'] %}
+            {% render 'social-links' %}
+          {% endif %}
+        {% endunless %}
+
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <a class="account-options" href="{{ routes.account_url }}" aria-label="{{ 'general.account' | t }}">
+              {% render 'icon' with 'person' %}
+
+              <label class="main-header--tools-label">
+                {{ 'general.account' | t }}
+              </label>
+            </a>
+          {% else %}
+            <a
+              class="account-options"
+              href="{{ routes.account_login_url }}"
+              aria-label="{{ 'layout.header.login' | t }}"
+            >
+              {% render 'icon' with 'person' %}
+
+              {% if section.settings['show-labels'] %}
+                <label class="main-header--tools-label">
+                  {{ 'layout.header.login' | t }}
+                </label>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endif %}
+
+        <button
+          class="
+            mini-cart-wrap
+            mini-cart-wrap--no-js-hidden
+          "
+          data-cart-mini-toggle
+        >
+          <span class="visually-hidden">
+            {{- 'layout.header.toggle_mini_cart' | t -}}
+          </span>
+
+          <span class="item-count" data-cart-mini-count>
+            {%- if cart.item_count != 0 -%}
+              {{- cart.item_count -}}
+            {%- endif -%}
+          </span>
+
+          {% if cartIcon == 'cart' %}
+            {% render 'icon' with 'cart' %}
+          {% else %}
+            {% render 'icon' with 'bag' %}
+          {% endif %}
+        </button>
+        <a
+          class="menu"
+          href=""
+          class="nav-item dropdown first"
+          aria-haspopup="true"
+          aria-controls="main-header--mobile-nav"
+          aria-expanded="false"
+          aria-label="{{ linklists[section.settings.menu].title }}"
+        >
+          {% render 'icon' with 'menu' %}
+        </a>
+        <noscript>
+          <a href="{{ routes.cart_url }}" class="mini-cart-wrap">
+            {% if cartIcon == 'cart' %}
+              {% render 'icon' with 'cart' %}
+            {% else %}
+              {% render 'icon' with 'bag' %}
+            {% endif %}
+          </a>
+        </noscript>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .main-header--minimal .main-header--tools {
+    position: relative !important;
+    left: unset !important;
+    top: unset !important;
+    max-width: 100% !important;
+  }
+  .tool-container{
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+  .tool-container > *{
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .main-header--minimal .main-header--tools-group {
+    justify-content: flex-end !important;
+  }
+  .main-header--tools-left,
+  .main-header--tools-right {
+    justify-content: flex-end !important;
+  }
+{% endstylesheet %}

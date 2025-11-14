@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement_bar": {
+      "type": "pxs-announcement-bar",
+      "disabled": true,
+      "settings": {
+        "show_announcement": false,
+        "announcement_home_only": false,
+        "announcement_text": "👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Ayurvedic Doctor's🩺",
+        "announcement_text_mobile": "👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Doctor 🩺",
+        "announcement_link": "shopify://collections/all",
+        "announcement_color": "#ffffff",
+        "announcement_background": "#1f1e1e"
+      }
+    },
+    "header": {
+      "type": "static-header",
+      "settings": {
+        "image": "shopify://shop_images/logo_inverse.png",
+        "image_inverse": "shopify://shop_images/Trost_Logo.png",
+        "logo_width": 210,
+        "header-layout": "minimal-sticky",
+        "center-header": false,
+        "social-icons": false,
+        "show-labels": false,
+        "cart-icon": "cart",
+        "live_search_enabled": true,
+        "menu": "main-menu-nov25",
+        "top-level-columns": "two-columns"
+      }
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "header"
+  ]
+}

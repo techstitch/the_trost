@@ -1,0 +1,43 @@
+
+<div class="header-minimal {% if headerCenter %}header-minimal-centered{% endif %}">
+  {% if headerCenter %}
+    {%
+      render 'header-fullnav',
+      headerLayout: headerLayout,
+      headerCenter: headerCenter
+    %}
+    {%
+      render 'header-storetitle',
+      headerLayout: headerLayout,
+      headerCenter: headerCenter,
+      logo: logo,
+      logoInverse: logoInverse,
+      logoWidth: logoWidth,
+      isHomepage: isHomepage
+    %}
+  {% else %}
+    {%
+      render 'header-storetitle',
+      headerLayout: headerLayout,
+      headerCenter: headerCenter,
+      logo: logo,
+      logoInverse: logoInverse,
+      logoWidth: logoWidth,
+      isHomepage: isHomepage
+    %}
+    <div class="header-divider"></div>
+    {%
+      render 'header-fullnav',
+      headerLayout: headerLayout,
+      headerCenter: headerCenter
+    %}
+  {% endif %}
+
+  {%
+    render 'header-tools',
+    type: 'header-minimal',
+    layout: headerLayout
+    logoCentered: headerCenter,
+    cartIcon: cartIcon
+  %}
+</div>

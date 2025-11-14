@@ -1,0 +1,563 @@
+{% liquid
+  assign enable_cart_redirect = settings.enable_cart_redirection
+  assign show_media_borders = settings.media_borders
+  assign show_quantity = settings.show_quantity_selector
+  assign show_spb = settings.show_payment_button
+  assign variant_options_style = settings.variant_options_style
+
+  assign gallery_enable_video_autoplay = section.settings.gallery_enable_video_autoplay
+  assign gallery_enable_video_looping = section.settings.gallery_enable_video_looping
+  assign gallery_layout = section.settings.gallery_layout
+  assign enable_image_zoom = section.settings.gallery_enable_image_zoom
+  assign details_alignment = section.settings.details_alignment
+
+  for block in section.blocks
+    if block.type == 'complementary_products'
+      assign product_recommendation_limit = block.settings.product_recommendation_limit
+      break
+    endif
+  endfor
+%}
+
+<script
+  type="application/json"
+  data-section-type="static-product"
+  data-section-id="{{ section.id }}"
+  data-section-data
+  data-section-index="{{ section.index }}"
+>
+  {
+    "product": {{ product | json }},
+    "settings": {
+      "enable_cart_redirect": {{ enable_cart_redirect | json }},
+      "enable_history": true,
+      "gallery_enable_video_autoplay": {{ gallery_enable_video_autoplay | json }},
+      "gallery_enable_video_looping": {{ gallery_enable_video_looping | json }},
+      "money_format": {{ shop[settings.currency_display_format] | default: shop.money_format | strip_html | json }}
+    },
+    "locale": {
+      "add_to_cart": {{ 'products.product.add_to_cart' | t | json }},
+      "sold_out": {{ 'products.product.sold_out' | t | json }},
+      "unavailable": {{ 'products.product.unavailable' | t | json }}
+    },
+    "product_recommendation_limit": {{ product_recommendation_limit | json }}
+  }
+</script>
+
+<div class="content-area">
+  {% if section.settings.show_breadcrumbs %}
+    {% render 'breadcrumbs' %}
+  {% endif %}
+</div>
+
+<div class="content content-area">
+  {%
+    render 'product',
+    product: product,
+    context: 'product-page',
+    show_media_borders: show_media_borders,
+    show_quantity: show_quantity,
+    show_spb: show_spb,
+    gallery_layout: gallery_layout,
+    enable_image_zoom: enable_image_zoom,
+    details_alignment: details_alignment,
+    variant_options_style: variant_options_style,
+  %}
+</div>
+
+<script>
+  Theme.products["{{ product.id }}"] = {{ product | json }};
+  Theme.products["{{ product.id }}"].firstVariant = {{ product.selected_or_first_available_variant.id | json }};
+</script>
+
+{% schema %}
+{
+  "name": "Product pages",
+  "class": "section-product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "details_alignment",
+      "label": "Product details alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media/product-media-types)"
+    },
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "label": "Layout",
+      "options": [
+        {
+          "label": "Thumbnails left of gallery",
+          "value": "gallery-left"
+        },
+        {
+          "label": "Thumbnails right of gallery",
+          "value": "gallery-right"
+        },
+        {
+          "label": "Thumbnails below gallery",
+          "value": "gallery-below"
+        }
+      ],
+      "default": "gallery-left"
+    },
+    {
+      "type": "checkbox",
+      "id": "gallery_enable_image_zoom",
+      "label": "Enable image zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "gallery_enable_video_autoplay",
+      "label": "Enable video autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "gallery_enable_video_looping",
+      "label": "Enable video looping",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "collapsible-tab",
+      "name": "Collapsible tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collapsible_tab_heading",
+          "label": "Heading",
+          "default": "Collapsible tab"
+        },
+        {
+          "type": "richtext",
+          "id": "collapsible_tab_text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your product.</p>"
+        }
+      ]
+    },
+    {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email link",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "fitting_guide",
+      "name": "Fitting guide",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "page",
+          "id": "link",
+          "label": "Page"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "info",
+              "label": "Info"
+            }
+          ],
+          "default": "shirt"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "Form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Customize form features for the product in the products portion of the theme settings."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient_form",
+          "label": "t:sections.product.blocks.form.show_gift_card_recipient_form.label",
+          "info": "t:sections.product.blocks.form.show_gift_card_recipient_form.info",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "inventory_status",
+      "name": "Inventory status",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "inventory_status",
+          "label": "Show inventory status",
+          "options": [
+            {
+              "value": "low_stock_only",
+              "label": "Low stock only"
+            },
+            {
+              "value": "always",
+              "label": "Always"
+            }
+          ],
+          "default" : "always"
+        },
+        {
+          "type": "select",
+          "id": "quantity_status",
+          "label": "Show quantity in status",
+          "options": [
+            {
+              "value": "always",
+              "label": "Always"
+            },
+            {
+              "value": "low_stock_only",
+              "label": "Low stock only"
+            },
+            {
+              "value": "never",
+              "label": "Never"
+            }
+          ],
+          "default" : "always"
+        },
+        {
+          "type": "range",
+          "id": "low_stock_threshold",
+          "label": "Low stock threshold",
+          "info": "When set to 0, inventory status will only show as in stock.",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "header",
+          "content": "Inventory status bar"
+        },
+        {
+          "type": "checkbox",
+          "id": "inventory_status_bar",
+          "label": "Show status bar",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "initial_stock_level",
+          "label": "Initial stock level",
+          "info": "Enter the quantity of your product's initial stock level. The status bar progress compares the current inventory to the initial stock level.",
+          "default": "20"
+        },
+        {
+          "type": "header",
+          "content": "Inventory transfer"
+        },
+        {
+          "type": "checkbox",
+          "id": "inventory_transfer_notice",
+          "label": "Show inventory transfer notice",
+          "info": "Tell your customers when products will restock through inventory transfers. [Learn more about inventory transfers](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Product rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To display a rating, add a product rating app. [Learn more](https://apps.shopify.com/product-reviews)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "share",
+      "name": "Share",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "sku",
+      "name": "SKU",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "tabs",
+      "name": "Tabs",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_product_description",
+          "label": "Show product description",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "tabs_below_gallery",
+          "label": "Show tabs below product gallery",
+          "info": "Desktop only",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Tab"
+        },
+        {
+          "type": "text",
+          "id": "tab_heading_1",
+          "label": "Heading",
+          "default": "Tab 1"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_text_1",
+          "label": "Text",
+          "default": "<p>Tab 1 content goes here.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Tab"
+        },
+        {
+          "type": "text",
+          "id": "tab_heading_2",
+          "label": "Heading",
+          "default": "Tab 2"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_text_2",
+          "label": "Text",
+          "default": "<p>Tab 2 content goes here.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Tab"
+        },
+        {
+          "type": "text",
+          "id": "tab_heading_3",
+          "label": "Heading",
+          "default": "Tab 3"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_text_3",
+          "label": "Text",
+          "default": "<p>Tab 3 content goes here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text block</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    },
+    {
+      "type": "complementary_products",
+      "name": "Complementary products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To select complementary products, add the Search & Discovery app. [Learn more](https:\/\/shopify.dev\/themes\/product-merchandising\/recommendations)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Pairs well with"
+        },
+        {
+          "type": "range",
+          "id": "product_recommendation_limit",
+          "label": "Maximum products to show",
+          "min": 1,
+          "max": 10,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "products_per_slide",
+          "label": "Number of products per page",
+          "min": 1,
+          "max": 3,
+          "default": 2
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show border"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

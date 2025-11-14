@@ -1,0 +1,297 @@
+{%- assign headerLayout = section.settings['header-layout'] -%}
+{%- assign headerCenter = section.settings['center-header'] -%}
+{%- assign socialIcons = section.settings['social-icons'] -%}
+{%- assign isHomepage = false -%}
+{%- if template == 'index' -%}
+  {%- assign isHomepage = true -%}
+{%- endif -%}
+
+{% if socialIcons and headerLayout == 'normal' %}
+  {% assign headerLayout = 'expanded' %}
+{% endif %}
+
+<script
+  type="application/json"
+  data-section-type="static-header"
+  data-section-id="{{ section.id }}"
+  data-section-data
+  data-section-index="{{ section.index }}"
+>
+  {
+    "live_search_enabled": {{ section.settings.live_search_enabled | json }}
+  }
+</script>
+
+<header
+  class="
+    main-header-wrap
+    {% if headerLayout == 'minimal-sticky' %}
+      main-header--{{ headerLayout }}
+      {% assign headerLayout = 'minimal' %}
+    {% endif %}
+    main-header--{{ headerLayout }}
+    {% if headerCenter %}main-header--centered{% endif %}
+  "
+  data-header-layout="{{ headerLayout }}"
+  data-header-alignment="{{ headerCenter }}"
+  data-is-homepage="{{ isHomepage }}"
+  {% if isHomepage and section.settings['header-layout'] == 'minimal-sticky' %}
+    transparent
+  {% endif %}
+>
+  <section class="main-header">
+    {% if headerLayout != 'minimal' %}
+      <div
+        class="
+          action-links
+          clearfix
+          {% unless headerCenter %}content-area{% endunless %}
+        "
+      >
+        {% render 'header-storetitle',
+          headerLayout: headerLayout,
+          headerCenter: headerCenter,
+          logo: section.settings.image,
+          logoInverse: section.settings.image_inverse,
+          logoWidth: section.settings.logo_width,
+          isHomepage: isHomepage,
+          hiddenOnMobile: true
+        %}
+
+        {% render 'header-tools',
+          layout: headerLayout,
+          logoCentered: headerCenter,
+          cartIcon: section.settings['cart-icon']
+        %}
+
+        {% render 'header-storetitle',
+          headerLayout: headerLayout,
+          headerCenter: headerCenter,
+          logo: section.settings.image,
+          logoInverse: section.settings.image_inverse,
+          logoWidth: section.settings.logo_width,
+          isHomepage: isHomepage,
+          hiddenOnDesktop: true
+        %}
+      </div>
+    {% endif %}
+
+    {% if headerLayout == 'minimal' %}
+      {% render 'header-minimal',
+        headerLayout: headerLayout,
+        headerCenter: headerCenter,
+        logo: section.settings.image,
+        logoInverse: section.settings.image_inverse,
+        logoWidth: section.settings.logo_width,
+        isHomepage: isHomepage,
+        cartIcon: section.settings['cart-icon']
+      %}
+    {% else %}
+      {% render 'header-fullnav', headerLayout: headerLayout, headerCenter: headerCenter %}
+    {% endif %}
+
+    {% render 'header-mobile-dropdown' %}
+  </section>
+</header>
+{% stylesheet %}
+  @media (min-width: 769px) {
+    .header-divider {
+      width: 2px;
+      height: 40px;
+      background: #e5b126;
+      border-radius: 2px;
+    }
+  }
+  @media (max-width: 768px) {
+    .main-header--minimal .store-title{
+      width: 75% !important;
+    }
+    .main-header--minimal .header-minimal .store-title {
+      padding: 0 !important;
+    }
+  }
+  .label{
+    font-weight: 600 !important;
+  }
+{% endstylesheet %}
+
+<script>
+  window.headerJSON = {{ section.settings | json }};
+
+  // Header scroll functionality for homepage transparent header
+  (function() {
+    const headerWrap = document.querySelector('.main-header-wrap.main-header--minimal-sticky[transparent]');
+    if (!headerWrap) return;
+
+    const scrollThreshold = 100;
+    let isScrolled = false;
+    let ticking = false;
+
+    function updateHeaderState() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const shouldBeScrolled = scrollY > scrollThreshold;
+
+      if (shouldBeScrolled !== isScrolled) {
+        isScrolled = shouldBeScrolled;
+        if (isScrolled) {
+          headerWrap.setAttribute('data-sticky-state', 'active');
+        } else {
+          headerWrap.removeAttribute('data-sticky-state');
+        }
+      }
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeaderState);
+        ticking = true;
+      }
+    }
+
+    // Initialize header state
+    updateHeaderState();
+
+    // Listen for scroll events
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Handle resize events that might affect scroll position
+    window.addEventListener('resize', updateHeaderState, { passive: true });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section--header content-area",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Logo image",
+      "info": "400 x 200px .jpg recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_inverse",
+      "label": "Inverse logo (for transparent header)",
+      "info": "White/inverse logo for homepage transparent header state"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 50,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "header-layout",
+      "label": "Header layout",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "minimal",
+          "label": "Minimal"
+        },
+        {
+          "value": "minimal-sticky",
+          "label": "Minimal (sticky)"
+        }
+      ],
+      "default": "minimal-sticky"
+    },
+    {
+      "type": "checkbox",
+      "id": "center-header",
+      "label": "Center logo",
+      "info": "The logo is always centered on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "social-icons",
+      "label": "Show social icons",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show-labels",
+      "label": "Show login and search labels",
+      "info": "Labels can only appear on the Normal header layout",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Cart preview"
+    },
+    {
+      "type": "select",
+      "id": "cart-icon",
+      "label": "Cart icon",
+      "default": "cart",
+      "options": [
+        {
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "value": "bag",
+          "label": "Bag"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "live_search_enabled",
+      "label": "Enable live search",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu",
+      "info": "This menu supports dropdowns and mega menus ([?](http://support.pixelunion.net/article/412-how-to-set-up-your-stores-navigation))"
+    },
+    {
+      "type": "select",
+      "id": "top-level-columns",
+      "label": "Sub-columns layout",
+      "options": [
+        {
+          "value": "one-column",
+          "label": "One column"
+        },
+        {
+          "value": "two-columns",
+          "label": "Two columns"
+        }
+      ],
+      "default": "two-columns"
+    }
+  ]
+}
+{% endschema %}

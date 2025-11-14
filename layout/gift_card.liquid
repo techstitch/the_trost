@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
+<head>
+  <script>
+    window.Store = window.Store || {};
+    window.Store.id = {{ shop.id }};
+  </script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Preconnect Domains -->
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
+
+  <!-- Preload Assets -->
+  <link rel="preload" href="{{ 'gift-card.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'vendor/qrcode.js' | shopify_asset_url }}" as="script">
+
+  {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency -%}
+  {%- assign formatted_initial_value_stripped = formatted_initial_value | strip_html -%}
+  <title>{{ 'gift_cards.issued.title' | t: value: formatted_initial_value_stripped, shop: shop.name }}</title>
+
+  <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
+
+  {% render 'favicon' %}
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  {{ content_for_header }}
+
+  {% assign x_handle = settings.x-url | split: 'x.com/' | last | split: 'twitter.com/' | last %}
+  {%
+    render 'social-meta-tags',
+    twitter_handle: x_handle,
+  %}
+
+  <script>
+    document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
+    if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
+    if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
+  </script>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{ 'gift-card.css' | asset_url }}">
+
+  <!-- Scripts -->
+  <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+
+  <!-- Store object -->
+  {% comment %}Inject theme-object begin{% endcomment %}
+  <script>
+    window.Theme = {};
+    Theme.version = "19.1.0";
+    Theme.name = 'Atlantic';
+    Theme.products = new Array();
+    Theme.shippingCalcErrorMessage = "{{ 'cart.shipping_calculator.error' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcMultiRates = "{{ 'cart.shipping_calculator.rates_html' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcOneRate = "{{ 'cart.shipping_calculator.rate' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcNoRates = "{{ 'cart.shipping_calculator.no_rates' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcRateValues = "{{ 'cart.shipping_calculator.rate_values_html' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.userLoggedIn = {% if shop.customer_accounts_enabled and customer %}true{% else %}false{% endif %};
+    Theme.userAddress = '{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address }}{% endif %}';
+    Theme.centerHeader = {% if settings.center-header %}true{% else %}false{% endif %};
+  
+    Theme.cartItemsOne = "{{ 'layout.header.item_count.one' | t | strip_newlines | escape }}";
+    Theme.cartItemsOther = "{{ 'layout.header.item_count.other' | t | strip_newlines | escape }}";
+  
+    Theme.addToCart = "{{ 'products.product.add_to_cart' | t | strip_newlines | escape }}";
+    Theme.soldOut = "{{ 'products.product.sold_out' | t | strip_newlines | escape }}";
+    Theme.unavailable = "{{ 'products.product.unavailable' | t | strip_newlines | escape }}";
+    Theme.routes = {
+      "root_url": "{{ routes.root_url }}",
+      "account_url": "{{ routes.account_url }}",
+      "account_login_url": "{{ routes.account_login_url }}",
+      "account_logout_url": "{{ routes.account_logout_url }}",
+      "account_register_url": "{{ routes.account_register_url }}",
+      "account_addresses_url": "{{ routes.account_addresses_url }}",
+      "collections_url": "{{ routes.collections_url }}",
+      "all_products_collection_url": "{{ routes.all_products_collection_url }}",
+      "search_url": "{{ routes.search_url }}",
+      "cart_url": "{{ routes.cart_url }}",
+      "cart_add_url": "{{ routes.cart_add_url }}",
+      "cart_change_url": "{{ routes.cart_change_url }}",
+      "cart_clear_url": "{{ routes.cart_clear_url }}",
+      "product_recommendations_url": "{{ routes.product_recommendations_url }}",
+      "predictive_search_url": "{{ routes.predictive_search_url }}",
+    };
+  </script>
+  {% comment %}Inject theme-object end{% endcomment %}
+
+</head>
+
+<body class="template-{{ template | replace: '.', '-' | handle }}">
+  {{ content_for_layout }}
+
+  <script>
+    (function () {
+      function handleFirstTab(e) {
+        if (e.keyCode === 9) { // the "I am a keyboard user" key
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+</body>
+</html>

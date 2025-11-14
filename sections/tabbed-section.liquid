@@ -1,0 +1,993 @@
+{% comment %}
+  Optimized Tabbed Section for Shopify Theme
+  - All content is merchant-editable via settings and blocks
+  - Repeating items (features, benefits, ingredients) use blocks
+  - Images use loading="lazy"
+  - Accessibility and semantic HTML improved
+  - Responsive and maintainable
+{% endcomment %}
+
+<style>
+  /* === Global & Tabbed Navigation Styles === */
+  .tabbed-section {
+    margin-top: 2rem;
+    margin-inline: 2rem;
+  }
+  .tabbed-section ol{
+    list-style-type: numbers !important;
+  }
+  .tabbed-section ul{
+    list-style-type: disc !important;
+  }
+  .tabbed-nav {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tabbed-nav button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .tabbed-nav button.active {
+    border-bottom: 2px solid #ff6f3c;
+    color: #222;
+    font-weight: 500;
+  }
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* === Description Tab Styles === */
+  .description-main-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    margin: 2.5rem 0 2rem 0;
+  }
+  .description-left {
+    {% comment %} flex: 1 1 480px; {% endcomment %}
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .description-box {
+    border-left: 4px solid #7ed6b1;
+    {% comment %} background: #fff; {% endcomment %}
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    {% comment %} box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03); {% endcomment %}
+  }
+  .description-title {
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .description-subtitle {
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  .description-body p {
+    color: #444;
+    margin-bottom: 0.7rem;
+    line-height: 1.7;
+  }
+  .description-flavor-profile {
+    margin-bottom: 1.2rem;
+  }
+  .description-flavor-title {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .description-flavor-body {
+    color: #444;
+  }
+  .description-learn-btn {
+    margin-top: 0.5rem;
+    border: 1px solid #ff6f3c;
+    background: #fff;
+    color: #222;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .description-learn-btn:hover {
+    background: #ff6f3c;
+    color: #fff;
+  }
+  .description-right {
+    display: absolute;
+    right: 0;
+    top: 0;
+    {% comment %} transform: translateY(50%); {% endcomment %}
+    flex: 1 1 320px;
+    min-width: 260px;
+    min-height: 220px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .description-flower-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    opacity: 0.18;
+  }
+  .description-divider {
+    border: none;
+    border-top: 2px solid #e6e6e6;
+    margin: 2.5rem 0 1.5rem 0;
+  }
+  .description-features-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #c46a1d;
+    font-size: 1.05rem;
+  }
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === Benefits Tab Styles === */
+  .benefits-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+  .benefits-layout-mobile{
+    display: none;
+  }
+  .benefits-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    flex: 1 1 180px;
+    align-items: flex-end;
+  }
+  .benefits-col-left {
+    align-items: center;
+  }
+  .benefits-col-right {
+    align-items: center;
+  }
+  .benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #222;
+    font-size: 1.1rem;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  .benefit-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+  .benefits-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+  }
+  .gummy-img {
+    width: 140px;
+    height: auto;
+    display: block;
+    z-index: 2;
+  }
+  .gummy-shadow {
+    width: 120px;
+    height: 24px;
+    background: radial-gradient(ellipse at center, #bbb 40%, transparent 100%);
+    margin: -20px auto 0 auto;
+    border-radius: 50%;
+    filter: blur(1px);
+    z-index: 1;
+  }
+  .benefit-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    color: #222;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+  .benefit-bottom .benefit-icon {
+    margin-bottom: 0.2rem;
+  }
+
+  /* === Consumption Tab Styles === */
+  .consumption-desktop-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4rem;
+    margin: 2.5rem 0 2rem 0;
+  }
+  .consumption-desktop-layout.reverse{
+    flex-direction: row-reverse;
+  }
+  .consumption-left {
+    flex: 1 1 380px;
+    max-width: 520px;
+  }
+  .consumption-section {
+    margin-bottom: 1.5rem;
+  }
+  .consumption-heading {
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 0.7rem;
+  }
+  .consumption-left ol {
+    margin-left: 1.2rem;
+    color: #222;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .consumption-right {
+    flex: 1 1 320px;
+    position: relative;
+    min-width: 320px;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .consumption-bg-circle {
+    position: absolute;
+    left: 30px;
+    top: 60px;
+    width: 260px;
+    height: 260px;
+    background: #e6f0ed;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .consumption-img {
+    position: absolute;
+    z-index: 2;
+
+    {% if product.metafields.cms.consumption_image_2 %}
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    {% endif %}
+    border-radius: 10px;
+  }
+  .consumption-img-front {
+    {% if product.metafields.cms.consumption_image_2 %}
+      left: 90px;
+      object-fit: cover;
+      top: 40px;
+      width: 220px;
+      height: 320px;
+      transform: rotate(10deg);
+    {% else %}
+      top: 0;
+      left:0;
+      width: 350px;
+      height: auto;
+    {% endif %}
+  }
+  .consumption-img-back {
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    transform: rotate(-15deg);
+    z-index: 2;
+  }
+
+  /* === Ingredients Tab Styles === */
+  .ingredients-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4rem;
+    margin: 2.5rem 0 2rem 0;
+  }
+  .ingredients-left {
+    flex: 1 1 340px;
+    max-width: 420px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .ingredients-icon-list {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .ingredients-flower-icon {
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+  .ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #888;
+    font-size: 1.1rem;
+  }
+  .ingredient-name {
+    color: #222;
+  }
+  .ingredient-percent {
+    color: #888;
+  }
+  .ingredients-right {
+    flex: 1 1 320px;
+    min-width: 320px;
+    min-height: 220px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .ingredients-outline-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .ingredients-hand-img {
+    position: relative;
+    z-index: 2;
+    width: 320px;
+    height: 220px;
+    object-fit: contain;
+    margin-left: 60px;
+  }
+  .ingredients-info-box {
+    border: 2px solid #2196f3;
+    border-radius: 8px;
+    background: #fff;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 2px 12px rgba(33, 150, 243, 0.07);
+  }
+  .ingredients-info-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .ingredients-info-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .ingredients-list {
+    margin-bottom: 0.7rem;
+  }
+  .highlight-orange {
+    color: #e86a1a;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+  .highlight-blue {
+    color: #2196f3;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+  .ingredients-highlights {
+    margin-bottom: 0.7rem;
+  }
+  .ingredients-pills {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+  }
+  .pill {
+    display: inline-block;
+    background: #2196f3;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 16px;
+    padding: 0.3rem 1.2rem;
+    font-size: 1.1rem;
+  }
+  .pill-blue {
+    background: #2196f3;
+  }
+  .ingredients-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .ingredient-highlight-orange {
+    color: #e86a1a;
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+
+  /* === Mobile Styles (All Tabs) === */
+  @media (max-width: 719px) {
+    /* --- Global Mobile Layout --- */
+    .tabbed-section {
+      margin-inline: 15px;
+    }
+    /* --- Description Tab Mobile --- */
+    .description-main-layout {
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1.2rem 0 1rem 0;
+      position: relative;
+    }
+    .description-left {
+      max-width: 100%;
+      width: 100%;
+      z-index: 2;
+    }
+    .description-box {
+      padding: 1rem 1rem 1rem 1.2rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.2rem;
+    }
+    .description-title {
+      font-size: 1.05rem;
+    }
+    .description-flavor-profile {
+      margin-bottom: 0.8rem;
+    }
+    .description-learn-btn {
+      width: 100%;
+      margin-top: 0.7rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      padding: 0.7rem 0;
+    }
+    .description-right {
+      position: absolute;
+      right: 0;
+      top: 40px;
+      width: 100%;
+      min-width: 0;
+      min-height: 0;
+      height: 180px;
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+    .description-flower-bg svg {
+      width: 180px;
+      height: 120px;
+      opacity: 0.13;
+      position: absolute;
+      right: -30px;
+      top: 0;
+    }
+    .description-divider {
+      margin: 1.2rem 0 1rem 0;
+    }
+    .description-features-row {
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+    }
+    .feature-item {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 1rem 0.5rem 1rem 1.2rem;
+      font-size: 1rem;
+      border-bottom: 1px solid #e6e6e6;
+      background: #fff;
+    }
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    /* --- Benefits Tab Mobile --- */
+    .benefits-layout {
+      display: none;
+    }
+    .benefits-layout-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .benefits-mobile-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .benefit-item {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    /* --- Consumption Tab Mobile --- */
+    .consumption-desktop-layout {
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: stretch;
+      margin: 1.2rem 0 1rem 0;
+    }
+    .consumption-right {
+      order: 1;
+      min-width: 0;
+      min-height: 180px;
+      width: 100%;
+      height: 180px;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .consumption-bg-circle {
+      left: 50%;
+      top: 40px;
+      width: 120px;
+      height: 120px;
+      transform: translateX(-50%);
+    }
+    .consumption-img-front {
+      left: 50%;
+      top: 30px;
+      width: 110px;
+      height: 160px;
+      transform: translateX(-50%) rotate(10deg);
+    }
+    .consumption-img-back {
+      left: 50%;
+      top: 0;
+      width: 60px;
+      height: 90px;
+      transform: translateX(-50%) rotate(-15deg);
+    }
+    .consumption-left {
+      order: 2;
+      padding: 0 0.5rem;
+      font-size: 0.98rem;
+    }
+    .consumption-heading {
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .consumption-section {
+      margin-bottom: 1.1rem;
+    }
+    .consumption-left ol {
+      font-size: 0.98rem;
+      margin-left: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* --- Ingredients Tab Mobile --- */
+    .ingredients-layout {
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: stretch;
+      margin: 1.2rem 0 1rem 0;
+    }
+    .ingredients-right {
+      order: 1;
+      min-width: 0;
+      min-height: 120px;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: flex;
+    }
+    .ingredients-outline-bg {
+      left: 50%;
+      top: 0;
+      width: 100px;
+      height: 80px;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    .ingredients-outline-bg svg {
+      width: 100px;
+      height: 80px;
+    }
+    .ingredients-hand-img {
+      position: relative;
+      z-index: 2;
+      width: 160px;
+      height: 110px;
+      object-fit: contain;
+      margin-left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -20px;
+    }
+    .ingredients-left {
+      order: 2;
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .ingredients-icon-list {
+      gap: 0.7rem;
+    }
+    .ingredients-list {
+      font-size: 1rem;
+      color: #888;
+      text-align: left;
+    }
+    .ingredients-info-box {
+      min-width: 0;
+      max-width: 100%;
+      padding: 1rem 0.7rem;
+    }
+  }
+</style>
+
+<div class="tabbed-section" id="tabbed-section-{{ section.id }}">
+  <nav class="tabbed-nav" role="tablist">
+    <button class="active" data-tab="description" role="tab" aria-selected="true">
+      {{ section.settings.tab_title_description }}
+    </button>
+    <button data-tab="benefits" role="tab">{{ section.settings.tab_title_benefits }}</button>
+    <button data-tab="consumption" role="tab">{{ section.settings.tab_title_consumption }}</button>
+    <button data-tab="ingredients" role="tab">{{ section.settings.tab_title_ingredients }}</button>
+    {% comment %} <button data-tab="faqs" role="tab">{{ section.settings.tab_title_faqs }}</button>
+    <button data-tab="reviews" role="tab">{{ section.settings.tab_title_reviews }}</button> {% endcomment %}
+  </nav>
+
+  <div class="tab-content active" id="tab-description" role="tabpanel">
+    <div class="description-main-layout">
+      <div class="description-left">
+        <div class="description-box">
+          {{ product.metafields.cms.description_text | metafield_tag }}
+        </div>
+        <div class="description-flavor-profile">
+          <div class="description-flavor-title">{{ product.metafields.cms.flavour_profile_name }}</div>
+          <div class="description-flavor-body">{{ product.metafields.cms.flavour_profile_text }}</div>
+        </div>
+        <button class="description-learn-btn">{{ section.settings.learn_more_label }}</button>
+      </div>
+      <div class="description-right">
+        <span class="description-flower-bg">
+          {{ product.metafields.cms.description_svg }}
+        </span>
+      </div>
+    </div>
+    <hr class="description-divider">
+    <div class="description-features-row">
+      {% for logo in product.metafields.cms.description_logos.value %}
+        <div class="feature-item">
+          <span class="feature-icon">{{ logo.icon_svg }}</span>
+          <span>{{ logo.icon_title }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="tab-content" id="tab-benefits" role="tabpanel">
+    <div class="benefits-layout">
+      <div class="benefits-col benefits-col-left">
+        {% for benefit in product.metafields.cms.benefits_icon.value limit: 3 %}
+          <div class="benefit-item">
+            <span class="benefit-icon">{{ benefit.icon_svg }}</span>
+            <span>{{ benefit.icon_title }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="benefits-center">
+        <img
+          src="{{ product.metafields.cms.benefit_main_icon | img_url: '400x' }}"
+          alt="Main Icon"
+          class="gummy-img"
+          width="140"
+          height="90"
+          loading="lazy"
+        >
+        <div class="gummy-shadow"></div>
+      </div>
+      <div class="benefits-col benefits-col-right">
+        {% for benefit in product.metafields.cms.benefits_icon.value offset: 3 limit: 3 %}
+          <div class="benefit-item">
+            <span class="benefit-icon">{{ benefit.icon_svg }}</span>
+            <span>{{ benefit.icon_title }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="benefits-layout-mobile">
+      <div class="benefits-center">
+        <img
+          src="{{ product.metafields.cms.benefit_main_icon | img_url: '400x' }}"
+          alt="Main Icon"
+          class="gummy-img"
+          width="140"
+          height="90"
+          loading="lazy"
+        >
+        <div class="gummy-shadow"></div>
+      </div>
+      <div class="benefits-mobile-list">
+        {% for benefit in product.metafields.cms.benefits_icon.value %}
+          <div class="benefit-item">
+            <span class="benefit-icon">{{ benefit.icon_svg }}</span>
+            <span>{{ benefit.icon_title }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="benefit-bottom">
+      {% assign pt_benefit = product.metafields.cms.benefits_icon.value[6] %}
+      <span class="benefit-icon">{{ pt_benefit.icon_svg }}</span>
+      <span>{{ pt_benefit.icon_title }}</span>
+    </div>
+  </div>
+  <div class="tab-content" id="tab-consumption" role="tabpanel">
+    <div class="consumption-desktop-layout {% if product.metafields.cms.consumption_row_reverse %}reverse{% endif %}">
+      <div class="consumption-right">
+        <div class="consumption-bg-circle"></div>
+        <img
+          src="{{ product.metafields.cms.consumption_image_1 | img_url: '400x' }}"
+          alt="{{ section.settings.consumption_image_1_alt }}"
+          class="consumption-img consumption-img-front"
+          width="100%"
+          height="auto"
+          loading="lazy"
+        >
+        {% if product.metafields.cms.consumption_image_2 %}
+          <img
+            src="{{ product.metafields.cms.consumption_image_2 | img_url: '200x' }}"
+            alt="{{ section.settings.consumption_image_2_alt }}"
+            class="consumption-img consumption-img-back"
+            width="120"
+            height="180"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+      <div class="consumption-left">
+        {{ product.metafields.cms.consumption_text | metafield_tag }}
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="tab-ingredients" role="tabpanel">
+    <div class="ingredients-layout">
+      <div class="ingredients-left">
+        <div class="ingredients-header-row">
+          <span class="ingredients-flower-icon">{{ product.metafields.cms.ingredient_icon_svg }}</span>
+          <span class="ingredients-info-title">{{ product.metafields.cms.ingredient_title }}</span>
+        </div>
+        <ul class="ingredients-list">
+          {% for ingredient in product.metafields.cms.ingredient_list.value %}
+            <li>{{ ingredient }}</li>
+          {% endfor %}
+        </ul>
+        {% if product.metafields.cms.ingredient_highlight_1 %}
+          <div class="ingredient-highlight-orange">{{ product.metafields.cms.ingredient_highlight_1 }}</div>
+        {% endif %}
+        {% if product.metafields.cms.ingredient_highlight_2 %}
+          <div class="ingredient-highlight-orange">{{ product.metafields.cms.ingredient_highlight_2 }}</div>
+        {% endif %}
+      </div>
+      <div class="ingredients-right">
+        <span class="ingredients-outline-bg">{{ product.metafields.cms.ingredient_flower_svg }}</span>
+        <img
+          src="{{ product.metafields.cms.ingredient_image | img_url: '600x' }}"
+          alt="Hand with gummies"
+          class="ingredients-hand-img"
+          width="320"
+          height="220"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="tab-faqs" role="tabpanel">
+    {{ section.settings.tab_content_faqs }}
+  </div>
+  <div class="tab-content" id="tab-reviews" role="tabpanel">
+    {{ section.settings.tab_content_reviews }}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navButtons = document.querySelectorAll('.tabbed-nav button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    navButtons.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        // Remove active from all buttons
+        navButtons.forEach((b) => b.classList.remove('active'));
+        // Hide all tab contents
+        tabContents.forEach((tc) => tc.classList.remove('active'));
+        // Add active to clicked button
+        this.classList.add('active');
+        // Show corresponding tab content
+        const tab = this.getAttribute('data-tab');
+        document.getElementById('tab-' + tab).classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Tabbed Content",
+  "settings": [
+    { "type": "text", "id": "tab_title_description", "label": "Tab Title: Description", "default": "Description" },
+    { "type": "text", "id": "tab_title_benefits", "label": "Tab Title: Benefits", "default": "Benefits" },
+    { "type": "text", "id": "tab_title_consumption", "label": "Tab Title: Consumption", "default": "Consumption" },
+    { "type": "text", "id": "tab_title_ingredients", "label": "Tab Title: Ingredients", "default": "Ingredients" },
+    { "type": "text", "id": "tab_title_faqs", "label": "Tab Title: FAQs", "default": "FAQs" },
+    { "type": "text", "id": "tab_title_reviews", "label": "Tab Title: Reviews", "default": "Reviews" },
+    { "type": "textarea", "id": "tab_content_faqs", "label": "FAQs Tab Content", "default": "<h3>FAQs</h3><p>...</p>" },
+    {
+      "type": "textarea",
+      "id": "tab_content_reviews",
+      "label": "Reviews Tab Content",
+      "default": "<h3>Reviews</h3><p>...</p>"
+    },
+    {
+      "type": "text",
+      "id": "description_title",
+      "label": "Description Title",
+      "default": "India's First Legal Hemp Herbal Cigarettes"
+    },
+    {
+      "type": "text",
+      "id": "description_subtitle",
+      "label": "Description Subtitle",
+      "default": "Trost Rollens – Tobacco-Free, Nicotine-Free Herbal Hemp Cigarettes for Natural Relaxation"
+    },
+    {
+      "type": "textarea",
+      "id": "description_body",
+      "label": "Description Body",
+      "default": "Experience a clean, mindful smoke with Trost Rollens, India's first 100% tobacco and nicotine-free herbal cigarettes. Made from premium hemp leaves rich in CBD and low in THC, these plant-based rollens provide a soothing, natural alternative to traditional smoking—without the harmful chemicals."
+    },
+    { "type": "text", "id": "flavor_title", "label": "Flavor Profile Title", "default": "Flavor Profile" },
+    {
+      "type": "text",
+      "id": "flavor_body",
+      "label": "Flavor Profile Body",
+      "default": "Woody Rollen: A rich, woody flavor for a deep, relaxing sensation."
+    },
+    { "type": "text", "id": "learn_more_label", "label": "Learn More Button Label", "default": "Learn More" },
+    {
+      "type": "textarea",
+      "id": "description_flower_svg",
+      "label": "Description Flower SVG",
+      "default": "<svg>...</svg>"
+    },
+    { "type": "image_picker", "id": "consumption_image_1", "label": "Consumption Image 1" },
+    {
+      "type": "text",
+      "id": "consumption_image_1_alt",
+      "label": "Consumption Image 1 Alt",
+      "default": "The Trost Pack 1"
+    },
+    { "type": "image_picker", "id": "consumption_image_2", "label": "Consumption Image 2" },
+    {
+      "type": "text",
+      "id": "consumption_image_2_alt",
+      "label": "Consumption Image 2 Alt",
+      "default": "The Trost Pack 2"
+    },
+    { "type": "text", "id": "consumption_how_title", "label": "How to Use Title", "default": "How to Use:" },
+    {
+      "type": "textarea",
+      "id": "consumption_how_list",
+      "label": "How to Use List (one per line)",
+      "default": "Light and smoke like a regular cigarette.\nInhale lightly, as hemp smoke can be harsh.\nTake slow, controlled puffs to gauge its effects.\nAvoid chain-smoking; space out usage to assess tolerance."
+    },
+    { "type": "text", "id": "consumption_precautions_title", "label": "Precautions Title", "default": "Precautions:" },
+    {
+      "type": "textarea",
+      "id": "consumption_precautions_list",
+      "label": "Precautions List (one per line)",
+      "default": "Lung Health: Inhaling smoke (even from hemp) can irritate the lungs.\nTHC Content: Ensure it's below 0.3% THC (legal limit in many places).\nDrug Tests: Some hemp cigarettes may contain trace THC, which could cause a false positive.\nAllergies: Some people might be allergic to terpenes or hemp smoke"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients_flower_svg",
+      "label": "Ingredients Flower SVG",
+      "default": "<svg>...</svg>"
+    },
+    { "type": "image_picker", "id": "ingredients_hand_img", "label": "Ingredients Hand Image" },
+    {
+      "type": "text",
+      "id": "ingredients_hand_img_alt",
+      "label": "Ingredients Hand Image Alt",
+      "default": "Hand holding the trost"
+    },
+    { "type": "textarea", "id": "ingredients_icon_svg", "label": "Ingredients Icon SVG", "default": "<svg>...</svg>" },
+    { "type": "image_picker", "id": "ingredient_image", "label": "Ingredient Image" },
+    { "type": "text", "id": "ingredient_title", "label": "Ingredient Title", "default": "Ingredients" },
+    { "type": "textarea", "id": "ingredient_icon_svg", "label": "Ingredient Icon SVG", "default": "<svg>...</svg>" },
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "textarea", "id": "icon_svg", "label": "Feature Icon SVG" },
+        { "type": "text", "id": "text", "label": "Feature Text" }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefits"
+    },
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Ingredient Name" },
+        { "type": "text", "id": "percent", "label": "Ingredient Percent" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Content",
+      "name": "Tabbed Content (Optimized)",
+      "blocks": [{ "type": "feature" }, { "type": "benefit" }, { "type": "ingredient" }]
+    }
+  ]
+}
+{% endschema %}

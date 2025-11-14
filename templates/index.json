@@ -1,0 +1,466 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic-slideshow-1": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "3a9f3f87-9142-4f8e-80b2-d7cd0a1c657c": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/banner_2.png",
+            "slide_title": "Trost fuses Swiss tech with Ayurveda for natural healing.",
+            "caption": "India’s leading hemp brand—offering vegan, organic CBD oils, gummies, cigarettes, and nutrition for stress, sleep, pain, and more.",
+            "button": "Shop Now",
+            "link": "https://thetrost.com/products/kosha-cola-flavor-cannabis-gummies-mriduvati-9-26-cannabis-extract",
+            "alignment": "center top",
+            "show_overlay": false,
+            "background": "#141416",
+            "opacity": 20
+          }
+        },
+        "e0479cef-a16a-4c71-851e-3e019f532ddc": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banner-Trost-1.jpg",
+            "slide_title": "Stronger Bliss, Smarter Price",
+            "caption": "Order Boom Now!",
+            "button": "SHOP NOW",
+            "link": "https://thetrost.com/collections/trost-rollens/products/hemp-herbal-cigarette-boom",
+            "alignment": "left middle",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "da457b1e-e303-49fe-9035-68697bb335d9": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/IMG_3673.jpg",
+            "slide_title": "Bliss in Every Pack",
+            "caption": "10 Packs, Big Savings!",
+            "button": "Shop Now",
+            "link": "https://thetrost.com/collections/trost-rollens/products/boom-rollen-dhoom-dandika-pack-of-ten",
+            "alignment": "left middle",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "771d0e36-7de8-4c96-aec1-f942eecd66ee": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/IMG_2462.jpg",
+            "slide_title": "Kosha Cannabis Gummies!",
+            "caption": "Order Yours Today!",
+            "button": "SHOP NOW",
+            "link": "https://thetrost.com/products/cannabis-leaf-extract-kosha-gummies",
+            "alignment": "left middle",
+            "show_overlay": false,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "e82b198e-e899-419e-bf9f-b434c934d963": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/CBD_1.png",
+            "slide_title": "Discover Pure Relief",
+            "caption": "Your Natural Wellness Solution",
+            "button": "SHOP NOW",
+            "link": "https://thetrost.com/collections/cbd-oils",
+            "alignment": "left middle",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "3a9f3f87-9142-4f8e-80b2-d7cd0a1c657c",
+        "e0479cef-a16a-4c71-851e-3e019f532ddc",
+        "da457b1e-e303-49fe-9035-68697bb335d9",
+        "771d0e36-7de8-4c96-aec1-f942eecd66ee",
+        "e82b198e-e899-419e-bf9f-b434c934d963"
+      ],
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.slideshow--viewport {display: none; }}",
+        ".home-section {padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px;}"
+      ],
+      "settings": {
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": true,
+        "transition": "fade",
+        "autoplay_interval": 5
+      }
+    },
+    "dynamic_slideshow_EQ8eVG": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "feature_j7mQtm": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/banner_2_a12e8996-33ca-4aff-8843-cd3143653634.png",
+            "slide_title": "Trost fuses Swiss tech with Ayurveda for natural healing.",
+            "caption": "India’s leading hemp brand—offering vegan, organic CBD oils, gummies, cigarettes, and nutrition for stress, sleep, pain, and more.",
+            "button": "Shop Now",
+            "link": "https://thetrost.com/products/kosha-cola-flavor-cannabis-gummies-mriduvati-9-26-cannabis-extract",
+            "alignment": "left middle",
+            "show_overlay": false,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "feature_MjepCL": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banner-Trost-1.jpg",
+            "slide_title": "Stronger Bliss, Smarter Price",
+            "caption": "Order Boom Now!",
+            "button": "SHOP NOW",
+            "link": "https://thetrost.com/collections/trost-rollens/products/hemp-herbal-cigarette-boom",
+            "alignment": "left middle",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "feature_zXPBR6": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/IMG_3673.jpg",
+            "slide_title": "Bliss in Every Pack",
+            "caption": "10 Packs, Big Savings!",
+            "button": "Shop Now",
+            "link": "https://thetrost.com/collections/trost-rollens/products/boom-rollen-dhoom-dandika-pack-of-ten",
+            "alignment": "left middle",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "feature_LH6mCz": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Holi_Sale_Banner_Updated.jpg",
+            "slide_title": "Holistic Wellness Sale!",
+            "caption": "Upto 25% Off Everything!",
+            "button": "SHOP NOW",
+            "link": "https://thetrost.com/collections/all",
+            "alignment": "left middle",
+            "show_overlay": false,
+            "background": "#000000",
+            "opacity": 20
+          }
+        },
+        "feature_ATphtj": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Trost_website_banner2_2.jpg",
+            "slide_title": "Jingle Savings: 20% Off!",
+            "caption": "USE PROMO - XMAS20",
+            "button": "Shop Now",
+            "link": "https://thetrost.com/collections/all",
+            "alignment": "left middle",
+            "show_overlay": false,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "feature_j7mQtm",
+        "feature_MjepCL",
+        "feature_zXPBR6",
+        "feature_LH6mCz",
+        "feature_ATphtj"
+      ],
+      "custom_css": [
+        ".slideshow--viewport {display: none;}",
+        "@media only screen and (max-width: 600px) {.slideshow--viewport {display: block; }}"
+      ],
+      "settings": {
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": false,
+        "transition": "fade",
+        "autoplay_interval": 5
+      }
+    },
+    "sc_featured_collection_carousel_HNLAM6": {
+      "type": "sc-featured-collection-carousel",
+      "name": "SC Collection Carousel",
+      "settings": {
+        "collection": "homepage-featured-collection",
+        "description": "<h1>India’s Hemp Revolution</h1><p>Trost blends Swiss technology with ancient Ayurvedic wisdom to support natural healing.<br/>Explore India’s first hemp cigarettes, CBD oils, cannabis gummies, and hemp nutrition—crafted to help ease stress, pain, sleep issues, and anxiety.<br/><br/>As a leader in hemp-based wellness, our products are vegan, dairy-free, non-GMO, organic, and cruelty-free.<br/>Fuel your energy, ease discomfort, and stay aligned with your health goals.<br/>Trost is here to support your journey to feel better—naturally.<br/><br/><a href=\"/collections/all\" title=\"All\"><strong>See Our Entire Product Range &gt;</strong></a></p>",
+        "view_all_link": "",
+        "view_all_text": "View All Products",
+        "total_products_limit": 8,
+        "products_per_view": 2
+      }
+    },
+    "dynamic_image_with_icon_list_R9eApd": {
+      "type": "dynamic-image-with-icon-list",
+      "blocks": {
+        "icon_ahWnmP": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Group-2.png",
+            "icon_text": "Swiss Technology"
+          }
+        },
+        "icon_6ar7XD": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Group-1.png",
+            "icon_text": "Rooted in Ayurveda"
+          }
+        },
+        "icon_ACip4W": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Vector.png",
+            "icon_text": "Eco Friendly"
+          }
+        },
+        "icon_egdmtq": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Group.png",
+            "icon_text": "Non GMO"
+          }
+        },
+        "icon_jx6tA7": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Group_389.png",
+            "icon_text": "Chemical Free"
+          }
+        },
+        "icon_n3pWnw": {
+          "type": "icon",
+          "settings": {
+            "icon_img": "shopify://shop_images/Group_390.png",
+            "icon_text": "All Natural"
+          }
+        }
+      },
+      "block_order": [
+        "icon_ahWnmP",
+        "icon_6ar7XD",
+        "icon_ACip4W",
+        "icon_egdmtq",
+        "icon_jx6tA7",
+        "icon_n3pWnw"
+      ],
+      "custom_css": [
+        ".home-section {margin-bottom: 15px;}"
+      ],
+      "name": "Image with Icon List",
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/Combo.png",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "The Clear Choice"
+      }
+    },
+    "006f1122-187e-40a3-b8e3-a4e91344cfbc": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        ".row {display: flex; justify-content: center; align-items: center; flex-wrap: wrap; border-bottom: 2px solid #d9d9d9; text-transform: uppercase; padding-bottom: 50px;}",
+        ".mycolumn33 {flex-basis: 33.33%; text-align: center; padding: 10px;}",
+        "@media (max-width: 768px) {.mycolumn33 {flex-basis: 50%; }}",
+        ".home-section {position: relative; padding-top: 0px; margin-bottom: 50px;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"row\">\n  <div class=\"mycolumn33\">\n    from <span style=\"color: #CE5300\">taboo</span> to transparency\n  </div>\n<div class=\"mycolumn33\">\n    from <span style=\"color: #E5B126\">weed</span> to wellness\n  </div>\n  <div class=\"mycolumn33\">\n    from <span style=\"color: #87C8BB\">hemp</span> to healthy\n  </div>\n</div>"
+      }
+    },
+    "96fc4969-7bba-4bcc-b366-54fa1b0dea68": {
+      "type": "dynamic-logo-list",
+      "blocks": {
+        "76762fa7-abb5-49f9-bc26-ec27cfd58409": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Livemint-Logo-Vector_1_ed13a26e-b1cb-4cce-9339-dee4455b398d.png",
+            "link": ""
+          }
+        },
+        "d60f9ef2-f52e-479e-b1a3-0880e60f26be": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/The_Times_of_India_3_b2f20b33-1f89-4e6f-a44f-473045f1c526.png",
+            "link": ""
+          }
+        },
+        "156d4bce-1465-475a-85b4-4fb986c69a9f": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/logo_2_a6c08439-b714-4b12-9c7d-17a3c76adf89.png",
+            "link": ""
+          }
+        },
+        "de2b4db6-4776-47af-8a4e-e1a860f013df": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/The_Financial_Express__India__Logo_1_a0fa6c08-d7b3-4351-b04f-0e14981dc86d.png",
+            "link": ""
+          }
+        },
+        "46149c4d-cf80-496e-a5c7-a1fc73d0b774": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Group_636_67d05120-abe7-4644-a19b-f3e77068e704.png",
+            "link": ""
+          }
+        },
+        "7f5135f4-3a77-4f20-a5a5-3bdbf357ec84": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Group_637_47da4d2f-ff4d-4ef5-a535-bfacc13d4f83.png",
+            "link": ""
+          }
+        },
+        "feature_DDhGdt": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Group_639_bc0640e1-f3d5-4080-b4f2-bc11b3d0cab8.png",
+            "link": ""
+          }
+        },
+        "feature_DLrHGL": {
+          "type": "feature",
+          "settings": {
+            "logo": "shopify://shop_images/Group_638_b92f18f7-fe81-4ac1-941e-7f84896d4997.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "76762fa7-abb5-49f9-bc26-ec27cfd58409",
+        "d60f9ef2-f52e-479e-b1a3-0880e60f26be",
+        "156d4bce-1465-475a-85b4-4fb986c69a9f",
+        "de2b4db6-4776-47af-8a4e-e1a860f013df",
+        "46149c4d-cf80-496e-a5c7-a1fc73d0b774",
+        "7f5135f4-3a77-4f20-a5a5-3bdbf357ec84",
+        "feature_DDhGdt",
+        "feature_DLrHGL"
+      ],
+      "custom_css": [
+        "h2 {font-size: 36px; font-weight: bold; padding-top: -20px;}",
+        ".logo-list-item {width: 25%; padding: 10px;}",
+        ".home-section {position: relative; padding-top: 0px; margin-top: 0px; margin-bottom: 50px; padding-bottom: 0px;}",
+        "@media only screen and (max-width: 600px) {.logo-list-item {width: 50%; }}"
+      ],
+      "settings": {
+        "title": "The World’s Talking",
+        "border": false,
+        "logos_per_row": 4
+      }
+    },
+    "dynamic_video_bDt7cy": {
+      "type": "dynamic-video",
+      "disabled": true,
+      "name": "Video",
+      "settings": {
+        "title": "",
+        "text": "",
+        "video_layout": "full-width",
+        "aspect_ratio": "16-9",
+        "autoplay": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "overlay_heading": "",
+        "overlay_text": "",
+        "overlay_header_position": "above-button",
+        "overlay_opacity": 35,
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff"
+      }
+    },
+    "sc_video_dMDd4P": {
+      "type": "sc-video",
+      "name": "SC Video",
+      "settings": {
+        "video": "shopify://files/videos/Home Video.mp4",
+        "video_position": "left"
+      }
+    },
+    "8cb4b45f-b1b0-4ddc-b06c-70fc2e12a583": {
+      "type": "dynamic-custom-liquid",
+      "custom_css": [
+        ".wrapper {border-block: 2px solid #d9d9d9; text-align: center; padding-block: 5px;}",
+        ".home-section {margin-top: 0;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"wrapper\">\n<p>Wellness, the Trost Way: Trost offers legal hemp products designed to ease anxiety, insomnia, digestive issues, and tobacco addiction. Our range includes hemp cigarettes, CBD oils, and gummies—powered by cannabis leaf extract for natural relief. Committed to well-being, sustainability, and global change, Trost delivers on its promises. Join the hemp-tastic Trost movement and make a difference with us.</p>\n</div>"
+      }
+    },
+    "testimonial_W6ew4d": {
+      "type": "testimonial",
+      "blocks": {
+        "feature_n9jmeF": {
+          "type": "feature",
+          "settings": {
+            "customer_image": "shopify://shop_images/Testimonial_Image_1.png",
+            "customer_name": "Cha Ji-Hun",
+            "customer_review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque posuere vivamus egestas porttitor. Hendrerit vitae at nulla varius proin ipsum."
+          }
+        }
+      },
+      "block_order": [
+        "feature_n9jmeF"
+      ],
+      "name": "Updated testimonial",
+      "settings": {
+        "heading": "What the trost Circle Says"
+      }
+    },
+    "pxs_newsletter_nkJrPx": {
+      "type": "pxs-newsletter",
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "title": "Join Our Inner Circle",
+        "text": "<p>Be the first to know.Get early access to product launches, wellness tips, exclusive offers, and events curated for our most loyal community.Wellness starts with staying connected.</p>",
+        "image": "shopify://shop_images/Layer_5_1.png",
+        "desktop_alignment": "left",
+        "mobile_alignment": "bottom"
+      }
+    }
+  },
+  "order": [
+    "dynamic-slideshow-1",
+    "dynamic_slideshow_EQ8eVG",
+    "sc_featured_collection_carousel_HNLAM6",
+    "dynamic_image_with_icon_list_R9eApd",
+    "006f1122-187e-40a3-b8e3-a4e91344cfbc",
+    "96fc4969-7bba-4bcc-b366-54fa1b0dea68",
+    "dynamic_video_bDt7cy",
+    "sc_video_dMDd4P",
+    "8cb4b45f-b1b0-4ddc-b06c-70fc2e12a583",
+    "testimonial_W6ew4d",
+    "pxs_newsletter_nkJrPx"
+  ]
+}

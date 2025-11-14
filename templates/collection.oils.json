@@ -1,0 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_slideshow_C9ebLJ": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "feature_7ynn7M": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Hemp_Seed_Oil_Lifestyle.webp",
+            "slide_title": "Hemp Nutrition",
+            "caption": "The nutritional boost with Trost’s Hemp Nutrition's plant-based products.",
+            "button": "",
+            "link": "",
+            "alignment": "center-center",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "feature_7ynn7M"
+      ],
+      "custom_css": [
+        ".home-section {padding: 0px; margin: 0px;}"
+      ],
+      "settings": {
+        "desktop_height": "small",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": false,
+        "transition": "slide",
+        "autoplay_interval": 5
+      }
+    },
+    "main": {
+      "type": "static-collection",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true,
+        "show-collection-image": false,
+        "rows": 11,
+        "products_per_row": 3,
+        "enable-sorting": true,
+        "enable_filter": true,
+        "collection-sidebar": true,
+        "collection-sidebar-menu": "",
+        "pagination-style": "jump-to-page"
+      }
+    },
+    "dynamic_image_with_text_GrPcH6": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/Benefits_of_Hemp_Nutrition.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Hemp nutrition and its benefits to human body.",
+        "content": "<p>Hemp is a variety of the Cannabis sativa plant that is grown specifically for industrial purposes, such as fiber, seeds, and oil. Following are some benefits of hemp.</p><p><strong>High-quality Protein: </strong>Adding hemp seeds in daily routine brings in plant-based protein, containing<br/>all 9 essential amino acids.</p><p><strong>Healthy Fats:</strong> Hemp seeds supply the omega-3 and omega-6 fats that the heart and brain require.</p><p><strong>Fiber: </strong>Healthy digestion, lower cholesterol levels, and regulate blood sugar levels can be addressed by hemp seed consumption</p><p><strong>Vitamins and Minerals</strong>: Wide range of vitamins and minerals a human body needs are found in hemp seeds.</p>"
+      }
+    },
+    "dynamic_image_with_text_bqhWdk": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Benefit_of_using_hemp_products.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Why you should use hemp products?",
+        "content": "<p><strong>Pain Relief:</strong> pain and inflammation for arthritis, multiple sclerosis can be cured by the consumption of hemp products including CBD oil.</p><p><strong>Anxiety and depression:</strong> CBD present in hemp interacts with the receptors in the brain that regulate<br/>symptoms of anxiety and depression.</p><p><strong>Skin health:</strong> Nourish your skin with the right fatty acids through hemp products and address conditions such as eczema and psoriasis.</p><p><strong>Heart Health: </strong>Hemp products have cardiovascular benefits, such as lowering blood pressure and reducing the risk of heart disease.</p><p><strong>Brain function: </strong>Neuro-degenerative diseases such as Alzheimer's and <a href=\"https://thetrost.com/blogs/blogs/parkinsons-disease-treatment-in-ayurveda\" title=\"Parkinson's can be treated\">Parkinson's can be treated</a> as CBD possess cognitive function.</p>"
+      }
+    },
+    "dynamic_image_with_text_q8Hbgw": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Delicious_ways_to_enjoy_hemp_products.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Ways to Enjoy Hemp Nutrition Products",
+        "content": "<p>Sprinkle hemp seeds to make oatmeal & yogurt crunchy and nutty in flavor.</p><p>Boost smoothies and shakes with protein in powder form.</p><p>Roast the veggies and dress salad with hemp oil.</p><p>Blend hemp milk in water to add it in smoothies, coffee, or cereal.</p><p>Take hemp seeds, oats, nuts, and dried fruit to make homemade energy bites.</p><p>Bake Pancakes, muffins, and bread with hemp flour.</p><p>Add nutrition to pancakes and waffles in form of powder.</p><p>Mix seeds with nuts, dried fruit, and dark chocolate chips to homemade trials.</p><p>Replace butter in recipes with hemp oil.</p>"
+      }
+    },
+    "dynamic_image_with_text_MDBmKr": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}",
+        ".home-section {padding: 0px; margin: 0px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Why_choose_trost_for_hemp_nutrition_products.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Why Choose Trost for Hemp Nutrition Products?",
+        "content": "<p>Always be careful while buying hemp nutritional products. Trost stands a reputed source of hemp premium quality hemp nutrition products. </p><p>Following are five reasons why you should trust Trost</p><p><strong>Quality:</strong> Hemp seeds are bought from Switzerland valley ensuring high quality as they are grown and processed there.</p><p><strong>Transparency:</strong> we are open regarding information including our sourcing, manufacturing, and testing processes.</p><p><strong>Variety:</strong> Wide range of products such as seeds, <a href=\"https://thetrost.com/products/hemp-protein-powder\" target=\"_blank\" title=\"hemp protein powder\">hemp protein powder</a>, oil, and hemp hearts.</p><p><strong>Sustainability: </strong>Trost provides <a href=\"https://thetrost.com/pages/sustainability\" target=\"_blank\" title=\"environmentally friendly\">environmentally friendly</a> packaging as well as vegan and cruelty-free products.</p><p><strong>Customer review:</strong> check out what customers have to say about us.</p>"
+      }
+    },
+    "dynamic_faq_BnxPJx": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "faq_zCcjrn": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I choose the best hemp products for me?",
+            "content": "<p>To choose the best hemp products for you, consider the product type, quality, extraction method, THC content, dosage, and brand reputation. Also, consult with your healthcare provider if necessary.</p>"
+          }
+        },
+        "faq_WgDECj": {
+          "type": "faq",
+          "settings": {
+            "title": "What sets Trost hemp nutrition products apart from other brands?",
+            "content": "<p>At The Trost, we promise 100% assurance of premium products organically grown in Switzerland. We also conduct laboratory tests of our products so that you get value for your money.</p>"
+          }
+        },
+        "faq_EbnUDz": {
+          "type": "faq",
+          "settings": {
+            "title": "Are hemp products suitable for vegans and vegetarians?",
+            "content": "<p>Yes, hemp products are suitable for vegans and vegetarians as they are derived from the hemp plant, which is a plant-based source of protein and nutrition. They are also free from animal products and by-products.</p>"
+          }
+        },
+        "faq_dFpV8y": {
+          "type": "faq",
+          "settings": {
+            "title": "Are there any side effects to consuming hemp products?",
+            "content": "<p>Most people do not experience any side effects when consuming <a href=\"https://thetrost.com/collections/all\" target=\"_blank\" title=\"hemp products\">hemp products</a>, but in rare cases, some may experience mild side effects. It's important to follow recommended dosage instructions and consult with a healthcare provider if you have medical conditions or are taking medications.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_zCcjrn",
+        "faq_WgDECj",
+        "faq_EbnUDz",
+        "faq_dFpV8y"
+      ],
+      "custom_css": [
+        ".home-section {position: relative; padding-top: 60px; margin-top: 0px;}",
+        "h2 {font-size: 28px; padding-bottom: 20px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "show_border": false
+      }
+    }
+  },
+  "order": [
+    "dynamic_slideshow_C9ebLJ",
+    "main",
+    "dynamic_image_with_text_GrPcH6",
+    "dynamic_image_with_text_bqhWdk",
+    "dynamic_image_with_text_q8Hbgw",
+    "dynamic_image_with_text_MDBmKr",
+    "dynamic_faq_BnxPJx"
+  ]
+}

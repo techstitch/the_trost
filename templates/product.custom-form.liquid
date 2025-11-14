@@ -1,0 +1,26 @@
+{% section 'custom-form' %}
+{% section 'static-product-recommendations' %}
+<style>
+  .product-area .title{text-align:left;}
+  .product-details__price{justify-content: left !important;}
+  .required {
+    width: 100%;
+    height: 40px;
+    background-color: #fff !important;
+   }
+  .product-gallery{
+  display:none;}
+  .product-recommendations{display:none;}
+  .fil{color:red;}
+  .options{padding-left:0% !important; padding-right:0% !important;}
+  @media (min-width: 320px) and (max-width: 480px) {
+  
+    .product-details-wrapper{padding:10px !important;}
+  
+}
+</style>
+
+<script>
+  Theme.products["{{ product.id }}"] = {{ product | json }};
+  Theme.products["{{ product.id }}"].firstVariant = {{ product.selected_or_first_available_variant.id | json }};
+</script>

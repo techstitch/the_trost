@@ -1,0 +1,229 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign footerLogo = section.settings.footer_logo
+  assign text = section.settings.text
+  assign paymentOptions = section.settings['footer-payment-options']
+  assign mailingList = section.settings['footer-mailing-list']
+  assign alternateFooter = section.settings['footer-alternate']
+  assign footerType = section.settings.footer_type | default: 'footer-one'
+  assign alternateFooterMenu = section.settings['footer-secondary-menu']
+  assign country_selector = section.settings.show_currency_selector
+  assign locale_selector = section.settings.show_locale_selector
+%}
+
+<script
+  type="application/json"
+  data-section-type="static-footer"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+></script>
+
+<div class="static-footer">
+  {% if footerType == 'footer-three' %}
+    {% render 'sc-footer-three',
+      footerLogo: footerLogo,
+      text: text,
+      locale_selector: locale_selector,
+      country_selector: country_selector,
+      brand_description: section.settings.brand_description,
+      license_number: section.settings.license_number,
+      emblem_image: section.settings.emblem_image,
+      natural_badge: section.settings.natural_badge,
+      made_in_india_badge: section.settings.made_in_india_badge,
+      gmp_badge: section.settings.gmp_badge
+    %}
+  {% elsif alternateFooter %}
+    {% render 'footer-two',
+      heading: heading,
+      footerLogo: footerLogo,
+      text: text,
+      mailingList: mailingList,
+      paymentOptions: paymentOptions,
+      country_selector: country_selector,
+      locale_selector: locale_selector,
+      alternateFooterMenu: alternateFooterMenu
+    %}
+  {% else %}
+    {% render 'footer-one',
+      heading: heading,
+      text: text,
+      mailingList: mailingList,
+      paymentOptions: paymentOptions,
+      country_selector: country_selector,
+      locale_selector: locale_selector
+    %}
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .static-footer {
+    background-color: var(--color-primary);
+  }
+  .static-footer .connect,
+  .main-footer .connect > li {
+    border: none !important;
+    height: auto !important;
+    display: flex !important;
+    width: 50%;
+  }
+  #main-footer .connect{
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "footer-mailing-list",
+      "label": "Show newsletter form",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Footer Layout"
+    },
+    {
+      "type": "select",
+      "id": "footer_type",
+      "label": "Footer layout",
+      "options": [
+        {
+          "value": "footer-one",
+          "label": "Footer One (Default)"
+        },
+        {
+          "value": "footer-two",
+          "label": "Footer Two (Alternate)"
+        },
+        {
+          "value": "footer-three",
+          "label": "Footer Three (New Layout)"
+        }
+      ],
+      "default": "footer-one"
+    },
+    {
+      "type": "header",
+      "content": "Alternate footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "footer-alternate",
+      "label": "Use alternate footer layout",
+      "default": false,
+      "info": "Note: This setting is deprecated. Use 'Footer layout' dropdown above instead."
+    },
+    {
+      "type": "link_list",
+      "id": "footer-secondary-menu",
+      "label": "Secondary footer menu",
+      "info": "This menu won't show dropdown items"
+    },
+    {
+      "type": "header",
+      "content": "Follow on Shop",
+      "info": "Display follow button for your storefront on the Shop app. [Learn more](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_follow_on_shop",
+      "default": true,
+      "label": "Enable Follow on Shop"
+    },
+    {
+      "type": "header",
+      "content": "Language Selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Country Selector",
+      "info": "To add a country, go to your [payment settings.](/admin/settings/payments)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show country selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Payment icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "footer-payment-options",
+      "label": "Show payment icons",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Footer Three Settings",
+      "info": "These settings are only used when Footer Three layout is selected"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer menu",
+      "info": "This menu will be shown in the footer"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "info": "Description text shown in the brand column"
+    },
+    {
+      "type": "text",
+      "id": "license_number",
+      "label": "License number",
+      "info": "e.g., A-4906/2021"
+    },
+    {
+      "type": "image_picker",
+      "id": "emblem_image",
+      "label": "Emblem of India image"
+    },
+    {
+      "type": "image_picker",
+      "id": "natural_badge",
+      "label": "Natural/Herbal certification badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "made_in_india_badge",
+      "label": "Made in India badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "gmp_badge",
+      "label": "GMP (Good Manufacturing Practice) badge"
+    }
+  ]
+}
+{% endschema %}

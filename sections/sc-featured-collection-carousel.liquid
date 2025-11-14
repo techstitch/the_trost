@@ -1,0 +1,684 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="sc-featured-collection-carousel"
+  data-section-index="{{ section.index }}"
+>
+  {%- liquid
+    assign products_per_view = section.settings.products_per_view
+    assign products_limit = section.settings.total_products_limit
+    assign section_description = section.settings.description
+    assign products_collection = section.settings.collection
+    assign view_all_link = section.settings.view_all_link
+    assign view_all_text = section.settings.view_all_text | default: 'View All Products'
+  -%}
+
+  <section class="sc-fcc-section home-section clearfix content-area">
+    <div class="sc-fcc-wrapper">
+      {% if section_description != blank %}
+        <div class="sc-fcc-content">
+          {%- assign description_parts = section_description | split: '<a' -%}
+          {%- if description_parts.size > 1 -%}
+            {%- assign description_text = description_parts[0] -%}
+            {{ description_text }}
+          {%- else -%}
+            {{ section_description }}
+          {%- endif -%}
+        </div>
+      {% endif %}
+
+      {% if products_collection != blank %}
+        <div class="sc-fcc-carousel">
+          <button class="sc-fcc-nav-button sc-fcc-nav-prev" aria-label="Previous slide" type="button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sc-fcc-carousel-container">
+            <ul class="sc-fcc-track" role="list">
+              {% for product in collections[products_collection].products limit: products_limit %}
+                {% render 'product-carousel-item',
+                  product: product,
+                  collection: products_collection,
+                  forloop: forloop,
+                  onboarding: false
+                %}
+              {% endfor %}
+            </ul>
+          </div>
+          <button class="sc-fcc-nav-button sc-fcc-nav-next" aria-label="Next slide" type="button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          {%- assign description_parts = section_description | split: '<a' -%}
+          {%- if description_parts.size > 1 -%}
+            {%- assign link_html = '<a' | append: description_parts[1] | split: '</a>' | first | append: '</a>' -%}
+            <div class="sc-fcc-view-all-desktop">
+              {{ link_html }}
+            </div>
+          {%- endif -%}
+          {% if view_all_link != blank %}
+            <div class="sc-fcc-view-all-mobile">
+              <a href="{{ view_all_link }}" class="sc-fcc-view-all-link">
+                {{ view_all_text }}
+                <span class="sc-fcc-arrow" aria-hidden="true">></span>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="sc-fcc-carousel">
+          <button class="sc-fcc-nav-button sc-fcc-nav-prev" aria-label="Previous slide" type="button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sc-fcc-carousel-container">
+            <ul class="sc-fcc-track" role="list">
+              {% for i in (1..products_limit) %}
+                {% render 'product-carousel-item', forloop: forloop, onboarding: true %}
+              {% endfor %}
+            </ul>
+          </div>
+          <button class="sc-fcc-nav-button sc-fcc-nav-next" aria-label="Next slide" type="button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          {%- assign description_parts = section_description | split: '<a' -%}
+          {%- if description_parts.size > 1 -%}
+            {%- assign link_html = '<a' | append: description_parts[1] | split: '</a>' | first | append: '</a>' -%}
+            <div class="sc-fcc-view-all-desktop">
+              {{ link_html }}
+            </div>
+          {%- endif -%}
+          {% if view_all_link != blank %}
+            <div class="sc-fcc-view-all-mobile">
+              <a href="{{ view_all_link }}" class="sc-fcc-view-all-link">
+                {{ view_all_text }}
+                <span class="sc-fcc-arrow" aria-hidden="true">></span>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="sc-fcc-pagination" role="tablist" aria-label="Carousel pagination"></div>
+  </section>
+</div>
+
+<style>
+  [data-section-id="{{ section.id }}"] {
+    --sc-fcc-products-per-view: {{ products_per_view }};
+  }
+</style>
+
+{% stylesheet %}
+  .sc-fcc-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .sc-fcc-content {
+    flex: 0 0 33.333%;
+    text-align: left;
+    padding-right: 20px;
+  }
+
+  .sc-fcc-content h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #000;
+  }
+
+  .sc-fcc-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .sc-fcc-content a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+  }
+
+  .sc-fcc-content a:hover {
+    opacity: 0.7;
+  }
+
+  .sc-fcc-carousel {
+    flex: 0 0 calc(66.667% - 60px);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .sc-fcc-carousel-container {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    /* margin: 0 40px; */
+    /* padding: 0 60px; */
+    border-inline: 50px solid #fff;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sc-fcc-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .sc-fcc-track .product {
+    flex: 0 0 calc(100% / var(--sc-fcc-products-per-view));
+    padding: 0 15px;
+    box-sizing: border-box;
+    min-width: calc(100% / var(--sc-fcc-products-per-view));
+    max-width: calc(100% / var(--sc-fcc-products-per-view));
+  }
+
+  .sc-fcc-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    color: #000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .sc-fcc-nav-button:hover {
+    opacity: 0.7;
+  }
+
+  .sc-fcc-nav-button.sc-fcc-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sc-fcc-nav-prev {
+    left: 10px;
+  }
+
+  .sc-fcc-nav-next {
+    right: 10px;
+  }
+
+  .sc-fcc-nav-button svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sc-fcc-section {
+    position: relative;
+  }
+
+  .sc-fcc-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-block-start: 50px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .sc-fcc-pagination-dot {
+    flex: 0 1 auto;
+    width: 100%;
+    height: 2px;
+    border-radius: 0;
+    background: #d9d9d9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+
+  .sc-fcc-pagination-dot.sc-fcc-active {
+    background: #ce5300;
+    flex: 0 1 auto;
+  }
+
+  .sc-fcc-view-all-mobile {
+    display: none;
+  }
+
+  .sc-fcc-view-all-desktop {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 0;
+  }
+
+  .sc-fcc-view-all-desktop a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+    font-size: 16px;
+    display: inline-block;
+  }
+
+  .sc-fcc-view-all-desktop a:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .sc-fcc-wrapper {
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+      margin-inline: 0;
+    }
+
+    .sc-fcc-content {
+      flex: 0 0 100%;
+      padding-right: 0;
+      margin-bottom: 24px;
+      text-align: left;
+      padding-left: 0;
+    }
+
+    .sc-fcc-content h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .sc-fcc-content p {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .sc-fcc-carousel {
+      flex: 0 0 100%;
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .sc-fcc-track .product {
+      flex: 0 0 100%;
+      min-width: 100%;
+      padding: 0 10px;
+    }
+
+    .sc-fcc-carousel-container {
+      position: relative;
+      /* padding: 0 50px; */
+      border-inline: 40px solid #fff;
+    }
+
+    .sc-fcc-nav-button {
+      width: 36px;
+      height: 36px;
+      padding: 8px;
+      background: transparent;
+      color: #fff;
+      /* border: 1px solid rgba(255, 255, 255, 0.3); */
+      border-radius: 50%;
+    }
+
+    .sc-fcc-nav-button:hover {
+      opacity: 0.8;
+      /* border-color: rgba(255, 255, 255, 0.5); */
+    }
+
+    .sc-fcc-nav-prev {
+      left: 0;
+    }
+
+    .sc-fcc-nav-next {
+      right: 0;
+    }
+
+    .sc-fcc-nav-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .sc-fcc-pagination {
+      width: 100%;
+      padding-inline: 0;
+      /* gap: 6px; */
+      margin-block-start: 20px;
+    }
+
+    .sc-fcc-view-all-desktop {
+      display: none;
+    }
+
+    .sc-fcc-pagination-dot {
+      flex: 0 1 auto;
+      /* width: 30px; */
+      /* min-width: 15px; */
+      /* max-width: 50px; */
+      height: 2px;
+      border-radius: 0;
+    }
+
+    .sc-fcc-pagination-dot.sc-fcc-active {
+      /* width: 50px; */
+      height: 2px;
+    }
+
+    .sc-fcc-view-all-mobile {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+
+    .sc-fcc-view-all-link {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: opacity 0.3s ease;
+      text-align: center;
+    }
+
+    .sc-fcc-view-all-link:hover {
+      opacity: 0.9;
+    }
+
+    .sc-fcc-arrow {
+      margin-left: 8px;
+      font-size: 18px;
+      line-height: 1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sc-fcc-content h1 {
+      font-size: 24px;
+    }
+
+    .sc-fcc-content p {
+      font-size: 13px;
+    }
+
+    .sc-fcc-nav-button {
+      width: 36px;
+      height: 36px;
+      padding: 6px;
+      background: transparent;
+      color: #000;
+      font-size: 32px;
+    }
+
+    .sc-fcc-nav-button:hover {
+      opacity: 0.7;
+    }
+
+    .sc-fcc-carousel-container {
+      /* padding: 0 45px; */
+      border-inline: 30px solid #fff;
+    }
+
+    .sc-fcc-nav-prev {
+      left: 10px;
+    }
+
+    .sc-fcc-nav-next {
+      right: 10px;
+    }
+
+    .sc-fcc-nav-button svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .sc-fcc-pagination-dot {
+      flex: 0 1 auto;
+      /* width: 25px; */
+      /* min-width: 10px; */
+      /* max-width: 40px; */
+      height: 2px;
+    }
+
+    .sc-fcc-pagination-dot.sc-fcc-active {
+      /* width: 40px; */
+      height: 2px;
+    }
+
+    .sc-fcc-view-all-link {
+      font-size: 14px;
+    }
+  }
+{% endstylesheet %}
+
+<script>
+  (function() {
+    'use strict';
+    
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+    
+    const carousel = section.querySelector('.sc-fcc-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.sc-fcc-track');
+    const slides = carousel.querySelectorAll('.product');
+    const prevButton = carousel.querySelector('.sc-fcc-nav-prev');
+    const nextButton = carousel.querySelector('.sc-fcc-nav-next');
+    const paginationContainer = section.querySelector('.sc-fcc-pagination');
+    
+    if (!track || !slides.length || !paginationContainer) return;
+    
+    let currentIndex = 0;
+    const isMobile = window.innerWidth <= 768;
+    const slidesPerView = isMobile ? 1 : {{ products_per_view }};
+    const totalSlides = slides.length;
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    
+    function createPaginationDots() {
+      paginationContainer.innerHTML = '';
+      const dotsToShow = isMobile ? totalSlides : Math.ceil(totalSlides / slidesPerView);
+      
+      for (let i = 0; i < dotsToShow; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'sc-fcc-pagination-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        if (i === 0) dot.classList.add('sc-fcc-active');
+        dot.addEventListener('click', () => goToSlide(i * slidesPerView));
+        paginationContainer.appendChild(dot);
+      }
+    }
+    
+    function updatePagination() {
+      const dots = paginationContainer.querySelectorAll('.sc-fcc-pagination-dot');
+      const activeDotIndex = isMobile ? currentIndex : Math.floor(currentIndex / slidesPerView);
+      
+      dots.forEach((dot, index) => {
+        const isActive = index === activeDotIndex;
+        dot.classList.toggle('sc-fcc-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+    
+    function updateNavButtons() {
+      if (prevButton) {
+        if (currentIndex > 0) {
+          prevButton.classList.remove('sc-fcc-hidden');
+        } else {
+          prevButton.classList.add('sc-fcc-hidden');
+        }
+      }
+      if (nextButton) {
+        if (currentIndex < maxIndex) {
+          nextButton.classList.remove('sc-fcc-hidden');
+        } else {
+          nextButton.classList.add('sc-fcc-hidden');
+        }
+      }
+    }
+    
+    function goToSlide(index) {
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
+      const slideWidth = 100 / slidesPerView;
+      const offset = -currentIndex * slideWidth;
+      track.style.transform = `translateX(${offset}%)`;
+      updatePagination();
+      updateNavButtons();
+    }
+    
+    function handleResize() {
+      const nowMobile = window.innerWidth <= 768;
+      if (isMobile !== nowMobile) {
+        goToSlide(0);
+      }
+    }
+    
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - (isMobile ? 1 : slidesPerView));
+        }
+      });
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+          goToSlide(currentIndex + (isMobile ? 1 : slidesPerView));
+        }
+      });
+    }
+    
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(handleResize, 250);
+    });
+    
+    createPaginationDots();
+    goToSlide(0);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection Carousel",
+  "class": "shopify-section--sc-featured-collection-carousel",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Content",
+      "default": "<h1>India's Hemp Revolution</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque posuere vivamus egestas porttitor.</p><p><a href=\"/collections/all\">See Our Entire Product Range &gt;</a></p>",
+      "info": "Use h1 for heading, p for description, and include link for 'See Our Entire Product Range'"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Products Link",
+      "info": "Link shown below carousel on mobile"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Products Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "range",
+      "id": "total_products_limit",
+      "label": "Total number of products",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "products_per_view",
+      "label": "Products per view (Desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "info": "Mobile always shows 1 product"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collection",
+      "name": "SC Collection Carousel"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["*"]
+  }
+}
+{% endschema %}

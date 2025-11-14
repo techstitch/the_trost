@@ -1,0 +1,879 @@
+{% assign fitting_guide_icon = fitting_guide_icon | default: blank %}
+{% assign fitting_guide_url = fitting_guide_url | default: blank %}
+{% assign show_brand_names = show_brand_names | default: false %}
+{% assign show_email_link = show_email_link | default: false %}
+{% assign callout = callout | default: false %}
+{% assign show_quantity = show_quantity | default: false %}
+{% assign show_spb = show_spb | default: false %}
+
+{% comment %}Dynamic checkout is not shown if selling plans are available{% endcomment %}
+{% if product.selling_plan_groups.size > 0 %}
+  {% assign show_spb = false %}
+{% endif %}
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign is_default = product.has_only_default_variant %}
+
+{% assign enable_image_zoom = enable_image_zoom | default: false %}
+{% assign gallery_layout = gallery_layout | default: 'gallery-below' %}
+{% assign selected_media = selected_variant.featured_media | default: product.featured_media %}
+{% assign show_media_borders = show_media_borders | default: false %}
+{% assign onboarding = onboarding | default: false %}
+{% assign details_alignment = details_alignment | default: section.settings.details_alignment %}
+<script
+  type="application/json"
+  data-section-type="static-product"
+  data-section-id="{{ section.id }}"
+  data-section-data
+>
+  {
+    "product": {{ product | json }},
+      "settings": {
+        "enable_cart_redirect": {{ section.settings.enable_cart_redirect | json }},
+          "enable_history": true,
+            "gallery_enable_video_autoplay": {{ section.settings.gallery_enable_video_autoplay | json }},
+              "gallery_enable_video_looping": {{ section.settings.gallery_enable_video_looping | json }},
+                "money_format": {{ shop[settings.currency_display_format] | default: shop.money_format | strip_html | json }}
+      },
+        "locale": {
+          "add_to_cart": {{ 'products.product.add_to_cart' | t | json }},
+            "sold_out": {{ 'products.product.sold_out' | t | json }},
+              "unavailable": {{ 'products.product.unavailable' | t | json }}
+        }
+  }
+
+  function checkButton() {
+    var getSelectedValue = document.querySelector(
+      'input[name="properties[Sex]"]:checked');
+
+    if {
+      document.getElementById("error").innerHTML
+      = "*You have not selected any gender.";
+    }
+      }
+</script>
+<style>
+  #myDIV {
+    width: 50%;
+    padding: 5px;
+  }
+  .required{border:1px solid #80808070;}
+  #green {
+    display: none;
+    padding: 10px;
+  }
+
+  #red {
+    display: none;
+    padding: 10px;
+
+  }
+
+  input[value="green"]:checked ~ #green {
+    display: block;
+  }
+
+  input[value="red"]:checked ~ #red {
+    display: block;
+  }
+  .desct{float:left;width:55%;}
+  @media (min-width: 320px) and (max-width: 480px) {
+
+    .desct{width:100% !important;}
+
+  }
+</style>
+
+<section
+  class="
+    content-area
+    product-area
+    clearfix
+  "
+>
+  {%
+    render 'product-gallery',
+    product: product,
+    selected_media: selected_media,
+    gallery_layout: gallery_layout,
+    show_media_borders: show_media_borders,
+    enable_image_zoom: enable_image_zoom,
+    variant_options_style: section.settings.variant_options_style,
+    show_sku: section.settings.show_variant_sku,
+  %}
+  <div class="desct">
+    <div class="description" style="border-top: 0px solid #ebebeb;">
+      <div class="rte">{{ product.description }}</div>
+    </div>
+  </div>
+  <div class="">
+    <div
+      class="
+        row
+        product-details
+        {% if product.media.size > 1 %}
+        border
+        {% endif %}
+        {% if is_default and show_quantity == false %}
+        no-options
+        {% endif %}
+      "
+    >
+      <div class="header mycolumn">
+        {% if show_brand_names %}
+          <h3 class="brand">
+            {% if product != empty %}
+              {{ product.vendor }}
+            {% else %}
+              {{ 'onboarding.product_vendor' | t }}
+            {% endif %}
+          </h3>
+        {% endif %}
+
+        <h1 class="title" style="font-size:25px;color:#bb5524;">
+          {% if product != empty %}
+            Make the switch by getting your free consultation</br>
+          {% else %}
+            {{ 'onboarding.product_name' | t }}
+          {% endif %}
+        </h1>
+<br>
+        <!--
+          div class="product-details__price sale">
+            {% if product != empty %}
+            {% if selected_variant.compare_at_price > selected_variant.price or product.has_only_default_variant == false %}
+            {% comment %} If product has variants, this will be dynamically hidden or shown {% endcomment %}
+            <s class="original money">{{ selected_variant.compare_at_price | money }}</s>
+            {% endif %}
+
+            <span class="money money--last">{{ selected_variant.price | money }}</span>
+            {% else %}
+            <span class="money money--last">{{ 'onboarding.product_price' | t }}</span>
+            {% endif %}
+            {% capture total_quantity %}<span class="product-details__total-quantity" data-total-quantity>{{ selected_variant.unit_price_measurement.quantity_value }}{{ selected_variant.unit_price_measurement.quantity_unit }}</span>{% endcapture %}
+            {% capture unit_price %}<span class="product-details__unit-price-amount money" data-unit-price-amount>{{ selected_variant.unit_price | money }}</span>{% endcapture %}
+            {% capture unit_measure %}<span class="product-details__unit-price-measure" data-unit-price-measure>{%- if selected_variant.unit_price_measurement.reference_value != 1 -%}{{ selected_variant.unit_price_measurement.reference_value }}{%- endif %}{{ selected_variant.unit_price_measurement.reference_unit }}</span>{% endcapture %}
+
+            <div
+                 class="
+                        product-details__unit-price
+                        {% unless selected_variant.unit_price_measurement %}hidden{% endunless %}
+                        "
+                 data-unit-price
+                 >
+              {{ 'products.product.price_per_unit_html' | t: total_quantity: total_quantity, unit_price: unit_price, unit_measure: unit_measure | strip_newlines }}
+            </div>
+
+            {%- capture tax_text -%}
+            {{ 'products.product.tax_line_html' | t }}
+            {%- endcapture -%}
+
+            {%- if tax_text != blank -%}
+            <div class="
+                        product-details__tax
+                        {% unless selected_variant.taxable %}hidden{% endunless %}
+                        "
+                 data-tax-line
+                 >
+              {{ tax_text }}
+            </div>
+            {%- endif -%}
+          </div
+        -->
+
+        {% if show_sku and selected_variant.sku != empty %}
+          <span class="product-variant-sku">
+            <strong>
+              {{ 'products.product.sku' | t }}
+            </strong>
+
+            <span
+              data-product-variant-sku
+            >
+              {{- selected_variant.sku | default: '' -}}
+            </span>
+          </span>
+        {% endif %}
+        <img src="https://cdn.shopify.com/s/files/1/0542/5217/5555/files/image20.jpg" class="conslimg">
+      </div>
+
+      <div class="mycolumn pt-100 options {% unless show_quantity and product.variants.size > 0 %}has-no-variants{% endunless %} {% unless product.available %}unavailable{% endunless %}">
+        {% assign form_id = product.id %}
+
+        {% capture form_classes %}
+          product-form
+          {% if show_spb %}
+          product-form-has-spb
+          {% endif %}
+          {% if selected_variant.available == false %}
+          product-form-outofstock
+          {% endif %}
+          {% endcapture %}
+
+        {% if product != empty and product.available %}
+          {% form 'product', product, id: form_id, class: form_classes, data-product-form: '' %}
+            <div class="product-form-grid product-form-grid-{{ variant_options_style }}">
+              {% unless is_default %}
+                {%
+                  render 'product-options',
+                  product: product,
+                  form_id: form_id,
+                  selected_variant: selected_variant,
+                  style: variant_options_style,
+                %}
+              {% else %}
+                <input
+                  class="                          product-select"
+                  name="id"
+                  data-productid="{{ product.id }}"
+                  value="{{ product.variants[0].id }}"
+                  type="hidden"
+                  data-variant-title="{{ product.variants[0].title }}"
+                >
+              {% endunless %}
+
+              <div class="product-infiniteoptions js-required side-labels" id="infiniteoptions-container"></div>
+              <div class="product-uploadery js-required side-labels" id="uploadery-container"></div>
+
+              {% if show_quantity %}
+                <label
+                  class="                          product-quantity-label"
+                >
+                  {{ 'general.quantity' | t }}:
+                </label>
+                <input
+                  type="number"
+                  class="                          product-quantity-input"
+                  name="quantity"
+                  value="1"
+                  min="0"
+                  pattern="\d*"
+                >
+              {% else %}
+                <input
+                  type="hidden"
+                  name="quantity"
+                  value="1"
+                >
+              {% endif %}
+            </div>
+            <div class="rte  full-width-form" style="padding:0 10px;">
+              <p class="line-item-property__field">
+                <label for="your-name"><strong>Your name</strong><span style="color:red;">*</span></label>
+                <input
+                  required
+                  class="required"
+                  id="your-name"
+                  type="text"
+                  name="properties[Your name]"
+                  autocomplete="on"
+                >
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label for="email"><strong>Email</strong><span style="color:red;">*</span></label>
+                <input required class="required" id="email" type="email" name="properties[Email]" autocomplete="on">
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label for="phone"><strong>Phone</strong><span style="color:red;">*</span></label>
+                <input
+                  required
+                  class="required"
+                  id="phone"
+                  type="text"
+                  name="properties[Phone]"
+                  onblur="checkLength(this)"
+                  maxlength="10"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                >
+                <script>
+                  function checkLength(el) {
+                    if (el.value.length != 10) {
+                      alert("phone number must be exactly 10 digits")
+                    }
+                  }
+                </script>
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label for="schedule-date"><strong>Schedule date</strong><span style="color:red;">*</span></label>
+                <input required class="required" id="schedule-date" min='{{ "today" | date: "%Y-%m-%d" }}' type="date" name="properties[Schedule date]">
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label><strong>Sex</strong><span style="color:red;">*</span></label
+                ><br>
+                <input class="" type="radio" name="properties[Sex]" id="male" value="Male" required> <span>Male</span>
+                <input class="" type="radio" name="properties[Sex]" id="female" value="Female"> <span>Female</span>
+                <input class="" type="radio" name="properties[Sex]" id="others" value="Others"> <span>Others</span>
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label for="age"><strong>Age</strong><span style="color:red;">*</span></label>
+                <input required class="required" id="age" type="number" name="properties[Age]">
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label for="weight"><strong>Weight</strong><span style="color:red;">*</span></label>
+                <input
+                  required
+                  class="required"
+                  id="weight"
+                  type="text"
+                  name="properties[Weight]"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                >
+              </p>
+              <br>
+              <!--script>
+                function deRequireCb(elClass, callOtherFunction) {
+                  if(callOtherFunction) {
+                    myFunction11();
+                    document.getElementById("specify").setAttribute("required", "required");
+                  } else {
+                    document.getElementById("specify").removeAttribute("required");
+                  }
+                  el=document.getElementsByClassName(elClass);
+
+                  var atLeastOneChecked=false;//at least one cb is checked
+                  for (i=0; i<el.length; i++) {
+                    if (el[i].checked === true) {
+                      atLeastOneChecked=true;
+                    }
+                  }
+
+                  if (atLeastOneChecked === true) {
+                    for (i=0; i<el.length; i++) {
+                      el[i].required = false;
+                    }
+                  } else {
+                    for (i=0; i<el.length; i++) {
+                      el[i].required = true;
+                    }
+                    document.getElementById("specify").removeAttribute("required");
+                  }
+                }
+                function fillHidden(hiddenname) {
+                  var checkboxes = document.querySelectorAll('[hidden-data="'+hiddenname+'"]');
+                  var hiddenfield = document.getElementById(hiddenname);
+                  hiddenfield.value = ""
+                  var i;
+                  for (i = 0; i < checkboxes.length; i++) {
+                    var x = checkboxes[i];
+                    if(x.checked){
+                      if(hiddenfield.value==""){
+                        hiddenfield.value = x.value;
+                      }else{
+                        hiddenfield.value = hiddenfield.value + ", " + x.value;
+                      }
+                    }
+                  }
+                }
+              </script>
+              <p class="line-item-property__field">
+                <label><strong>Present Ailments</strong><span style="color:red;">*</span></label
+                ><br>
+                <input
+                  required
+                  type="checkbox"
+                  class="required myck"
+                  onclick="deRequireCb('myck', false)"
+                  id="Anxiety"
+                  hidden-data="Present-Ailments"
+                  onchange="fillHidden('Present-Ailments')"
+                  value="Anxiety"
+                  style="width: auto;height: auto;"
+
+                ><label for="Anxiety"> Anxiety</label>
+                <input
+                  required
+                  type="checkbox"
+                  class="required myck"
+                  onclick="deRequireCb('myck', false)"
+                  id="Chronic-Pain"
+                  hidden-data="Present-Ailments"
+                  onchange="fillHidden('Present-Ailments')"
+                  value="Chronic Pain"
+                  style="width: auto;height: auto;"
+
+                ><label for="Chronic-Pain"> Chronic Pain</label>
+                <input
+                  required
+                  type="checkbox"
+                  class="required myck"
+                  onclick="deRequireCb('myck', false)"
+                  id="Stress"
+                  hidden-data="Present-Ailments"
+                  onchange="fillHidden('Present-Ailments')"
+                  value="Stress"
+                  style="width: auto;height: auto;"
+
+                ><label for="Stress"> Stress</label>
+                <input
+                  required
+                  type="checkbox"
+                  class="required myck"
+                  onclick="deRequireCb('myck', false)"
+                  id="Depression"
+                  hidden-data="Present-Ailments"
+                  onchange="fillHidden('Present-Ailments')"
+                  value="Depression"
+                  style="width: auto;height: auto;"
+
+                ><label for="Depression"> Depression</label>
+                <input
+                  required
+                  type="checkbox"
+                  class="myck"
+                  id="Any-Other"
+                  onclick="deRequireCb('myck', true)"
+                  hidden-data="Present-Ailments"
+                  onchange="fillHidden('Present-Ailments')"
+                  value="Any Other"
+                  style="width: auto;height: auto;"
+
+                ><label for="Any-Other"> Any Other</label>
+                <input required type="hidden" id="Present-Ailments" name="properties[Present Ailments]">
+
+              </p>
+               <p class="line-item-property__field">
+                <label for="other-aliments"><strong>Other Aliments</strong>(if any)</label><br>
+                <textarea id="other-aliments" name="properties[Other Aliments]"></textarea>
+              </p>
+              <br>
+              <p class="line-item-property__field" id="text" style="display:none;">
+                <label for="specify">Specify</label>
+                <input id="specify" class="required" type="text" name="properties[Specify]">
+            </p-->
+              <p class="line-item-property__field">
+                <label><strong>Present Ailments</strong><span style="color:red;">*</span></label><br>
+                <input type="checkbox" id="Anxiety" hidden-data="Present-Ailments" onchange="fillHidden('Present-Ailments')" value="Anxiety"><label for="Anxiety"> Anxiety</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="Chronic" hidden-data="Present-Ailments" onchange="fillHidden('Present-Ailments')" value="Chronic"><label for="Chronic"> Chronic</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="Pain-Stress" hidden-data="Present-Ailments" onchange="fillHidden('Present-Ailments')" value="Pain Stress"><label for="Pain-Stress"> Pain Stress</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="Depression" hidden-data="Present-Ailments" onchange="fillHidden('Present-Ailments')" value="Depression"><label for="Depression"> Depression</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="Any-Other" hidden-data="Present-Ailments" onchange="fillHidden('Present-Ailments')" onchange="valueChanged()" value="Any Other"><label for="Any-Other"> Any Other</label><br>
+                <input type="hidden" id="Present-Ailments" name="properties[Present Ailments]">
+                <p class="line-item-property__field others" id="others" style="display: none;">
+                  <label for="specify">Specify</label>
+                  <input id="specify" type="text" name="properties[Specify]" style="height:40px; width:100%;">
+                </p>
+                <script>
+                  function fillHidden(hiddenname) {
+                  var checkboxes = document.querySelectorAll('[hidden-data="'+hiddenname+'"]');
+                  var hiddenfield = document.getElementById(hiddenname);
+                  hiddenfield.value = ""
+                  var i;
+                  for (i = 0; i < checkboxes.length; i++) {
+                    var x = checkboxes[i];
+                    if(x.checked){
+                      if(hiddenfield.value==""){
+                        hiddenfield.value = x.value;
+                        }else{
+                        hiddenfield.value = hiddenfield.value + ", " + x.value; 
+                        } 
+                      }
+                    }
+                    $("#Any-Other").on("click",function() {
+                      $(".others").toggle(this.checked);
+                    });
+                    }
+                  
+                </script>
+              </p>
+              <br>
+              <p class="line-item-property__field">
+                <label>Do you have any prior experience of using cannabis?<span style="color:red;">*</span></label
+                ><br>
+                <input
+                  class=""
+                  type="radio"
+                  name="properties[Do you have any prior experience of using cannabis?]"
+                  id="yes"
+                  value="Yes"
+                  required
+                >
+                <span>Yes</span>
+                <input
+                  class=""
+                  type="radio"
+                  name="properties[Do you have any prior experience of using cannabis?]"
+                  id="no"
+                  value="No"
+                >
+                <span>No</span>
+              </p>
+              <br>
+              <p>
+                <label for="custom\_photo"><b>Upload Prescription or Test Report (If Any)</b> (JPG or PNG or PDF)</label
+                ><br>
+                <input id="custom\_photo" type="file" accept=".pdf,.jpg,.jpeg,.png" name="properties\[Photo\]">
+              </p>
+
+              <h3 id="disp" style="color:green"></h3>
+              <h4 id="error" style="color:red"></h4>
+            </div>
+            <div class="row">
+              <div class="mycolumn">
+                <button
+                  class="
+                    product-submit
+                    action-buttonhttps://the-trost.myshopify.com/admin/themes/127563432131/editor?exitPath=%2Fadmin%2Fthemes%2F127563432131
+                    submit
+                    {% if show_spb %}
+                    desaturated
+                    {% endif %}
+                  "
+                  {% unless selected_variant.available %}
+                    disabled
+                  {% endunless %}
+                  {% if onboarding %}
+                    disabled
+                  {% endif %}
+                  data-product-submit
+                  data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                >
+                  SUBMIT FORM
+                  <span class="product-card-interaction-addtocart-available">
+                    {% if selected_variant.available %}
+                      {{ 'products.product_item.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product_item.sold_out' | t }}
+                    {% endif %}
+                  </span>
+
+                  <span class="product-card-interaction-addtocart-error">
+                    {{ 'products.product_item.unavailable' | t }}
+                  </span>
+
+                  <div class="product-card-interaction-addtocart-spinner">
+                    {% render 'icon' with 'spinner' %}
+                  </div>
+                </button>
+              </div>
+              <div class="mycolumn">
+                <a href="https://thetrost.com/collections/all"
+                  ><button
+                    class="
+                      product-submit
+                      action-buttonhttps://the-trost.myshopify.com/admin/themes/127563432131/editor?exitPath=%2Fadmin%2Fthemes%2F127563432131
+                      submit
+                    "
+                    data-product-submit=""
+                    data-product-variant-id="40930527576259"
+                  >
+                    BUY PRODUCTS
+                  </button></a
+                >
+                <!--
+                  button
+                      class="
+                        product-submit
+                        action-buttonhttps://the-trost.myshopify.com/admin/themes/127563432131/editor?exitPath=%2Fadmin%2Fthemes%2F127563432131
+                        submit
+                        {% if show_spb %}
+                        desaturated
+                        {% endif %}
+                      "
+                      {% unless selected_variant.available %}
+                        disabled
+                      {% endunless %}
+                      {% if onboarding %}
+                        disabled
+                      {% endif %}
+                      data-product-submit
+                      data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    >
+                      BUY PRODUCTS
+                      <span class="product-card-interaction-addtocart-available">
+                        {% if selected_variant.available %}
+                          {{ 'products.product_item.add_to_cart' | t }}
+                        {% else %}
+                          {{ 'products.product_item.sold_out' | t }}
+                        {% endif %}
+                      </span>
+
+                      <span class="product-card-interaction-addtocart-error">
+                        {{ 'products.product_item.unavailable' | t }}
+                      </span>
+
+                      <div class="product-card-interaction-addtocart-spinner">
+                        {% render 'icon' with 'spinner' %}
+                      </div>
+                  </button
+                -->
+              </div>
+            </div>
+            <div class="shiprocket_pincode--wrapper"></div>
+
+            {% if show_spb %}
+              {{ form | payment_button }}
+            {% endif %}
+          {% endform %}
+        {% else %}
+          <div class="product-form unavailable">
+            <button
+              class="
+                product-submit
+                action-button
+                submit
+                unavailable
+                disabled
+              "
+              data-product-submit
+            >
+              {{ 'products.product.sold_out' | t }}
+            </button>
+          </div>
+        {% endif %}
+        <div class="surface-pick-up" data-surface-pick-up></div>
+      </div>
+
+      {% assign product_interaction_count = 0 %}
+      {% if fitting_guide_url != blank %}
+        {% assign product_interaction_count = product_interaction_count | plus: 1 %}
+      {% endif %}
+      {% if show_email_link %}
+        {% assign product_interaction_count = product_interaction_count | plus: 1 %}
+      {% endif %}
+      {% if show_social_buttons %}
+        {% assign product_interaction_count = product_interaction_count | plus: 1 %}
+      {% endif %}
+
+      {% if product_interaction_count > 0 %}
+        <div class="product-interactions product-interactions-{{ product_interaction_count }}">
+          {% if fitting_guide_url != blank %}
+            <a
+              class="product-interaction fitting-guide"
+              href="{{ pages[fitting_guide_url].url }}"
+            >
+              {% render 'icon' with fitting_guide_icon %}
+              <span class="product-interaction-title">{{ 'products.product.fitting_guide' | t }}</span>
+            </a>
+          {% endif %}
+
+          {% if show_email_link %}
+            <a
+              class="product-interaction email-us"
+              href="mailto:{{ shop.email }}?Subject={{ product.title | escape }}"
+            >
+              {% render 'icon' with 'mail' %}
+              <span class="product-interaction-title">{{ 'products.product.email_us' | t }}</span>
+            </a>
+          {% endif %}
+
+          {% if show_social_buttons %}
+            {% assign product_canonical_url = shop.url | append: product.url %}
+            {% assign product_email_subject = 'products.product.share_email_subject' | t: product: product.title %}
+            {% assign product_email_body = 'products.product.share_email_body'
+              | t: product: product.title, product_url: product_canonical_url
+            %}
+            {% assign product_image = product.featured_media.preview_image
+              | default: page_image
+              | img_url: '1024x1024'
+            %}
+            {% assign product_description = product.title | escape %}
+
+            <div class="product-interaction share-this">
+              {%
+                render 'share-this',
+                share_canonical_url: product_canonical_url,
+                email_subject: product_email_subject,
+                email_body: product_email_body,
+                image: product_image,
+                description: product_description,
+              %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if show_description and product.description.size > 0 %}
+        <div class="description">
+          <div class="rte">{{ product.description }}</div>
+        </div>
+      {% endif %}
+
+      {% if callout %}
+        <a class="product-callout" href="{{ product.url | within: collection }}">
+          {{ 'products.product.visit_page' | t -}}
+          <span>→</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+"name": "Product pages",
+"class": "section-product",
+"settings": [
+{
+"type": "header",
+"content": "Layout"
+},
+{
+"type": "select",
+"id": "details_alignment",
+"label": "Product details alignment",
+"options": [
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "left",
+"label": "Left"
+}
+],
+"default": "center"
+},
+{
+"type": "header",
+"content": "General"
+},
+{
+"type": "select",
+"id": "variant_options_style",
+"label": "Variant options style",
+"options": [
+{
+"value": "select",
+"label": "Dropdowns"
+},
+{
+"value": "radio",
+"label": "Selectable boxes"
+}
+],
+"default": "select"
+},
+{
+"type": "checkbox",
+"id": "show_variant_sku",
+"label": "Show variant SKU",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "show-breadcrumbs",
+"label": "Show breadcrumbs",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "product-quantity-option",
+"label": "Show quantity selector",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "product-email-link",
+"label": "Show email link",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_spb",
+"label": "Show dynamic checkout button",
+"info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "enable_cart_redirect",
+"label": "Enable cart redirection",
+"info": "Automatically sends users to the Cart page after adding a product.",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "social-sharing-buttons",
+"label": "Enable social sharing",
+"default": true
+},
+{
+"type": "header",
+"content": "Media"
+},
+{
+"type": "paragraph",
+"content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media/product-media-types)"
+},
+{
+"type": "select",
+"id": "gallery_layout",
+"label": "Layout",
+"options": [
+{
+"group": "List",
+"label": "No thumbnails",
+"value": "list"
+},
+{
+"group": "Gallery",
+"label": "Thumbnails left of gallery",
+"value": "gallery-left"
+},
+{
+"group": "Gallery",
+"label": "Thumbnails right of gallery",
+"value": "gallery-right"
+},
+{
+"group": "Gallery",
+"label": "Thumbnails below gallery",
+"value": "gallery-below"
+}
+]
+},
+{
+"type": "checkbox",
+"id": "gallery_enable_image_zoom",
+"label": "Enable image zoom",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "gallery_enable_video_autoplay",
+"label": "Enable video autoplay",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "gallery_enable_video_looping",
+"label": "Enable video looping",
+"default": true
+},
+{
+"type": "header",
+"content": "Fitting guide"
+},
+{
+"type": "page",
+"id": "fitting-guide-link",
+"label": "Page"
+},
+{
+"type": "select",
+"id": "fitting-guide-icon",
+"label": "Fitting guide icon",
+"options": [
+{
+"value": "shirt",
+"label": "Shirt"
+},
+{
+"value": "ruler",
+"label": "Ruler"
+},
+{
+"value": "info",
+"label": "Info"
+}
+],
+"default": "shirt"
+}
+]
+}
+{% endschema %}

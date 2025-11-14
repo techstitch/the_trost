@@ -1,0 +1,227 @@
+{% assign fixed_height_mobile = true %}
+{% assign fixed_height_desktop = true %}
+{% if section.settings.mobile_height == 'natural' %}
+  {% assign fixed_height_mobile = false %}
+{% endif %}
+{% if section.settings.desktop_height == 'natural' %}
+  {% assign fixed_height_desktop = false %}
+{% endif %}
+
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-image-block"
+  data-section-data
+  data-section-index="{{ section.index }}"
+>
+  {
+    "parallax": {{ section.settings.parallax | json }},
+    "fixedHeightMobile": {{ fixed_height_mobile | json }},
+    "fixedHeightDesktop": {{ fixed_height_desktop | json }}
+  }
+</script>
+
+{%- assign image = section.settings.image -%}
+{%- assign heading = section.settings.title | escape -%}
+{%- assign content = section.settings.content -%}
+{%- assign alignment = section.settings.alignment -%}
+
+{% if heading or image %}
+  {%- capture image_tag -%}
+    {%- if section.settings.image != blank -%}
+      {%
+        render 'rimg'
+        img: image,
+        alt: heading,
+        size: '1024x1024',
+        lazy: true,
+        focal_point: image.presentation.focal_point,
+      %}
+    {%- else -%}
+      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {% assign placeholder_style = 'collection-2' %}
+  {% assign color = settings.accent-colour %}
+  {% assign color_string = 'fill="' | append: color | append: '" xmlns' %}
+  {% capture demo_image %}{%- render 'placeholder_svg_uri', placeholder: placeholder_style, color_string: color_string -%}{% endcapture %}
+
+  <section
+    class="
+      home-section
+      clearfix
+      picture-block
+      picture-block-{{ alignment }}
+      picture-block--is-spaced-{{ section.settings.margin }}
+      picture-block--desktop-height-{{ section.settings.desktop_height }}
+      picture-block--mobile-height-{{ section.settings.mobile_height }}
+      {% if section.settings.parallax %}
+        picture-block--parallax
+      {% endif %}
+    "
+  >
+    <div class="picture-block-image">
+      {{ image_tag }}
+    </div>
+
+    <div class="picture-block-wrapper">
+      <div class="picture-block-content">
+        <h2 class="picture-block-heading">
+          {% if heading != blank %}
+            {{ heading }}
+          {% endif %}
+        </h2>
+
+        {% if content != blank %}
+          <div class="picture-block-body">
+            {{- content -}}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% else %}
+  <section class="home-section clearfix picture-block picture-block-left has-border">
+    {% assign placeholder_style = 'collection-1' %}
+    {% assign color = settings.accent-colour %}
+    {% assign color_string = 'fill="' | append: color | append: '" xmlns' %}
+    {% capture demo_image %}{%- render 'placeholder_svg_uri', placeholder: placeholder_style, color_string: color_string -%}{% endcapture %}
+
+    <div class="picture-block-wrapper">
+      <div class="picture-block-content">
+        <h2 class="picture-block-heading">{{ 'onboarding.image_block_title' | t }}</h2>
+        <p class="picture-block-body">{{ 'onboarding.image_block_caption' | t }}</p>
+      </div>
+    </div>
+
+    <div class="picture-block-image" style="background-image: url('{{ demo_image }}')">
+      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Image with text",
+  "class": "shopify-section--image-with-text",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "margin",
+      "label": "Show spacing",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "500px"
+        },
+        {
+          "value": "medium",
+          "label": "600px"
+        },
+        {
+          "value": "large",
+          "label": "700px"
+        },
+        {
+          "value": "extra-large",
+          "label": "800px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "small",
+          "label": "300px"
+        },
+        {
+          "value": "medium",
+          "label": "400px"
+        },
+        {
+          "value": "large",
+          "label": "500px"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "Enable parallax",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image with text"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Text",
+      "default": "<p>Say a bit about your brand, a specific product, or promotion.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image with text"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+
+{% endschema %}

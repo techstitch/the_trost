@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Preconnect Domains -->
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
+
+  <!-- Preload Assets -->
+  <link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'atlantic.js' | asset_url }}" as="script">
+  <link rel="preload" href="{{ 'plugins.js' | asset_url }}" as="script">
+  <link rel="preload" href="{{ 'api.jquery.js' | shopify_asset_url }}" as="script">
+  <link rel="preload" href="{{ 'atlantic-icons.woff' | asset_url }}" as="font" type="font/woff" crossorigin>
+
+  {% if template contains 'cart' %}
+    <link rel="preload" href="{{ '/services/javascripts/countries.js' }}" as="script">
+    <link rel="preload" href="{{ 'shopify_common.js' | shopify_asset_url }}" as="script">
+    <link rel="preload" href="{{ 'jquery.cart.min.js' | asset_url }}" as="script">
+  {% endif %}
+
+  {% if template contains 'customers' %}
+    <link rel="preload" href="{{ 'shopify_common.js' | shopify_asset_url }}" as="script">
+    <link rel="preload" href="{{ 'customer_area.js' | shopify_asset_url }}" as="script">
+  {% endif %}
+
+  <title>
+    {{- page_title -}}
+
+    {%- if current_tags -%}
+      &ndash; "{{ current_tags | join: ', ' }}"
+    {%- endif -%}
+
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.pagination.seo_title' | t }} {{ current_page }}
+    {%- endif -%}
+
+    {%- unless page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  </title>
+
+  {% if page_description or shop.description != blank %}
+    <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}{{ shop.description }}{% endif %}">
+  {% endif %}
+
+  {% render 'favicon' %}
+
+  {% if template contains 'collection' and current_tags %}
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+  {% else %}
+    <link rel="canonical" href="{{ canonical_url }}" />
+  {% endif %}
+
+  {%- render 'head.import-map' -%}
+  {%- render 'head.is-land' -%}
+
+  {{ content_for_header }}
+
+  <style>
+    :root {
+      /* ------------------------------------------------------------
+        Typography
+      ------------------------------------------------------------ */
+
+      /* Body */
+      --element-text-font-family--body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      --element-text-font-weight--body: {{ settings.font_body.weight }};
+      --element-text-font-size--rte-body: 15px;
+
+
+      /* Headings */
+      --element-text-font-family--heading: {{ settings.font_headings.family }}, {{ settings.font_headings.fallback_families }};
+      --element-text-font-weight--heading: {{ settings.font_headings.weight }};
+      --element-text-letter-spacing--heading: 0px;
+      --element-text-text-transform--heading: {% if settings.font_headings_captialize %}uppercase{% else %}none{% endif %};
+
+      --element-text-font-size--heading-xl: 32px;
+      --element-text-font-size--heading-lg: 28px;
+      --element-text-font-size--heading-md: 24px;
+      --element-text-font-size--heading-sm: 20px;
+      --element-text-font-size--heading-xs: 18px;
+
+      /* Buttons */
+      --element-button-font-family: {{ settings.font_headings_secondary.family }};
+      --element-button-font-size: 13px;
+      --element-button-letter-spacing: 0px;
+      --element-button-radius: 0px;
+
+      /* ------------------------------------------------------------
+        Colors
+      ------------------------------------------------------------ */
+      --color-primary: {{ settings.text-colour }}; 
+      --color-secondary: white;
+      --root-color-primary: {{ settings.text-colour }}; 
+      --root-color-secondary: white;
+      --element-text-color: {{ settings.text-colour }};
+
+      --element-button-color-primary: {{ settings.accent-colour }};
+      --element-button-color-secondary: {{ settings.button-text-colour}};
+
+      --element-swatch-radius: 0;
+
+      --color-sale-tag-text: white;
+      --color-sale-tag: {{ settings.accent-colour }};
+    }
+
+    /* Override Shopify Payment Button styles */
+    .shopify-payment-button .shopify-payment-button__button--unbranded,
+    .shopify-payment-button .shopify-payment-button__button {
+      --element-text-line-height--body-md: 1;
+      font-family: var(--element-button-font-family) !important;
+      letter-spacing: var(--element-button-letter-spacing) !important;
+      box-shadow: none;
+    }
+
+    .add-to-cart-button{
+      --element-button-padding-inline: var(--size-6);
+      --element-text-line-height--body-md: 1;
+    }
+
+    .add-to-cart-button .element-text{
+      text-transform: uppercase;
+    }
+
+    .element-button--inverted.add-to-cart-button:hover{
+      background-color: {{ settings.button-text-colour | color_mix: settings.accent-colour, 85 }};
+    }
+    
+    label:not(.disabled) .variant-option-value-name-selected {
+      background-color: var(--element-button-color-primary);
+      color: var(--element-button-color-secondary);
+    }
+
+    label:not(.disabled) .variant-option-value-name {
+      background-color: white;
+      color: {{ settings.text-colour }};
+      box-shadow: inset 0 0 0 1px {{ settings.primary-border-colour}};
+    }
+
+    .element-badge--sale .element-text{
+      color: var(--color-sale-tag-text);
+    }
+
+    .overlay-lightbox__overlay {
+      z-index: 10000;
+     }
+
+    .element-text--rte ul {
+      padding-left: 20px;
+      list-style-type: disc;
+      margin: 0 0 20px;
+    }
+
+    .element-text--rte table {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      height: auto;
+      margin: 30px 0;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid {{ settings.primary-border-colour }};
+    }
+
+    .element-text--rte > table:first-child {
+      margin-top: 0;
+    }
+
+    .element-text--rte table td,
+    .element-text--rte table th {
+      padding: 18px 20px;
+      border: 1px solid {{ settings.primary-border-colour }};
+    }
+
+    .element-text--rte table thead td,
+    .element-text--rte table thead th {
+      background-color: {{ settings.background-colour | color_mix: settings.primary-border-colour, 75 }};
+    }
+  </style>
+
+  {% assign x_handle = settings.x-url | split: 'x.com/' | last | split: 'twitter.com/' | last %}
+  {%
+    render 'social-meta-tags',
+    twitter_handle: x_handle,
+  %}
+
+  <script>
+    document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
+    if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
+    if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
+  </script>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+
+  <!-- Store object -->
+  {% comment %}Inject theme-object begin{% endcomment %}
+  <script>
+    window.Theme = {};
+    Theme.version = "19.1.0";
+    Theme.name = 'Atlantic';
+    Theme.products = new Array();
+    Theme.shippingCalcErrorMessage = "{{ 'cart.shipping_calculator.error' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcMultiRates = "{{ 'cart.shipping_calculator.rates_html' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcOneRate = "{{ 'cart.shipping_calculator.rate' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcNoRates = "{{ 'cart.shipping_calculator.no_rates' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.shippingCalcRateValues = "{{ 'cart.shipping_calculator.rate_values_html' | t | strip_newlines | replace: '"','\\"' }}";
+    Theme.userLoggedIn = {% if shop.customer_accounts_enabled and customer %}true{% else %}false{% endif %};
+    Theme.userAddress = '{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address }}{% endif %}';
+    Theme.centerHeader = {% if settings.center-header %}true{% else %}false{% endif %};
+  
+    Theme.cartItemsOne = "{{ 'layout.header.item_count.one' | t | strip_newlines | escape }}";
+    Theme.cartItemsOther = "{{ 'layout.header.item_count.other' | t | strip_newlines | escape }}";
+  
+    Theme.addToCart = "{{ 'products.product.add_to_cart' | t | strip_newlines | escape }}";
+    Theme.soldOut = "{{ 'products.product.sold_out' | t | strip_newlines | escape }}";
+    Theme.unavailable = "{{ 'products.product.unavailable' | t | strip_newlines | escape }}";
+    Theme.routes = {
+      "root_url": "{{ routes.root_url }}",
+      "account_url": "{{ routes.account_url }}",
+      "account_login_url": "{{ routes.account_login_url }}",
+      "account_logout_url": "{{ routes.account_logout_url }}",
+      "account_register_url": "{{ routes.account_register_url }}",
+      "account_addresses_url": "{{ routes.account_addresses_url }}",
+      "collections_url": "{{ routes.collections_url }}",
+      "all_products_collection_url": "{{ routes.all_products_collection_url }}",
+      "search_url": "{{ routes.search_url }}",
+      "cart_url": "{{ routes.cart_url }}",
+      "cart_add_url": "{{ routes.cart_add_url }}",
+      "cart_change_url": "{{ routes.cart_change_url }}",
+      "cart_clear_url": "{{ routes.cart_clear_url }}",
+      "product_recommendations_url": "{{ routes.product_recommendations_url }}",
+      "predictive_search_url": "{{ routes.predictive_search_url }}",
+    };
+  </script>
+  {% comment %}Inject theme-object end{% endcomment %}
+
+</head>
+
+<body
+  class="
+    {% if template contains 'contact' %}
+      template-contact
+    {% else %}
+      template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
+    {% endif %}
+    {% if settings.meta-font == "'Open Sans' sans-serif" %}
+      font-open-sans
+    {% endif %}
+    {% if settings.main-title-uppercase %}
+      uppercase
+    {% endif %}
+    product-grid-{{ settings.product_grid_aspect_ratio }}
+  "
+>
+
+  {% comment %}Inject icon-star-symbol begin{% endcomment %}
+  <svg
+    class="icon-star-reference"
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="3 3 17 17" fill="none"
+  >
+    <symbol id="icon-star">
+      <rect class="icon-star-background" width="20" height="20" fill="currentColor"/>
+      <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <clipPath id="icon-star-clip">
+      <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </clipPath>
+  </svg>
+  {% comment %}Inject icon-star-symbol end{% endcomment %}
+
+
+  {% render 'photoswipe' %}
+
+  {% render 'quickshop' %}
+
+  {% comment %}Inject sidebar-drawer begin{% endcomment %}
+  <div class="sidebar-drawer-container" data-sidebar-drawer-container>
+    <div class="sidebar-drawer" data-sidebar-drawer tab-index="-1">
+      {%- if settings.enable_cart_message -%}
+        <p
+          class="
+            sidebar-drawer__cart-message
+            sidebar-drawer__cart-message-color-scheme--{{ settings.cart_message_color_scheme }}
+          "
+        >
+          {{ settings.cart_message }}
+        </p>
+      {%- endif -%}
+  
+      <div class="sidebar-drawer__header-container">
+        <div class="sidebar-drawer__header" data-sidebar-drawer-header></div>
+        <button
+          class="sidebar-drawer__header-close"
+          aria-label="close"
+          data-sidebar-drawer-close
+        >
+          {% render 'icon' with 'close-alt' %}
+        </button>
+      </div>
+  
+      {%- if settings.enable_free_shipping_bar and settings.free_shipping_min_amount != blank and cart.currency.iso_code == shop.currency -%}
+        <div class="sidebar-drawer__free-shipping-banner" data-sidebar-drawer-free-shipping-banner></div>
+      {%- endif -%}
+  
+      <div class="sidebar-drawer__content" data-sidebar-drawer-content></div>
+    </div>
+  </div>
+  {% comment %}Inject sidebar-drawer end{% endcomment %}
+
+
+  {% sections 'header-group' %}
+
+  <div style="--background-color: {{ settings.background-colour }}">
+    {%
+      render 'age-gate',
+      id: 'page',
+      sections: content_for_layout,
+    %}
+  </div>
+
+  <div class="page-body-content">
+    {{ content_for_layout }}
+  </div>
+
+  {%- if settings.enable_back_to_top -%}
+    {% render 'back-to-top' %}
+  {%- endif -%}
+
+  {% sections 'footer-group' %}
+
+  <!-- Scripts -->
+  <script
+    src="{{ 'atlantic.js' | asset_url }}"
+    data-scripts
+    data-shopify-api-url="{{ 'api.jquery.js' | shopify_asset_url }}"
+    data-shopify-countries="/services/javascripts/countries.js"
+    data-shopify-common="{{ 'shopify_common.js' | shopify_asset_url }}"
+    data-shopify-cart="{{ 'jquery.cart.min.js' | asset_url }}"
+    data-customer-area="{{ 'customer_area.js'  | shopify_asset_url }}"
+    defer>
+  </script>
+
+  <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
+  <script src="{{ 'plugins.js' | asset_url }}" defer></script>
+
+  {% if template contains 'cart' %}
+    <script src="{{ '/services/javascripts/countries.js' }}" defer></script>
+    <script src="{{ "shopify_common.js" | shopify_asset_url }}" defer></script>
+    <script src="{{ 'jquery.cart.min.js' | asset_url }}" defer></script>
+  {% endif %}
+
+  {% if template contains 'customers' %}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+    <script src="{{ 'customer_area.js'  | shopify_asset_url }}" defer></script>
+  {% endif %}
+
+  {% render 'structured-data' %}
+
+  <script>
+    (function () {
+      function handleFirstTab(e) {
+        if (e.keyCode === 9) { // the "I am a keyboard user" key
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+  <script>(function(n, v) {/* eslint-disable-next-line max-len */if (window.Shopify && window.Shopify.theme && navigator && navigator.sendBeacon && window.Shopify.designMode) {if (sessionStorage.getItem('oots_beacon')) return;navigator.sendBeacon('https://app.outofthesandbox.com/beacon', new URLSearchParams({shop_domain: window.Shopify.shop.toLowerCase(),shop_id: '{{ shop.id }}',shop_email: '{{ shop.email }}',theme_name: n.toLowerCase(),theme_version: v.toLowerCase(),theme_store_id: window.Shopify.theme.theme_store_id,theme_id: window.Shopify.theme.id,theme_role: window.Shopify.theme.role,}));sessionStorage.setItem('oots_beacon', '');}}('atlantic','19.1.0'))</script>
+</body>
+</html>

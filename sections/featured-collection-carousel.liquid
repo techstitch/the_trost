@@ -1,0 +1,368 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-collection"
+  data-section-index="{{ section.index }}"
+>
+  {%- assign productsPerView = section.settings.products_per_view -%}
+  {%- assign productsLimit = section.settings.total_products_limit -%}
+  {%- assign sectionHeading = section.settings.title | escape -%}
+  {%- assign sectionDescription = section.settings.description -%}
+  {%- assign border = section.settings.border -%}
+  {%- assign productsCollection = section.settings.collection -%}
+
+  <section
+    class="
+      home-section
+      featured-collection
+      clearfix
+      content-area
+      {% if sectionHeading != blank %}has-heading{% endif %}
+      {% if border %}has-border{% endif %}
+    "
+  >
+    {% if sectionHeading != blank %}
+      <h2 class="section-title">{{ sectionHeading }}</h2>
+    {% endif %}
+
+    <div class="featured-collection-wrapper">
+      {% if sectionDescription != blank %}
+        <div class="section-description">
+          {{ sectionDescription }}
+        </div>
+      {% endif %}
+
+      {% if productsCollection != blank %}
+        <div class="custom-carousel">
+          <div class="carousel-container">
+            <button class="carousel-button prev" aria-label="Previous slide">❮</button>
+            <ul class="carousel-track">
+              {% for product in collections[productsCollection].products limit: productsLimit %}
+                {% render 'product-carousel-item',
+                  product: product,
+                  collection: productsCollection,
+                  forloop: forloop,
+                  onboarding: false
+                %}
+              {% endfor %}
+            </ul>
+            <button class="carousel-button next" aria-label="Next slide">❯</button>
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
+      {% else %}
+        <div class="custom-carousel">
+          <div class="carousel-container">
+            <button class="carousel-button prev" aria-label="Previous slide">❮</button>
+            <ul class="carousel-track">
+              {% for i in (1..productsLimit) %}
+                {% render 'product-carousel-item', forloop: forloop, onboarding: true %}
+              {% endfor %}
+            </ul>
+            <button class="carousel-button next" aria-label="Next slide">❯</button>
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+<style>
+  .featured-collection-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .section-description {
+    flex: 0 0 33%;
+    text-align: left;
+    padding-right: 20px;
+  }
+
+  .custom-carousel {
+    flex: 0 0 calc(67% - 30px);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.2s ease-in-out;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  .carousel-track .product {
+    flex: 0 0 calc(100% / {{ productsPerView }});
+    padding: 0 10px;
+    box-sizing: border-box;
+    min-width: calc(100% / {{ productsPerView }});
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 10px;
+    color: #000;
+    transition: color 0.3s ease;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .carousel-button.prev {
+    left: 0;
+  }
+
+  .carousel-button.next {
+    right: 0;
+  }
+
+  .carousel-button:hover {
+    color: #666;
+    background: #f5f5f5;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 1px;
+    margin: 20px auto 0;
+    justify-content: center;
+  }
+
+  .carousel-dot {
+    width: 60px;
+    height: 2px;
+    {% comment %} border-radius: 50%; {% endcomment %}
+    background: #D9D9D9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: #CE5300;
+  }
+
+  @media (max-width: 768px) {
+    .featured-collection-wrapper {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .section-description {
+      flex: 0 0 100%;
+      padding-right: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      padding-left: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .custom-carousel {
+      flex: 0 0 100%;
+      margin-top: 0;
+    }
+
+    .carousel-track .product {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+
+    .carousel-container {
+      padding: 0 15px;
+    }
+
+    .carousel-button {
+      width: 36px;
+      height: 36px;
+      font-size: 24px;
+      padding: 6px;
+      box-shadow: none;
+    }
+    .carousel-button.prev {
+      left: -4px;
+    }
+    .carousel-button.next {
+      right: -4px;
+    }
+    .carousel-dots {
+      margin: 18px auto 0;
+      gap: 14px;
+      padding-top: 12px;
+      {% comment %} max-width: 120px; {% endcomment %}
+    }
+    .carousel-dot {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-container {
+      padding: 0 5px;
+    }
+    .section-description {
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .carousel-button {
+      width: 28px;
+      height: 28px;
+      font-size: 32px;
+      padding: 4px;
+    }
+    .carousel-dots {
+      gap: 1px;
+      padding-top: 10px;
+      {% comment %} max-width: 90px; {% endcomment %}
+    }
+    .carousel-dot {
+      width: 50px;
+      height: 2px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.custom-carousel');
+    
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      const slides = carousel.querySelectorAll('.product');
+      const prevButton = carousel.querySelector('.carousel-button.prev');
+      const nextButton = carousel.querySelector('.carousel-button.next');
+      const dotsContainer = carousel.querySelector('.carousel-dots');
+      
+      let currentIndex = 0;
+      const slidesPerView = window.innerWidth <= 768 ? 1 : {{ productsPerView }};
+      const totalSlides = slides.length;
+      const maxIndex = Math.max(0, totalSlides - slidesPerView);
+      
+      // Create dots
+      slides.forEach((_, index) => {
+        if (index <= maxIndex) {
+          const dot = document.createElement('div');
+          dot.classList.add('carousel-dot');
+          if (index === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+        }
+      });
+      
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      
+      function updateDots() {
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        const slideWidth = 100 / slidesPerView;
+        const offset = -currentIndex * slideWidth;
+        track.style.transform = `translateX(${offset}%)`;
+        updateDots();
+      }
+      
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        }
+      });
+      
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+          goToSlide(currentIndex + 1);
+        }
+      });
+      
+      // Initialize carousel
+      goToSlide(0);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection Carousel",
+  "class": "shopify-section--featured-collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add your collection description here</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Show border",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "total_products_limit",
+      "label": "Total number of products",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "products_per_view",
+      "label": "Products per view",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collection",
+      "name": "Featured Collection Slider"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["*"]
+  }
+}
+{% endschema %}

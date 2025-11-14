@@ -1,0 +1,160 @@
+<div
+  class="static-search {% unless search.performed %}search-no-search-performed{% endunless %}"
+  data-section-id="{{ section.id }}"
+  data-section-type="static-search"
+  data-section-index="{{ section.index }}"
+>
+  <section class="content-area">
+    {% if section.settings.show_breadcrumbs %}
+      {% render 'breadcrumbs' %}
+    {% endif %}
+
+    <div class="page-title">
+      <h1 class="label">
+        {%- if search.performed -%}
+          {{ 'general.search.results_header' | t }}
+        {%- else -%}
+          {{ 'general.search.header' | t }}
+        {%- endif -%}
+      </h1>
+    </div>
+
+    <main class="results">
+      <form
+        class="results-search-form"
+        action="{{ routes.search_url }}"
+        method="get"
+      >
+        <input
+          class="rs-form-input"
+          type="text"
+          name="q"
+          placeholder="{{ 'general.search.input_placeholder' | t }}"
+          aria-label="{{ 'general.search.input_placeholder' | t }}"
+          value="{{ search.terms }}"
+          data-live-search-form-input
+        >
+
+        <button
+          class="rs-form-button-search"
+          type="submit"
+          aria-label="{{ 'general.search.form_search' | t }}"
+          data-live-search-form-button-search
+        >
+          {% render 'icon' with 'search' %}
+        </button>
+      </form>
+
+      {% paginate search.results by 10 %}
+        {% if search.performed %}
+          {% capture results %}
+            {{ 'general.search.results' | t: count: search.results_count }}
+          {% endcapture %}
+
+          <p
+            class="
+              results-label
+              {% unless search.results_count > 0 %}
+                results-label--no-results
+              {% endunless %}
+            "
+          >
+            {% if search.results_count > 0 %}
+              {{- 'general.search.results_text' | t: results: results, results_count: search.results_count, search_terms: search.terms -}}
+            {% else %}
+              {{- 'general.search.no_results_text' | t: results: results, results_count: search.results_count, search_terms: search.terms -}}
+            {% endif %}
+          </p>
+        {% endif %}
+      {% endpaginate %}
+
+        {% if section.settings.enable_filter and search.performed and search.filters.size > 0 %}
+        <div class="search-filters">
+          {%
+            render 'faceted-filters',
+            filters: search.filters,
+            class_prefix: 'search',
+          %}
+
+          {%- capture clear_url -%}
+            {{ routes.search_url }}?q={{ search.terms | url_encode }}
+          {%- endcapture -%}
+          {% for filter in search.filters %}
+            {% if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value %}
+                {%-
+                  render 'faceted-filters-active',
+                  filters: search.filters,
+                  class_prefix: 'search',
+                  clear_url: clear_url
+                -%}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% paginate search.results by 10 %}
+        {% for item in search.results %}
+          {%
+            render 'search-result',
+            item: item,
+            paginate: paginate,
+          %}
+        {% endfor %}
+
+        {% if paginate.previous or paginate.next %}
+          {%
+            render 'pagination',
+            paginate: paginate,
+            paginationStyle: section.settings.pagination-style
+          %}
+        {% endif %}
+      {% endpaginate %}
+    </main>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Search result pages",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filter",
+      "label": "Enable filtering",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "select",
+      "id": "pagination-style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard pagination"
+        },
+        {
+          "value": "jump-to-page",
+          "label": "Jump-to-page pagination"
+        }
+      ],
+      "default": "standard"
+    }
+  ]
+}
+
+{% endschema %}

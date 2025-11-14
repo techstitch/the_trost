@@ -1,0 +1,19 @@
+{% comment %}
+@param itemType {Product}
+  Product to apply badge to.
+{% endcomment %}
+
+<div class="badges-wrapper">
+  {% if itemType.available %}
+    {% if itemType.compare_at_price_min > itemType.price_min %}
+      <span class="badge badge-sale">{{ 'products.product.on_sale' | t }}</span>
+    {% endif %}
+
+    {% capture new-tag %}{{ 'products.product.new' | t }}{% endcapture %}
+    {% if itemType.tags contains new-tag %}
+      <span class="badge badge-new">{{ new-tag }}</span>
+    {% endif %}
+  {% else %}
+    <span class="badge badge-soldout">{{ 'products.product.sold_out' | t }}</span>
+  {% endif %}
+</div>

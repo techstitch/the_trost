@@ -1,0 +1,290 @@
+{% comment %}
+  @param product {Object}
+    The product object
+
+  @param countdown_timer {Boolean}
+    Render card in countdown timer style
+
+  @param onboarding {Boolean}
+    If true, show onboarding content
+{% endcomment %}
+
+{% liquid
+  assign product = product | default: nil
+  assign countdown_timer = countdown_timer | default: false
+  assign enable_product_details_overlay = settings.enable_product_details_overlay
+  assign brandNames = settings.show-brand-names
+  assign media_borders = settings.media_borders
+  assign enableATC = settings.show_atc
+  assign enableQuickshop = settings.enable-quick-shop
+  assign onboarding = onboarding | default: false
+  assign selected_variant = product.selected_or_first_available_variant
+%}
+
+{% if enable_product_details_overlay and countdown_timer == false %}
+  {% capture cardType %} product-card-alt{% endcapture %}
+{% endif %}
+
+{% capture product_card_details %}
+  <div class="product-card-details">
+    {% if brandNames %}
+      <p class="brand">
+        {% if onboarding %}
+          {{ 'onboarding.product_vendor' | t }}
+        {% else %}
+          {{ product.vendor | link_to_vendor }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    <h2 class="title">
+      {% if onboarding %}
+        {{ 'onboarding.product_name' | t }}
+      {% else %}
+        <a href="{{ product.url | within: collection }}">
+          {{ product.title }}
+        </a>
+      {% endif %}
+    </h2>
+    {% assign itemType = product %}
+    {% comment %}Inject product-item-price begin{% endcomment %}
+    {% comment %}
+      @param itemType {Product} - Product for the product card
+      @param onboarding {Boolean} - If true, will display onboarding content
+    {% endcomment %}
+    
+    <div class="product-item__price">
+      {% if onboarding %}
+        <span class="money money--last">{{ 'onboarding.product_price' | t }}</span>
+      {% else %}
+        {% if itemType.price_varies %}
+          <span class="money">{{ itemType.price_min | money }} - {{ itemType.price_max | money }}</span>
+        {% elsif itemType.compare_at_price_min > itemType.price_min %}
+          <span class="original money"> {{ itemType.compare_at_price_min | money }}</span> <span class="money money--last">{{ itemType.price_min | money }}</span>
+        {% else %}
+          <span class="money money--last">{{ itemType.price_min | money }}</span>
+        {% endif %}
+      {% endif %}
+      {% assign variant_for_unit_price = itemType.variants | sort: 'price' | first %}
+      {% if variant_for_unit_price.unit_price_measurement %}
+        {% capture total_quantity %}<span>{{ variant_for_unit_price.unit_price_measurement.quantity_value }}{{ variant_for_unit_price.unit_price_measurement.quantity_unit }}</span>{% endcapture %}
+        {% capture unit_price %}<span>{{ variant_for_unit_price.unit_price | money }}</span>{% endcapture %}
+        {% capture unit_measure %}<span>{%- if variant_for_unit_price.unit_price_measurement.reference_value != 1 -%}{{ variant_for_unit_price.unit_price_measurement.reference_value }}{%- endif %}{{ variant_for_unit_price.unit_price_measurement.reference_unit }}</span>{% endcapture %}
+    
+        <div class="product-item__unit-price">
+          {{ 'products.product.price_per_unit_html' | t: total_quantity: total_quantity, unit_price: unit_price, unit_measure: unit_measure | strip_newlines }}
+        </div>
+      {% endif %}
+    </div>
+    {% comment %}Inject product-item-price end{% endcomment %}
+
+  </div>
+{% endcapture %}
+
+{% capture product_card_details_overlay %}
+  <div class="product-card-details">
+    {% if brandNames %}
+      <p class="brand">
+        {% if onboarding %}
+          {{ 'onboarding.product_vendor' | t }}
+        {% else %}
+          {{ product.vendor }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    <h2 class="title">
+      {% if onboarding %}
+        {{ 'onboarding.product_name' | t }}
+      {% else %}
+        {{ product.title }}
+      {% endif %}
+    </h2>
+    {% assign itemType = product %}
+    {% comment %}Inject product-item-price begin{% endcomment %}
+    {% comment %}
+      @param itemType {Product} - Product for the product card
+      @param onboarding {Boolean} - If true, will display onboarding content
+    {% endcomment %}
+    
+    <div class="product-item__price">
+      {% if onboarding %}
+        <span class="money money--last">{{ 'onboarding.product_price' | t }}</span>
+      {% else %}
+        {% if itemType.price_varies %}
+          <span class="money">{{ itemType.price_min | money }} - {{ itemType.price_max | money }}</span>
+        {% elsif itemType.compare_at_price_min > itemType.price_min %}
+          <span class="original money"> {{ itemType.compare_at_price_min | money }}</span> <span class="money money--last">{{ itemType.price_min | money }}</span>
+        {% else %}
+          <span class="money money--last">{{ itemType.price_min | money }}</span>
+        {% endif %}
+      {% endif %}
+      {% assign variant_for_unit_price = itemType.variants | sort: 'price' | first %}
+      {% if variant_for_unit_price.unit_price_measurement %}
+        {% capture total_quantity %}<span>{{ variant_for_unit_price.unit_price_measurement.quantity_value }}{{ variant_for_unit_price.unit_price_measurement.quantity_unit }}</span>{% endcapture %}
+        {% capture unit_price %}<span>{{ variant_for_unit_price.unit_price | money }}</span>{% endcapture %}
+        {% capture unit_measure %}<span>{%- if variant_for_unit_price.unit_price_measurement.reference_value != 1 -%}{{ variant_for_unit_price.unit_price_measurement.reference_value }}{%- endif %}{{ variant_for_unit_price.unit_price_measurement.reference_unit }}</span>{% endcapture %}
+    
+        <div class="product-item__unit-price">
+          {{ 'products.product.price_per_unit_html' | t: total_quantity: total_quantity, unit_price: unit_price, unit_measure: unit_measure | strip_newlines }}
+        </div>
+      {% endif %}
+    </div>
+    {% comment %}Inject product-item-price end{% endcomment %}
+
+  </div>
+{% endcapture %}
+
+{% capture product_card_interactions %}
+  <div class="product-card-interactions">
+    {% if enableQuickshop and template.name != 'password' and product.variants_count <= 250 %}
+      <button
+        class="product-card-interaction product-card-interaction-quickshop"
+        data-product-card-interaction-quickshop
+        data-product-url="{{ product.url | within: collection }}"
+        {% if onboarding or template.name == 'password' %}
+          disabled
+        {% endif %}
+      >
+        {{ 'products.product_item.quickshop' | t }}
+      </button>
+    {% endif %}
+
+    {% if enableATC and countdown_timer == false %}
+      <button
+        class="
+          product-card-interaction
+          product-card-interaction-addtocart
+        "
+        {% unless selected_variant.available %}
+          disabled
+        {% endunless %}
+        {% if onboarding or template.name == 'password' %}
+          disabled
+        {% endif %}
+        data-product-card-interaction-addtocart
+        data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+        data-cart-redirect="{{ settings.enable_cart_redirection | json }}"
+      >
+        <span class="product-card-interaction-addtocart-available">
+          {% if selected_variant.available %}
+            {{ 'products.product_item.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product_item.sold_out' | t }}
+          {% endif %}
+        </span>
+
+        <span class="product-card-interaction-addtocart-error">
+          {{ 'products.product_item.unavailable' | t }}
+        </span>
+
+        <div class="product-card-interaction-addtocart-spinner">
+          {% render 'icon' with 'spinner' %}
+        </div>
+
+        <noscript>
+          {% if selected_variant.available %}
+            {{ 'products.product_item.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product_item.sold_out' | t }}
+          {% endif %}
+        </noscript>
+      </button>
+    {% endif %}
+  </div>
+{% endcapture %}
+
+<li
+  class="
+    product
+    product-{{ product.id }}
+    {% render 'for-looper', forloop: forloop %}
+    {{ cardType }}
+  "
+  data-product-item
+>
+  {% assign productImageSize = 'grande' %}
+
+  <div class="product-inner">
+    <figure class="product-card-figure">
+      {% if onboarding == false %}
+        {% if product.featured_media %}
+          {%
+            render 'rimg',
+            img: product.featured_media.preview_image,
+            size: '600x',
+            lazy: true,
+          %}
+
+          {% if settings.show_product_secondary_image and product.media.size > 1 %}
+            {% assign second_image = product.media[1].preview_image %}
+            {%
+              render 'rimg',
+              img: second_image,
+              size: '600x',
+              lazy: true,
+            %}
+          {% endif %}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+
+      {% unless onboarding %}
+        <a
+          href="{{ product.url | within: collection }}"
+          {% if media_borders %}class="with-border"{% endif %}
+          tabindex="-1"
+          aria-label="{{ product.title | escape }}"
+        ></a>
+      {% endunless %}
+
+      <{% if onboarding %}div{% else %}a{% endif %}
+        class="
+          product-card-overlay
+          {% if enableQuickshop and template.name != 'password' and product.variants_count <= 250 %}
+            product-card-overlay--has-quickshop
+          {% endif %}
+          {%
+            if enableQuickshop == false
+            and enableATC == false
+            and enable_product_details_overlay == false
+          %}product-card-overlay--hide{% endif %}
+        "
+        {% unless onboarding %}
+          href="{{ product.url | within: collection }}"
+          aria-label="{{ product.title | escape }}"
+        {% endunless %}
+      >
+        <div class="product-card-overlay-content">
+          {% if settings.enable_product_details_overlay and countdown_timer == false %}
+            {{ product_card_details_overlay }}
+          {% else %}
+            {{ product_card_interactions }}
+          {% endif %}
+        </div>
+      </{% if onboarding %}div{% else %}a{% endif %}>
+
+      {%
+        render 'product-badges',
+        itemType: product,
+      %}
+    </figure>
+
+    {% if template.name != 'password' %}
+      <div class="product-card-footer">
+        {% if settings.enable_product_details_overlay and countdown_timer == false %}
+          {{ product_card_interactions }}
+        {% else %}
+          {{ product_card_details }}
+        {% endif %}
+      </div>
+
+      <div class="product-card-footer-mobile">
+        {{ product_card_details }}
+      </div>
+    {% endif %}
+  </div>
+</li>

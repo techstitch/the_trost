@@ -1,0 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_richtext_JQCLqF": {
+      "type": "dynamic-richtext",
+      "blocks": {
+        "plain_text_m4CzBb": {
+          "type": "plain_text",
+          "settings": {
+            "title": "The Trost",
+            "caption": "<p>“Trost” translates to solace in German. Every product comes with a promise to transport you to a place of bliss! </p><p>But why German you ask?  In our quest for bringing the highest quality hemp products to India, we’ve depended on the prowess of Swiss. While the roots may be swiss, the strains are 100% Indian! </p><p>Grown in India, formulated in India, for India.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "plain_text_m4CzBb"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px; padding-top: 20px;}",
+        "p {padding-top: -20px;}"
+      ],
+      "settings": {
+        "border": false,
+        "feature-borders": false
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "settings": {
+        "show_breadcrumbs": false,
+        "title": "",
+        "content": ""
+      }
+    },
+    "dynamic_image_with_text_H9fWFR": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/our_story_img_1_674x600_11a06716-f971-4596-abfd-8b2faf2c1f72.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "The Sacred Plant",
+        "content": "<p>Atharvaveda, that carries the art of Ayurveda in its text, recognises Cannabis plant as one of the five sacred plants in the Vedas. </p><p>Used by sages as an expedient into higher consciousness, Indian hemp (cannabis sativa) since ancient times has been a source of oil and medicine. Highly nutritious, hormone balancer, therapeutic, appetizer, analgesic, aphrodisiac and more..</p><p>It’s ancient ayurveda for a better you!</p>"
+      }
+    },
+    "dynamic_richtext_jmyze9": {
+      "type": "dynamic-richtext",
+      "blocks": {
+        "plain_text_Q9mVkW": {
+          "type": "plain_text",
+          "settings": {
+            "title": "The Healers",
+            "caption": "<p>Our ethically sourced, sun grown hemp is refined using the finest state of the art technology and handled with utmost care.</p><p>We’re proud makers of products that are vegan-friendly, dairy-free, non-GMO, organic & cruelty free, catering to your special dietary needs, relieving pain and elevating your energy levels!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "plain_text_Q9mVkW"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px; padding-top: 20px;}",
+        "p {padding-top: -20px;}",
+        ".home-section {position: relative; padding-top: 0px; margin-top: 50px;}"
+      ],
+      "settings": {
+        "border": false,
+        "feature-borders": false
+      }
+    },
+    "dynamic_image_with_text_qVYby9": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/our_story_img_2_674x542_2b690b97-722d-4e6d-8533-84d4cd288cc1.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "The Swiss Connect",
+        "content": "<p>We have committed to bringing our customers the benefits of full-spectrum, high quality Hemp extracts, using advanced extraction methods inspired by the Swiss technology. A plant-powered zen, reflecting at every step in our brand experience.</p><p>Inspired from the Swiss landscapes, our packaging is essentially  boxes of bliss for you inside and out, laden with calming visuals of the sea, the mountains and the clouds.</p><p>The perfect harmony of people, plants & planet, find your <a href=\"https://thetrost.com/collections/all\" target=\"_blank\" title=\"https://thetrost.com/collections/all\">TROST</a> right here.</p>"
+      }
+    }
+  },
+  "order": [
+    "dynamic_richtext_JQCLqF",
+    "main",
+    "dynamic_image_with_text_H9fWFR",
+    "dynamic_richtext_jmyze9",
+    "dynamic_image_with_text_qVYby9"
+  ]
+}

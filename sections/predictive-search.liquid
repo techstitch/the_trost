@@ -1,0 +1,171 @@
+{% layout none %}
+
+<div data-html>
+  <div class="predictive-search" data-predictive-search>
+    {% if predictive_search.performed %}
+      <div class="predictive-search__header">
+        {% if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %}
+          <div class="predictive-search__header-column">
+            <h2 class="predictive-search__title">
+              {{- 'general.predictive_search.query_suggestions_title' | t -}}
+            </h2>
+
+            <ul class="predictive-search__query-suggestions">
+              {% for query in predictive_search.resources.queries %}
+                <li class="predictive-search__query-suggestion">
+                  <a class="predictive-search__query-suggestion-link" href="{{ query.url }}">
+                    {{- query.styled_text -}}
+                  </a>
+                </li>
+              {% endfor %}
+
+              {% for collection in predictive_search.resources.collections %}
+                <li
+                  class="
+                    predictive-search__query-suggestion
+                    predictive-search__query-suggestion--collection
+                  "
+                >
+                  <a class="predictive-search__query-suggestion-link" href="{{ collection.url }}">
+                    {{- collection.title | escape -}}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% unless
+          predictive_search.resources.products.size > 0 or
+          predictive_search.resources.collections.size > 0 or
+          predictive_search.resources.articles.size > 0 or
+          predictive_search.resources.pages.size > 0
+        %}
+          <div class="predictive-search__header-column">
+            <p class="predictive-search__no-results">
+              {{- 'general.predictive_search.no_results_text' | t -}}
+            </p>
+          </div>
+        {% endunless %}
+      </div>
+
+      {% if
+        predictive_search.resources.products.size > 0 or
+        predictive_search.resources.articles.size > 0 or
+        predictive_search.resources.pages.size > 0
+      %}
+        <div class="predictive-search__main">
+          {% if predictive_search.resources.products.size > 0 %}
+            <div class="predictive-search__column">
+              <h2 class="predictive-search__title">
+                {{- 'general.predictive_search.product_suggestions_title' | t -}}
+              </h2>
+
+              <ul class="predictive-search__product-suggestions" data-predictive-search-product-suggestions>
+                {% for product in predictive_search.resources.products %}
+                  <li class="predictive-search__product-suggestion">
+                    <a class="predictive-search__product-suggestion-link" href="{{ product.url }}">
+                      <figure class="predictive-search__product-suggestion-image">
+                        {% if product.featured_media != blank %}
+                          {%
+                            render 'rimg'
+                            img: product.featured_media.preview_image,
+                            size: '50x',
+                            lazy: true,
+                          %}
+                        {% else %}
+                          {{- 'product-1' | placeholder_svg_tag: 'placeholder-svg' -}}
+                        {% endif %}
+                      </figure>
+
+                      <div class="predictive-search__product-suggestion-details">
+                        {% if product.vendor and settings.show-brand-names %}
+                          <span class="predictive-search__product-suggestion-vendor">
+                            {{- product.vendor -}}
+                          </span>
+                        {% endif %}
+
+                        <span class="predictive-search__product-suggestion-title">
+                          {{- product.title -}}
+                        </span>
+
+                        <div
+                          class="
+                            predictive-search__product-suggestion-price
+                            price
+                            sale
+                          "
+                        >
+                          {% if product.compare_at_price > product.price %}
+                            <span class="original money">
+                              {{- product.compare_at_price | money -}}
+                            </span>
+                          {% endif %}
+
+                          <span class="money">
+                            {{- product.price | money -}}
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}
+            <div class="predictive-search__column">
+              <h2 class="predictive-search__title">
+                {% if predictive_search.resources.articles.size > 0 and predictive_search.resources.pages.size > 0 %}
+                  {{- 'general.predictive_search.pages_and_posts_suggestions_heading' | t -}}
+                {% elsif predictive_search.resources.articles.size > 0 %}
+                  {{- 'general.predictive_search.posts_suggestions_heading' | t -}}
+                {% elsif predictive_search.resources.pages.size > 0 %}
+                  {{- 'general.predictive_search.pages_suggestions_heading' | t -}}
+                {% endif %}
+              </h2>
+
+              {% if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}
+                <ul class="predictive-search__article-and-page-suggestions">
+                  {% for article in predictive_search.resources.articles %}
+                    <li class="predictive-search__article-suggestion">
+                      <a class="predictive-search__article-suggestion-link" href="{{ article.url }}">
+                        {{- article.title | escape -}}
+
+                        <span class="predictive-search__article-date">
+                          {{- article.published_at | date: "%b %d, %Y" -}}
+                        </span>
+                      </a>
+                    </li>
+                  {% endfor %}
+
+                  {% for page in predictive_search.resources.pages %}
+                    <li class="predictive-search__page-suggestion">
+                      <a class="predictive-search__page-suggestion-link" href="{{ page.url }}">
+                        {{- page.title | escape -}}
+
+                        <span class="predictive-search__page-date">
+                          {{- page.published_at | date: "%b %d, %Y" -}}
+                        </span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="predictive-search__footer" data-predictive-search-footer>
+        <a
+          class="predictive-search__footer-button"
+          href="{{ routes.search_url | append: '?q=' }}{{ predictive_search.terms }}"
+        >
+          {{- 'general.predictive_search.search_button_label' | t: search_terms: predictive_search.terms -}}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

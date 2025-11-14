@@ -1,0 +1,175 @@
+{% liquid
+  assign blog = section.settings.blog
+  assign limit = section.settings.limit
+  assign heading = section.settings.title | escape
+  assign show_excerpt = section.settings.show_excerpt
+%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="featured-blog"
+  data-section-index="{{ section.index }}"
+>
+  <section
+    class="
+      featured-blog
+      home-section
+      home-section--has-border-{{ section.settings.border }}
+      {% if heading != blank -%}
+        home-section--has-heading
+      {% endif -%}
+      content-area
+    "
+  >
+    {%- if heading != blank -%}
+      <h2 class="featured-blog__heading section-title">
+        {{- heading -}}
+      </h2>
+    {%- endif -%}
+
+    <ul
+      class="
+        featured-blog__articles
+        featured-blog__articles-limit-{{ limit }}
+      "
+      style="--article-limit: {{ limit }};"
+    >
+      {%- if blog != blank -%}
+        {%- for article in blogs[blog].articles limit: limit -%}
+          <li class="featured-blog__article">
+            {%- if section.settings.show_date -%}
+              <a class="featured-blog__article-date" href="{{ article.url }}">
+                {{- article.published_at | date: format: 'full_month' -}}
+              </a>
+            {%- endif -%}
+
+            <a class="featured-blog__article-title" href="{{ article.url }}">
+              {{- article.title -}}
+            </a>
+
+            <div class="featured-blog__article-rte">
+              {%- if article.image and section.settings.show_featured_image -%}
+                <a class="featured-blog__article-image" href="{{ article.url }}">
+                  {%
+                    render 'rimg'
+                    img: article.image,
+                    alt: article.title,
+                    size: '600x600',
+                    lazy: true,
+                  %}
+                </a>
+              {%- endif -%}
+
+              {%- if show_excerpt -%}
+                <div class="featured-blog__article-excerpt">
+                  {{- article.excerpt_or_content | strip_html | truncatewords: 40 -}}
+                </div>
+              {%- endif -%}
+
+              <a class="featured-blog__article-continue-reading" href="{{ article.url }}">
+                {{- 'blogs.article_item.continue_reading' | t -}}
+              </a>
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) limit: section.settings.post_limit -%}
+          <li class="featured-blog__article">
+            {%- if section.settings.show_date -%}
+              <a class="featured-blog__article-date" href="#">
+                {{- 'now' | date: "%s" | date: "%B %d, %Y" -}}
+              </a>
+            {%- endif -%}
+
+            <a class="featured-blog__article-title" href="#">
+              {{- 'onboarding.blog_title' | t -}}
+            </a>
+
+            <div class="featured-blog__article-rte">
+              {%- if section.settings.show_featured_image -%}
+                <a class="featured-blog__article-image" href="#">
+                  {{- 'collection-2' | placeholder_svg_tag: 'placeholder-svg' -}}
+                </a>
+              {%- endif -%}
+
+              {%- if show_excerpt -%}
+                <div class="featured-blog__article-excerpt">
+                  {{- 'onboarding.blog_excerpt' | t -}}
+                </div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "shopify-section--blog-posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog posts"
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Show border",
+      "default": true
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog posts"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Number of posts",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_image",
+      "label": "Show featured image",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "category": "Blog",
+      "name": "Blog posts",
+      "settings": {
+        "border": true,
+        "blog": ""
+      }
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+
+{% endschema %}

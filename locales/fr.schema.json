@@ -1,0 +1,596 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "newsletter": {
+      "name": "Newsletter",
+      "title": {
+        "label": "En-tête"
+      },
+      "text": {
+        "label": "Texte"
+      },
+      "image": {
+        "label": "Image"
+      },
+      "desktop_alignment": {
+        "label": "Alignement de l'image du bureau",
+        "option_1": "Gauche",
+        "option_2": "Droite"
+      },
+      "mobile_alignment": {
+        "label": "Alignement des images sur mobile",
+        "option_1": "En haut",
+        "option_2": "En bas"
+      },
+      "presets": {
+        "category": "Promotionnel",
+        "name": "Newsletter"
+      }
+    },
+    "map": {
+      "name": "Carte",
+      "section_height": {
+        "label": "Hauteur de la section",
+        "option_1": "Petit",
+        "option_2": "Moyen",
+        "option_3": "Grand"
+      },
+      "header_1": {
+        "content": "Texte"
+      },
+      "title": {
+        "label": "En-tête"
+      },
+      "content": {
+        "label": "Adresse et horaires"
+      },
+      "text_alignment": {
+        "label": "Alignement du texte",
+        "option_1": "Gauche",
+        "option_2": "Centre",
+        "option_3": "Droite"
+      },
+      "layout": {
+        "label": "Mise en page du bureau",
+        "group_1": "L'extérieur",
+        "group_2": "Superposition",
+        "option_1": "En haut à gauche",
+        "option_2": "Centre gauche",
+        "option_3": "En bas à gauche",
+        "option_4": "En haut à droite",
+        "option_5": "Centre droit",
+        "option_6": "En bas à droite",
+        "option_7": "En haut à gauche",
+        "option_8": "En haut au centre",
+        "option_9": "En haut à droite",
+        "option_10": "Centre gauche",
+        "option_11": "Centre",
+        "option_12": "Centre droit",
+        "option_13": "En bas à gauche",
+        "option_14": "En bas au centre",
+        "option_15": "En bas à droite"
+      },
+      "layout_mobile": {
+        "label": "Mise en page mobile",
+        "option_1": "Au-dessus de la carte",
+        "option_2": "En-dessous de la carte"
+      },
+      "header_2": {
+        "content": "Carte"
+      },
+      "address": {
+        "label": "Adresse de la carte"
+      },
+      "api_key": {
+        "label": "Clé API Google Maps",
+        "info": "Vous devez activer les clés API [Google Maps](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) et [Geocoding](https://developers.google.com/maps/documentation/geocoding/get-api-key) pour afficher la carte."
+      },
+      "enable_custom_colors": {
+        "label": "Utiliser des couleurs de carte personnalisées"
+      },
+      "foreground_color": {
+        "label": "Couleur de premier plan de la carte"
+      },
+      "background_color": {
+        "label": "Couleur d'arrière-plan de la carte"
+      },
+      "zoom": {
+        "label": "Niveau de zoom de la carte"
+      },
+      "image": {
+        "label": "Image",
+        "info": "Cette image s'affiche lorsque la carte n'est pas utilisée ou ne peut pas être chargée"
+      },
+      "header_3": {
+        "content": "Superposition"
+      },
+      "overlay_color": {
+        "label": "Couleur"
+      },
+      "opacity": {
+        "label": "Opacité"
+      },
+      "presets": {
+        "category": "Informations sur un commerce",
+        "name": "Carte"
+      }
+    },
+    "product": {
+      "blocks": {
+        "form": {
+          "show_gift_card_recipient_form": {
+            "label": "Afficher le formulaire d'informations sur le destinataire pour les produits de cartes-cadeaux",
+            "info": "Les produits de cartes-cadeaux peuvent être envoyés en option directement au destinataire avec un message personnel. [En savoir plus](https://help.shopify.com/fr/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+          }
+        },
+        "complementary_products": {
+          "name": "Produits complémentaires",
+          "settings": {
+            "paragraph": {
+              "content": "Pour sélectionner des produits complémentaires, ajoutez l'application Search & Discovery. [En savoir plus](https://shopify.dev/themes/product-merchandising/recommendations)"
+            },
+            "heading": {
+              "label": "En-tête"
+            },
+            "product_recommendation_limit": {
+              "label": "Quantité maximale de produits à afficher"
+            },
+            "products_per_slide": {
+              "label": "Nombre de produits par page"
+            }
+          }
+        }
+      }
+    },
+    "countdown_timer": {
+      "name": "Compte à rebours",
+      "full_width": {
+        "label": "Largeur totale"
+      },
+      "section_height": {
+        "label": "Hauteur de la section",
+        "option_1": "Petit",
+        "option_2": "Moyen",
+        "option_3": "Grand",
+        "option_4": "Naturel"
+      },
+      "image": {
+        "label": "Image"
+      },
+      "image_focal_point": {
+        "label": "Point focal de l'image",
+        "option_1": "En haut à gauche",
+        "option_2": "En haut au centre",
+        "option_3": "En haut à droite",
+        "option_4": "Centre gauche",
+        "option_5": "Centre",
+        "option_6": "Centre droit",
+        "option_7": "En bas à gauche",
+        "option_8": "En bas au centre",
+        "option_9": "En bas à droite"
+      },
+      "header_1": {
+        "content": "Minuterie"
+      },
+      "countdown_year": {
+        "label": "Année"
+      },
+      "countdown_month": {
+        "label": "Mois",
+        "option_1": "Janvier",
+        "option_2": "Février",
+        "option_3": "Mars",
+        "option_4": "Avril",
+        "option_5": "Mai",
+        "option_6": "Juin",
+        "option_7": "Juillet",
+        "option_8": "Août",
+        "option_9": "Septembre",
+        "option_10": "Octobre",
+        "option_11": "Novembre",
+        "option_12": "Décembre"
+      },
+      "countdown_day": {
+        "label": "Jour",
+        "option_1": "1",
+        "option_2": "2",
+        "option_3": "3",
+        "option_4": "4",
+        "option_5": "5",
+        "option_6": "6",
+        "option_7": "7",
+        "option_8": "8",
+        "option_9": "9",
+        "option_10": "10",
+        "option_11": "11",
+        "option_12": "12",
+        "option_13": "13",
+        "option_14": "14",
+        "option_15": "15",
+        "option_16": "16",
+        "option_17": "17",
+        "option_18": "18",
+        "option_19": "19",
+        "option_20": "20",
+        "option_21": "21",
+        "option_22": "22",
+        "option_23": "23",
+        "option_24": "24",
+        "option_25": "25",
+        "option_26": "26",
+        "option_27": "27",
+        "option_28": "28",
+        "option_29": "29",
+        "option_30": "30",
+        "option_31": "31"
+      },
+      "countdown_hour": {
+        "label": "Heure",
+        "option_1": "00:00",
+        "option_2": "01:00",
+        "option_3": "02:00",
+        "option_4": "03:00",
+        "option_5": "04:00",
+        "option_6": "05:00",
+        "option_7": "06:00",
+        "option_8": "07:00",
+        "option_9": "08:00",
+        "option_10": "09:00",
+        "option_11": "10:00",
+        "option_12": "11:00",
+        "option_13": "12:00",
+        "option_14": "13:00",
+        "option_15": "14:00",
+        "option_16": "15:00",
+        "option_17": "16:00",
+        "option_18": "17:00",
+        "option_19": "18:00",
+        "option_20": "19:00",
+        "option_21": "20:00",
+        "option_22": "21:00",
+        "option_23": "22:00",
+        "option_24": "23:00"
+      },
+      "countdown_minute": {
+        "label": "Minute",
+        "option_1": "00",
+        "option_2": "01",
+        "option_3": "02",
+        "option_4": "03",
+        "option_5": "04",
+        "option_6": "05",
+        "option_7": "06",
+        "option_8": "07",
+        "option_9": "08",
+        "option_10": "09",
+        "option_11": "10",
+        "option_12": "11",
+        "option_13": "12",
+        "option_14": "13",
+        "option_15": "14",
+        "option_16": "15",
+        "option_17": "16",
+        "option_18": "17",
+        "option_19": "18",
+        "option_20": "19",
+        "option_21": "20",
+        "option_22": "21",
+        "option_23": "22",
+        "option_24": "23",
+        "option_25": "24",
+        "option_26": "25",
+        "option_27": "26",
+        "option_28": "27",
+        "option_29": "28",
+        "option_30": "29",
+        "option_31": "30",
+        "option_32": "31",
+        "option_33": "32",
+        "option_34": "33",
+        "option_35": "34",
+        "option_36": "35",
+        "option_37": "36",
+        "option_38": "37",
+        "option_39": "38",
+        "option_40": "39",
+        "option_41": "40",
+        "option_42": "41",
+        "option_43": "42",
+        "option_44": "43",
+        "option_45": "44",
+        "option_46": "45",
+        "option_47": "46",
+        "option_48": "47",
+        "option_49": "48",
+        "option_50": "49",
+        "option_51": "50",
+        "option_52": "51",
+        "option_53": "52",
+        "option_54": "53",
+        "option_55": "54",
+        "option_56": "55",
+        "option_57": "56",
+        "option_58": "57",
+        "option_59": "58",
+        "option_60": "59"
+      },
+      "countdown_timer_background": {
+        "label": "Afficher l'arrière-plan du compte à rebours"
+      },
+      "countdown_timer_complete": {
+        "label": "Masquer le minuteur à la fin"
+      },
+      "countdown_timer_message": {
+        "label": "Message de fin de minuterie"
+      },
+      "product": {
+        "label": "Produit"
+      },
+      "header_2": {
+        "content": "Contenu"
+      },
+      "title": {
+        "label": "Titre"
+      },
+      "text": {
+        "label": "Texte"
+      },
+      "button_link": {
+        "label": "Lien du bouton"
+      },
+      "button_label": {
+        "label": "Libellé du bouton"
+      },
+      "button_style": {
+        "label": "Style de bouton",
+        "option_1": "Primaire",
+        "option_2": "Secondaire"
+      },
+      "header_3": {
+        "content": "Couleur"
+      },
+      "text_color": {
+        "label": "Texte"
+      },
+      "overlay_color": {
+        "label": "Superposition"
+      },
+      "overlay_opacity": {
+        "label": "Opacité de la superposition",
+        "unit": "%"
+      },
+      "product_card_background_color": {
+        "label": "Arrière-plan de la fiche produit"
+      },
+      "presets": {
+        "countdown_timer": {
+          "name": "Compte à rebours",
+          "category": "Promotionnel"
+        }
+      }
+    },
+    "age_gate": {
+      "name": "Portail d'âge de la page",
+      "minimum_age": {
+        "label": "Âge minimum requis pour accéder à la page"
+      },
+      "presets": {
+        "name": "Portail d'âge de la page",
+        "category": "Mise en page"
+      }
+    }
+  },
+  "settings_schema": {
+    "age_gate": {
+      "name": "Portail d'âge",
+      "enable_site_wide": {
+        "label": "Activer à l'échelle du site"
+      },
+      "minimum_age": {
+        "label": "Âge minimum requis pour accéder au site"
+      },
+      "heading": {
+        "label": "Titre"
+      },
+      "description": {
+        "label": "Description"
+      },
+      "show_logo": {
+        "label": "Afficher le logo",
+        "info": "Visitez les [paramètres de la marque](/admin/settings/branding) pour modifier le logo."
+      }
+    }
+  },
+  "flex_pdp": {
+    "section": {
+      "high_variant": {
+        "name": "Produit : 250+ variantes",
+        "settings": {
+          "padding": {
+            "label": "Remplissage",
+            "options": {
+              "none": {
+                "label": "Aucun"
+              },
+              "top": {
+                "label": "Haut"
+              },
+              "bottom": {
+                "label": "Bas"
+              },
+              "both": {
+                "label": "Les deux"
+              }
+            }
+          }
+        },
+        "presets": {
+          "high_variant": {
+            "name": "Produit (250+ Variantes)"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "buy_buttons": {
+        "name": "Boutons d'achat",
+        "settings": {
+          "show_dynamic_checkout": {
+            "label": "Afficher le bouton de paiement accéléré",
+            "info": "Chaque client verra sa méthode de paiement préférée parmi celles disponibles dans votre boutique, comme PayPal ou Apple Pay. [En savoir plus](https://help.shopify.com/en/manual/online-store/dynamic-checkout)"
+          }
+        },
+        "presets": {
+          "buy_buttons": {
+            "name": "Boutons d'achat"
+          }
+        }
+      },
+      "description": {
+        "name": "Description"
+      },
+      "divider": {
+        "name": "Séparateur"
+      },
+      "gift_recipient": {
+        "name": "Destinataire du cadeau",
+        "settings": {
+          "content": "Affiche le formulaire de destinataire du cadeau pour le produit."
+        }
+      },
+      "installments": {
+        "name": "Paiements échelonnés",
+        "settings": {
+          "content": "Pour afficher les paiements échelonnés, votre boutique doit prendre en charge les Paiements échelonnés Shop Pay. [En savoir plus](https://help.shopify.com/en/manual/payments/shop-pay-installments)."
+        }
+      },
+      "inventory": {
+        "name": "Inventaire",
+        "settings": {
+          "content": "Affiche le statut de l'inventaire pour le produit basé sur le seuil d'inventaire, y compris l'avertissement de stock faible et l'inventaire entrant.",
+          "inventory_threshold": {
+            "label": "Seuil d'inventaire faible"
+          }
+        }
+      },
+      "media_gallery": {
+        "name": "Galerie multimédia",
+        "settings": {
+          "image_aspect_ratio": {
+            "label": "Rapport d'aspect",
+            "options": {
+              "initial": {
+                "label": "Naturel"
+              },
+              "portrait": {
+                "label": "Portrait"
+              },
+              "square": {
+                "label": "Carré"
+              },
+              "landscape": {
+                "label": "Paysage"
+              }
+            }
+          },
+          "enable_video_looping": {
+            "label": "Boucle vidéo"
+          },
+          "enable_video_autoplay": {
+            "label": "Lecture automatique de la vidéo",
+            "info": "Les vidéos en lecture automatique sont muettes pour l'accessibilité."
+          }
+        }
+      },
+      "media_grid": {
+        "name": "Grille multimédia",
+        "settings": {
+          "image_aspect_ratio": {
+            "label": "Rapport d'aspect",
+            "options": {
+              "initial": {
+                "label": "Naturel"
+              },
+              "portrait": {
+                "label": "Portrait"
+              },
+              "square": {
+                "label": "Carré"
+              },
+              "landscape": {
+                "label": "Paysage"
+              }
+            }
+          },
+          "enable_video_looping": {
+            "label": "Boucle vidéo"
+          },
+          "enable_video_autoplay": {
+            "label": "Lecture automatique de la vidéo",
+            "info": "Les vidéos en lecture automatique sont muettes pour l'accessibilité."
+          }
+        }
+      },
+      "pick_up": {
+        "name": "Disponibilité de retrait",
+        "settings": {
+          "content": "Affiche la disponibilité en magasin lorsque le retrait local est activé. [En savoir plus](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)."
+        }
+      },
+      "policies": {
+        "name": "Politiques",
+        "settings": {
+          "content": "Affiche si les taxes sont incluses dans le prix et lie à votre politique d'expédition (si définie). [Apprenez à configurer les prix avec taxes incluses](https://help.shopify.com/en/manual/taxes) et [apprenez à ajouter une politique d'expédition](https://help.shopify.com/en/manual/fulfillment/setup/shipping-profiles#create-a-shipping-policy)."
+        }
+      },
+      "price": {
+        "name": "Prix"
+      },
+      "quantity_picker": {
+        "name": "Sélecteur de quantité",
+        "settings": {
+          "show_inventory_status": {
+            "label": "Afficher le statut de l'inventaire"
+          },
+          "inventory_threshold": {
+            "label": "Seuil de stock faible"
+          }
+        }
+      },
+      "sku": {
+        "name": "SKU"
+      },
+      "title": {
+        "name": "Titre"
+      },
+      "variant_picker": {
+        "name": "Sélecteur de variantes",
+        "settings": {
+          "variant_selector_type": {
+            "label": "Style",
+            "options": {
+              "radio": {
+                "label": "Boutons"
+              },
+              "select": {
+                "label": "Listes déroulantes"
+              }
+            },
+            "info": "Affiche les options du produit comme boutons et échantillons de couleur ou listes déroulantes. [Apprenez à configurer les échantillons de couleur](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields)."
+          }
+        }
+      },
+      "vendor": {
+        "name": "Fournisseur"
+      }
+    }
+  }
+}

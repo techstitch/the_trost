@@ -1,0 +1,188 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_slideshow_C9ebLJ": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "feature_7ynn7M": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Gummies_Category_Banner.webp",
+            "slide_title": "Trost Gummies",
+            "caption": "A blissful blend of Ayurvedic wellness and delicious flavor for your daily dose of relaxation.",
+            "button": "",
+            "link": "",
+            "alignment": "center-center",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "feature_7ynn7M"
+      ],
+      "custom_css": [
+        ".home-section {padding: 0px; margin: 0px;}"
+      ],
+      "settings": {
+        "desktop_height": "small",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": false,
+        "transition": "slide",
+        "autoplay_interval": 5
+      }
+    },
+    "main": {
+      "type": "static-collection",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true,
+        "show-collection-image": false,
+        "rows": 11,
+        "products_per_row": 3,
+        "enable-sorting": true,
+        "enable_filter": true,
+        "collection-sidebar": true,
+        "collection-sidebar-menu": "",
+        "pagination-style": "jump-to-page"
+      }
+    },
+    "dynamic_image_with_text_GrPcH6": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/what_are_cbd_gummies.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What are Cannabis gummies?",
+        "content": "<p>Trost's Cannabis gummies offer a delightful fusion of sweetness and chewiness, infused with cannabis leaf extracts from the hemp plant—a non-intoxicating cannabis variant. These edibles discreetly deliver cannabis extract, favored for their simplicity. <a href=\"https://thetrost.com/blogs/blogs/why-cannabis-gummies-are-better-than-regular-gummies\" target=\"_blank\" title=\"Cannabis gummies\">Cannabis gummies</a> serve as a convenient, enjoyable option for recreational and medicinal cannabis consumption. Experience the convenience and pleasure of cannabis consumption with Trost's Cannabis gummies.</p>"
+      }
+    },
+    "dynamic_image_with_text_bqhWdk": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Are_there_any_health_benefits_of_Trost_gummies_800_x_800_px.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Are there any health benefits of Trost gummies?",
+        "content": "<p>Trost gummies are great for your health in many ways. They help you feel <a href=\"https://thetrost.com/blogs/blogs/are-cannabis-gummies-good-for-anxiety\" target=\"_blank\" title=\"less stressed and anxious\">less stressed and anxious</a>, ease nausea, and improve sleep. If you have tummy troubles, they can help with that too. Plus, they can relieve headaches, pain, and inflammation. Trost gummies even support sexual wellness. With Trost gummies, you're getting a simple and easy way to feel better all around.</p>"
+      }
+    },
+    "dynamic_image_with_text_q8Hbgw": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/What_are_the_benefits_of_Cannabis_Leaf_Extract_Oil.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "How to use Cannabis Leaf Extract Oil?",
+        "content": "<p>Cannabis leaf extract oil can be used in a variety of ways, depending on the intended purpose. Some common methods of using cannabis oil:</p><p><strong>Oral Ingestion</strong>: Cannabis oil can be consumed orally by mixing it with food or drinks, or by using it directly under the tongue. This method is effective for treating conditions such as pain, anxiety, and depression.</p><p><strong>Inhalation</strong>: Cannabis oil can be inhaled by using a vaporizer or a dab rig. This method can be effective for treating conditions such as chronic pain and anxiety.</p><p><strong>Topical Application</strong>: Cannabis oil can be applied topically to the skin for localized pain relief and inflammation reduction.</p><p><strong>Cooking and Baking</strong>: Cannabis oil can be added to recipes and used for cooking or baking. This method allows for cannabinoids to be consumed orally.</p><p>It is also recommended to consult with a healthcare professional before using cannabis oil for any medical condition.</p>"
+      }
+    },
+    "dynamic_image_with_text_MDBmKr": {
+      "type": "dynamic-image-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/How_to_get_Cannabis_Leaf_Extract_Oil_In_India.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "How to get Cannabis Leaf Extract Oil In India?",
+        "content": "<p>It is important to purchase from a reputable source that can provide information about the quality, purity, and potency of the product. It is always recommended to consult with a healthcare professional before using cannabis products.<br/><br/>The Trost is a reputed brand in India that deals in Cannabis Leaf Extract Oil. We source the key natural ingredients from the valleys of Switzerland and extracts & processes the cannabis oil with high-end Swiss technology without compromising on quality. You can buy the Cannabis Leaf Extract Oil from our website.</p>"
+      }
+    },
+    "dynamic_faq_BnxPJx": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "faq_zCcjrn": {
+          "type": "faq",
+          "settings": {
+            "title": "Are Trost cannabis leaf extract gummies available in different flavors?",
+            "content": "<p>Yes, Trost's <a href=\"https://thetrost.com/products/cannabis-leaf-extract-kosha-gummies\" title=\"cannabis leaf extract gummies\">cannabis leaf extract gummies</a> are available in two different cola and mint flavor.</p>"
+          }
+        },
+        "faq_WgDECj": {
+          "type": "faq",
+          "settings": {
+            "title": "What is the key ingredient in Trost Mriduvati \"Kosha\" Gummies?",
+            "content": "<p>The key ingredient in Trost Mriduvati Gummies is Vijaya, derived from the cannabis leaf, carefully selected for its calming properties.</p>"
+          }
+        },
+        "faq_EbnUDz": {
+          "type": "faq",
+          "settings": {
+            "title": "How do Trost Gummies help with anxiety and depression?",
+            "content": "<p>Kosha (Mriduvati) Gummies are formulated with Ayurvedic wisdom to provide holistic relief, acting as a natural remedy for anxiety and depression.</p>"
+          }
+        },
+        "faq_dFpV8y": {
+          "type": "faq",
+          "settings": {
+            "title": "What sets Trost's Gummies apart from other cannabis products?",
+            "content": "<p>Trost's Mriduvati Gummies stand out with their Ayurvedic formulation, offering a unique blend of anti-inflammatory, pain-relieving, and relaxation-inducing properties.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_zCcjrn",
+        "faq_WgDECj",
+        "faq_EbnUDz",
+        "faq_dFpV8y"
+      ],
+      "custom_css": [
+        ".home-section {position: relative; padding-top: 60px; margin-top: 0px;}",
+        "h2 {font-size: 28px; padding-bottom: 20px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "show_border": false
+      }
+    }
+  },
+  "order": [
+    "dynamic_slideshow_C9ebLJ",
+    "main",
+    "dynamic_image_with_text_GrPcH6",
+    "dynamic_image_with_text_bqhWdk",
+    "dynamic_image_with_text_q8Hbgw",
+    "dynamic_image_with_text_MDBmKr",
+    "dynamic_faq_BnxPJx"
+  ]
+}

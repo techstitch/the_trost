@@ -1,0 +1,135 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="static-faq"
+  data-section-index="{{ section.index }}"
+>
+</script>
+
+<main class="content content-area">
+  {%- if section.settings.show-breadcrumbs -%}
+    {%- render 'breadcrumbs' -%}
+  {%- endif -%}
+
+  <header class="page-masthead">
+    <div class="page-title">
+      <h1 class="label">
+        {{- page.title -}}
+      </h1>
+    </div>
+  </header>
+
+  <div class="faq__page">
+    <div class="page-content">
+      {% if page.content != blank %}
+        <div class="rte rte--faq" data-rte>
+          {{ page.content }}
+        </div>
+      {% endif %}
+
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.title != blank or block.settings.content != blank -%}
+            <div class="faq__block">
+              <h2
+                class="
+                  faq__heading
+                  {% if forloop.first -%}
+                    active
+                  {% endif %}
+                "
+                tabindex="0"
+                data-faq-toggle
+                {{ block.shopify_attributes }}
+              >
+                <span class="faq__title">
+                  {{- block.settings.title | escape -}}
+                </span>
+
+                <div class="faq__icon">
+                  {%- render 'icon' with 'down-arrow' -%}
+                  {%- render 'icon' with 'minus' -%}
+                </div>
+              </h2>
+
+              <div
+                class="
+                  faq__content
+                  {% if forloop.first -%}
+                    active
+                  {% endif %}
+                "
+              >
+                <div class="rte">
+                  {{- block.settings.content -}}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</main>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "static-section-faq",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show-breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Want to know anything else?"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Save yourself the time and trouble of writing the same email over and over again by listing your most commonly asked questions and answers here. A dedicated FAQ page should help address the basic needs of your customers, cutting down on customer service emails, increasing conversions, and creating a more satisfying shopping experience!</p>"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "faq",
+        "settings": {
+          "title": "Can I track my order?",
+          "content": "<p>Save yourself the time and trouble of writing the same email over and over again by listing your most commonly asked questions and answers here. A dedicated FAQ page should help address the basic needs of your customers, cutting down on customer service emails, increasing conversions, and creating a more satisfying shopping experience!</p>"
+        }
+      },
+      {
+        "type": "faq",
+        "settings": {
+          "title": "Where do you ship to?",
+          "content": "<p>Save yourself the time and trouble of writing the same email over and over again by listing your most commonly asked questions and answers here. A dedicated FAQ page should help address the basic needs of your customers, cutting down on customer service emails, increasing conversions, and creating a more satisfying shopping experience!</p>"
+        }
+      },
+      {
+        "type": "faq",
+        "settings": {
+          "title": "What are your shipping rates?",
+          "content": "<p>Save yourself the time and trouble of writing the same email over and over again by listing your most commonly asked questions and answers here. A dedicated FAQ page should help address the basic needs of your customers, cutting down on customer service emails, increasing conversions, and creating a more satisfying shopping experience!</p>"
+        }
+      }
+    ]
+  }
+}
+
+{% endschema %}

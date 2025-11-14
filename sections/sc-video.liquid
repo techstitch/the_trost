@@ -1,0 +1,151 @@
+{% liquid
+  assign has_blocks = false
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_blocks = true
+      break
+    endif
+  endfor
+%}
+
+<div class="sc-video-wrapper sc-video-wrapper--video-{{ section.settings.video_position }}{% unless has_blocks %} sc-video-wrapper--full-width{% endunless %}">
+  <div class="sc-video-column sc-video-column--video">
+    {% if section.settings.video %}
+      <div class="sc-video">
+        <video autoplay muted loop playsinline>
+          {% for source in section.settings.video.sources %}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {% endfor %}
+        </video>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if has_blocks %}
+    <div class="sc-video-column sc-video-column--blocks">
+      <div class="sc-video-blocks">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when '@app' %}
+              <div class="sc-video-app-block" {{ block.shopify_attributes }}>
+                {% render block %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .sc-video-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .sc-video-wrapper--video-left {
+    flex-direction: row;
+  }
+
+  .sc-video-wrapper--video-right {
+    flex-direction: row-reverse;
+  }
+
+  .sc-video-wrapper--full-width {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .sc-video-wrapper--full-width .sc-video-column--video {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .sc-video-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sc-video {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .sc-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sc-video-column--blocks {
+    padding: 2rem;
+  }
+
+  .sc-video-blocks {
+    width: 100%;
+  }
+
+  .sc-video-app-block {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .sc-video-wrapper {
+      flex-direction: column !important;
+      gap: 1rem;
+    }
+
+    .sc-video-column--blocks {
+      padding: 1rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SCVideo",
+  "class": "shopify-section--sc-video content-area",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "select",
+      "id": "video_position",
+      "label": "Video position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SC Video",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}

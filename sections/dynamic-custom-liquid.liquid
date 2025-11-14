@@ -1,0 +1,34 @@
+<script
+  type="application/json"
+  data-section-type="custom-liquid"
+  data-section-id="{{ section.id }}"
+  data-section-index="{{ section.index }}"
+>
+</script>
+
+<section class="home-section content-area">
+  <div class="custom-liquid__wrapper">
+      {{ section.settings.custom_liquid }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom liquid",
+  "class": "shopify-section--custom-liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Liquid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom liquid",
+      "category": "Content"
+    }
+  ]
+}
+
+{% endschema %}

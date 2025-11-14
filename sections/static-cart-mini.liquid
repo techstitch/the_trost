@@ -1,0 +1,223 @@
+{%- capture taxes_shipping_checkout -%}
+  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+    {{ 'cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+  {%- elsif cart.taxes_included -%}
+    {{ 'cart.taxes_included_but_shipping_at_checkout' | t }}
+  {%- elsif shop.shipping_policy.body != blank -%}
+    {{ 'cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+  {%- else -%}
+    {{ 'cart.tax_and_shipping' | t }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<template data-options>
+  {}
+</template>
+
+<template data-html="header">
+  {{ 'layout.mini_cart.heading' | t }}
+</template>
+
+{%- if settings.enable_free_shipping_bar and settings.free_shipping_min_amount != blank and cart.currency.iso_code == shop.currency -%}
+  <template data-html="free-shipping-banner">
+    {%- liquid
+      assign currencies_without_subunits = 'JPY,KRW,ISK,CLP,PYG,CRC,TWD,RWF,UGX'
+
+      assign multiplier = 100
+      if currencies_without_subunits contains shop.currency
+        assign multiplier = 1
+      endif
+
+      assign free_shipping_min_amount = settings.free_shipping_min_amount | times: multiplier
+      assign amount_until_free_shipping = free_shipping_min_amount | minus: cart.items_subtotal_price
+
+      if amount_until_free_shipping > 0
+        assign amount = amount_until_free_shipping | money
+        echo 'layout.mini_cart.free_shipping_ineligible' | t: amount: amount
+      else
+        echo 'layout.mini_cart.free_shipping_eligible' | t
+      endif
+
+      assign progress_percent = cart.items_subtotal_price | times: 100 | divided_by: free_shipping_min_amount
+    -%}
+
+    <div class="free-shipping-banner__progress-container" aria-hidden="true">
+      <div class="free-shipping-banner__progress" style="--width: {{ progress_percent }}%"></div>
+    </div>
+  </template>
+{%- endif -%}
+
+<template data-html="content">
+  <div class="cart-mini-content cart-mini-items" data-cart-mini-content>
+    {% if cart.item_count > 0 %}
+      {% for item in cart.items %}
+        {%- assign item_has_discounts = false -%}
+        {%- if item.line_level_discount_allocations.size > 0 -%}
+          {%- assign item_has_discounts = true -%}
+        {%- endif -%}
+        <div
+          class="cart-mini-item"
+          data-cart-mini-item="{{ item.id }}"
+        >
+          <div class="cart-mini-item-row">
+            <div
+              class="
+                cart-mini-item-column
+                cart-mini-item-column-image
+              "
+            >
+              <figure class="cart-mini-item-image">
+                {%
+                  render 'rimg'
+                  img: item.image,
+                  alt: item.image.alt,
+                  size: '80x',
+                  lazy: false
+                %}
+              </figure>
+            </div>
+
+            <div
+              class="
+                cart-mini-item-column
+                cart-mini-item-column-details
+              "
+            >
+              {% if settings.show-brand-names %}<span class="cart-mini-item-vendor">{{ item.vendor }}</span>{% endif %}
+
+              <span class="cart-mini-item-title">
+                <a href="{{ item.product.url }}">
+                  {{ item.product.title }}
+                </a>
+              </span>
+
+              {%- if item.product.has_only_default_variant == false or item.properties.size != 0 -%}
+                <dl class="cart-mini-item__product-options">
+                  {%- if item.product.has_only_default_variant == false -%}
+                    {%- for option in item.options_with_values -%}
+                      <div class="product-option">
+                        <dt class="product-option__name">
+                          {{- option.name -}}:
+                        </dt>
+                        <dd class="product-option__value">
+                          {{- option.value -}}
+                        </dd>
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+
+                  {%- for property in item.properties -%}
+                    {%- assign property_first_char = property.first | slice: 0 -%}
+                    {%- if property.last != blank and property_first_char != '_' -%}
+                      <div class="product-option">
+                        <dt class="product-option__name">
+                          {{- property.first -}}:
+                        </dt>
+                        <dd class="product-option__value">
+                          {%- if property.last contains '/uploads/' -%}
+                            <a href="{{ property.last }}" target="_blank">
+                              {{- property.last | split: '/' | last -}}
+                            </a>
+                          {%- else -%}
+                            {{- property.last -}}
+                          {%- endif -%}
+                        </dd>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </dl>
+              {%- endif -%}
+
+              {% if item.selling_plan_allocation.selling_plan %}
+                <span class="cart-mini-item-selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</span>
+              {% endif %}
+
+              <span class="cart-mini-item-quantity">{{ 'layout.mini_cart.quantity_item' | t: qty: item.quantity }}</span>
+
+              {%- if item_has_discounts -%}
+                <ul class="cart-mini-item-discounts">
+                  {% for discount_allocation in item.line_level_discount_allocations %}
+                    <li>
+                      {% render 'icon' with 'sale-tag' %}
+                      {{ discount_allocation.discount_application.title }}
+                      (-<span class="money">{{ discount_allocation.amount | money }}</span>)
+                    </li>
+                  {% endfor %}
+                </ul>
+              {%- endif -%}
+
+              <div class="cart-mini-item-details-footer">
+                <div class="cart-mini-item-prices">
+                  {%- if item_has_discounts -%}
+                    <s class="cart-mini-item-original-price cart-mini-item-price money">{{ item.original_line_price | money }}</s>
+                  {%- endif -%}
+                  <span class="cart-mini-item-final-price cart-mini-item-price money">{{ item.final_line_price | money }}</span>
+                  {% if item.unit_price_measurement %}
+                    {% capture total_quantity %}<span>{{ item.unit_price_measurement.quantity_value }}{{ item.unit_price_measurement.quantity_unit }}</span>{% endcapture %}
+                    {% capture unit_price %}<span>{{ item.unit_price | money }}</span>{% endcapture %}
+                    {% capture unit_measure %}<span>{%- if item.unit_price_measurement.reference_value != 1 -%}{{ item.unit_price_measurement.reference_value }}{%- endif %}{{ item.unit_price_measurement.reference_unit }}</span>{% endcapture %}
+
+                    <div class="cart-mini-item__unit-price">
+                      {{ 'products.product.price_per_unit_html' | t: total_quantity: total_quantity, unit_price: unit_price, unit_measure: unit_measure | strip_newlines }}
+                    </div>
+                  {% endif %}
+                </div>
+                <button
+                  class="cart-mini-item-remove"
+                  aria-label="remove"
+                  role="button"
+                  data-cart-mini-item-remove="{{ item.key }}"
+                >
+                  {{ 'layout.mini_cart.remove_item' | t }}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="cart-mini-empty">
+        {{ 'cart.empty' | t }}
+        {%- if settings.enable_continue_shopping -%}
+          {% assign continue_shopping_link = settings.continue_shopping_link | default: routes.all_products_collection_url %}
+          <a class="cart-mini__continue-shopping" href="{{ continue_shopping_link }}">
+            {{ 'cart.continue' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="cart-mini-footer" data-cart-mini-footer>
+    {% if cart.item_count > 0 %}
+      {%- if cart.cart_level_discount_applications.size > 0 -%}
+        <ul class="cart-mini-discounts" data-cart-discounts>
+          {% render 'cart-discounts' %}
+        </ul>
+      {%- endif -%}
+      <div class="cart-mini-subtotal">
+        <span class="cart-mini-subtotal-heading">{{ 'layout.mini_cart.subtotal' | t }}</span>
+        <span class="cart-mini-subtotal-value money">{{ cart.total_price | money }}</span>
+      </div>
+
+      <div class="cart-mini__tax-labels">
+        <p class="cart-mini__tax-labels-text">{{ taxes_shipping_checkout }}</p>
+      </div>
+
+      <div class="cart-mini-actions">
+      <a class="cart-mini-actions-cart action-button desaturated" href="{{ routes.cart_url }}">
+          {{ 'layout.mini_cart.view_cart' | t }}
+        </a>
+        <form class="cart-mini-actions__checkout" action="{{ routes.cart_url }}" method="POST">
+          <button class="cart-mini-actions__checkout-button action-button submit-button" type="submit" name="checkout">
+            {% if settings.enable_checkout_lock_icon %}
+              {% render 'icon' with 'checkout-lock' %}
+            {% endif %}
+            <span>{{ 'layout.mini_cart.checkout' | t }}</span>
+          </button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+</template>

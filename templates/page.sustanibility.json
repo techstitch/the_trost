@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_richtext_JQCLqF": {
+      "type": "dynamic-richtext",
+      "blocks": {
+        "plain_text_m4CzBb": {
+          "type": "plain_text",
+          "settings": {
+            "title": "WE choose hemp",
+            "caption": "<p>To guide us towards a sustainable future</p>"
+          }
+        }
+      },
+      "block_order": [
+        "plain_text_m4CzBb"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px; padding-top: 20px;}",
+        "p {padding-top: -20px;}"
+      ],
+      "settings": {
+        "border": false,
+        "feature-borders": false
+      }
+    },
+    "main": {
+      "type": "static-page",
+      "disabled": true,
+      "settings": {
+        "show_breadcrumbs": false,
+        "title": "",
+        "content": ""
+      }
+    },
+    "dynamic_image_with_text_H9fWFR": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/Renewable_Resource.png",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Renewable Resource",
+        "content": "<p>Hemp stands as an annual crop with an unparalleled growth rate. Not only is it renewable, but its versatility allows it to provide all the fibers necessary to preserve<br/>our natural resources efficiently.</p>"
+      }
+    },
+    "dynamic_image_with_text_qVYby9": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/SEQUESTERS_CARBON.png",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Sequesters Carbon",
+        "content": "<p>Through the miraculous process of photosynthesis, hemp transforms CO2 into cellulose while replenishing our atmosphere with oxygen. Remarkably, hemp absorbs more CO2 per acre than any other agricultural crop, making it a powerful ally in combating<br/>climate change.</p>"
+      }
+    },
+    "dynamic_image_with_text_97zFFw": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Uses_Less_Water.png",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Uses Less Water",
+        "content": "<p>Implementing a drip irrigation system, hemp demonstrates its water-saving prowess by consuming 20% less water per acre compared to cotton. Its extensive root system enables it to reach deep water sources, reducing strain on surface water reservoirs.</p>"
+      }
+    },
+    "dynamic_image_with_text_VG7hJJ": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/Sustainable_Alternative.png",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Sustainable Alternative",
+        "content": "<p>Hemp emerges as a beacon of sustainability, offering a viable alternative to wood, cotton, and petroleum-based products. By adopting hemp, we foster the regeneration of our forests while steering towards safer alternatives to plastics, thus honoring the harmony of nature.</p>"
+      }
+    },
+    "dynamic_image_with_text_EjUjxG": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/BIODEGRADABLE.png",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "Biodegradable",
+        "content": "<p>The journey of <a href=\"https://thetrost.com/collections/\" title=\"https://thetrost.com/collections/\">hemp products</a> concludes with a graceful return to the earth. Cellulose fibers, inherent to hemp, undergo natural decomposition within weeks or months, enriching the soil with vital nutrients. This cycle of renewal underscores hemp's commitment to ecological balance.</p><p>By choosing hemp, we not only invest in a sustainable future but also adopt a lifestyle that prioritizes harmony with the environment. Join us in our commitment to sustainability, one hemp product at a time.</p>"
+      }
+    }
+  },
+  "order": [
+    "dynamic_richtext_JQCLqF",
+    "main",
+    "dynamic_image_with_text_H9fWFR",
+    "dynamic_image_with_text_qVYby9",
+    "dynamic_image_with_text_97zFFw",
+    "dynamic_image_with_text_VG7hJJ",
+    "dynamic_image_with_text_EjUjxG"
+  ]
+}

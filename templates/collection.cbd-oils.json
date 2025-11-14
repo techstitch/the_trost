@@ -1,0 +1,186 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_slideshow_C9ebLJ": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "feature_7ynn7M": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/CBD_oil_Sleep_Well_lifestyle.webp",
+            "slide_title": "CBD Oil",
+            "caption": "Buy Cannabis Leaf Extract Oils (CBD Oil) in India for pain, anxiety, and more..",
+            "button": "",
+            "link": "",
+            "alignment": "center-center",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "feature_7ynn7M"
+      ],
+      "custom_css": [
+        ".home-section {padding: 0px; margin: 0px;}"
+      ],
+      "settings": {
+        "desktop_height": "small",
+        "mobile_height": "natural",
+        "full-width": true,
+        "parallax": false,
+        "autoplay_enable": false,
+        "transition": "slide",
+        "autoplay_interval": 5
+      }
+    },
+    "main": {
+      "type": "static-collection",
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true,
+        "show-collection-image": false,
+        "rows": 11,
+        "products_per_row": 3,
+        "enable-sorting": true,
+        "enable_filter": true,
+        "collection-sidebar": true,
+        "collection-sidebar-menu": "",
+        "pagination-style": "jump-to-page"
+      }
+    },
+    "dynamic_image_with_text_GrPcH6": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": true,
+        "image": "shopify://shop_images/What_is_Cannabis_Leaf_Extract_Oil_or_CBD_Oil.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What is CBD Oil?",
+        "content": "<p>Cannabis leaf extract oil, commonly known as cannabis oil or CBD oil, is derived from the cannabis plant, boasting high concentrations of cannabinoids like THC and CBD. </p><p>Trost employs Swiss technology to extract essential oils and cannabinoids from plant leaves, ensuring a therapeutic, low psychoactive product.</p><p>CBD consumption can alleviate chronic pain, anxiety, and stress via oral, topical, or inhalation methods. </p><p>Abide by all relevant laws and regulations when using or purchasing cannabis oil since the <a href=\"https://thetrost.com/blogs/blogs/cbd-oil-is-legal-in-india\" target=\"_blank\" title=\"legality of cannabis\">legality of cannabis</a> differs from state to country.</p>"
+      }
+    },
+    "dynamic_image_with_text_bqhWdk": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/What_is_Cannabis_Leaf_Extract_Oil_or_CBD_Oil_1.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "What are the benefits of CBD oil?",
+        "content": "<p>Explore the potential therapeutic benefits of Cannabis leaf extract oil-</p><p><strong>Pain relief:</strong> The analgesic properties in CBD Oil has the potential to cure conditions, such as arthritis, neuropathic pain, and migraines.</p><p><strong>Reduced Inflammation:</strong> CBD oil contains anti-inflammatory compounds that can help reduce inflammation in the body.</p><p><strong>Nausea and Vomiting Relief:</strong> The major symptoms of chemotherapy and radiation therapy are nausea and vomiting which can be alleviated by CBD oil consumption</p><p><strong>Sleep and Insomnia:</strong> CBD helps in reducing time taken to fall asleep due to sleep promoting properties and manages insomnia </p><p><strong>Chemotherapy and IBS:</strong> CBD consumption stands beneficial for individuals with irritable bowel syndrome (IBS) and chemotherapy symptoms like vomiting and nausea.</p>"
+      }
+    },
+    "dynamic_image_with_text_q8Hbgw": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/What_are_the_benefits_of_Cannabis_Leaf_Extract_Oil.webp",
+        "alignment": "left",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "How to use Cannabis Leaf Extract Oil?",
+        "content": "<p>Cannabis leaf extract oil can be used in a variety of ways, depending on the intended purpose. Some common methods of using cannabis oil:</p><p><strong>Oral Ingestion</strong>: Cannabis oil can be consumed orally by mixing it with food or drinks, or by using it directly under the tongue. This method is effective for treating conditions such as pain, anxiety, and depression.</p><p><strong>Topical Application</strong>: Cannabis oil can be applied topically to the skin for localized pain relief and inflammation reduction.</p><p><strong>Cooking and Baking</strong>: Cannabis oil can be added to recipes and used for cooking or baking. This method allows for cannabinoids to be consumed orally.</p><p>It is also recommended to <a href=\"https://thetrost.com/products/consult-online-ayurvedic-doctors-near-me\" title=\"consult with a healthcare professional\">consult with a healthcare professional</a> before using cannabis oil for any medical condition.</p>"
+      }
+    },
+    "dynamic_image_with_text_MDBmKr": {
+      "type": "dynamic-image-with-text",
+      "custom_css": [
+        ".picture-block-content {max-width: 80%; text-align: left;}",
+        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
+      ],
+      "settings": {
+        "margin": false,
+        "image": "shopify://shop_images/How_to_get_Cannabis_Leaf_Extract_Oil_In_India.webp",
+        "alignment": "right",
+        "desktop_height": "natural",
+        "mobile_height": "natural",
+        "parallax": false,
+        "title": "How to get Cannabis Leaf Extract Oil In India?",
+        "content": "<p>Do not compromise with the quality of cbd oil you purchase. Make sure to consult a professional beforehand and purchase it from a reliable source who ensures the quality, purity and safety.</p><p>The Trost is known for the purity in products because<br/>of the methods adopted. The key natural ingredients are sourced from the valley of Switzerland and extracted through high-end Swiss technology.</p><p>Buy cbd oil directly from our website.</p>"
+      }
+    },
+    "dynamic_faq_BnxPJx": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "faq_zCcjrn": {
+          "type": "faq",
+          "settings": {
+            "title": "Is CBD oil legal in India?",
+            "content": "<p>The legality of cbd oil varies by country and state. In India, some forms of cannabis use are permitted for medicinal and scientific purposes, with proper authorization and under government regulation.</p>"
+          }
+        },
+        "faq_WgDECj": {
+          "type": "faq",
+          "settings": {
+            "title": "Are there any side effects of using cannabis leaf extract oil?",
+            "content": "<p>CBD oil does not have such complications as allopathy medicines. However, some common side effects include dry mouth, dizziness, and changes in appetite or mood.</p>"
+          }
+        },
+        "faq_EbnUDz": {
+          "type": "faq",
+          "settings": {
+            "title": "Can you get high from using cbd oil?",
+            "content": "<p>Cannabis leaf extract oil can contain THC, the psychoactive compound in <a href=\"https://thetrost.com/blogs/blogs/is-cbd-addictive-a-guide-to-truth\" target=\"_blank\" title=\"cannabis that can cause a high\">cannabis that can cause a high</a>. However, whether or not it does depends on the extraction process and the amount of THC present in the oil.</p>"
+          }
+        },
+        "faq_dFpV8y": {
+          "type": "faq",
+          "settings": {
+            "title": "How long does it take for cannabis oil to work?",
+            "content": "<p>The time it takes for CBD oil to work can vary depending on the method of consumption and the individual's metabolism. Inhalation methods, such as smoking or vaping, may produce effects within minutes, while oral consumption may take longer to take effect.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_zCcjrn",
+        "faq_WgDECj",
+        "faq_EbnUDz",
+        "faq_dFpV8y"
+      ],
+      "custom_css": [
+        ".home-section {position: relative; padding-top: 60px; margin-top: 0px;}",
+        "h2 {font-size: 28px; padding-bottom: 20px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "show_border": false
+      }
+    }
+  },
+  "order": [
+    "dynamic_slideshow_C9ebLJ",
+    "main",
+    "dynamic_image_with_text_GrPcH6",
+    "dynamic_image_with_text_bqhWdk",
+    "dynamic_image_with_text_q8Hbgw",
+    "dynamic_image_with_text_MDBmKr",
+    "dynamic_faq_BnxPJx"
+  ]
+}
