@@ -34,7 +34,7 @@
     "media_borders": false,
     "show-brand-names": false,
     "show_atc": true,
-    "show_product_secondary_image": true,
+    "show_product_secondary_image": false,
     "enable_product_details_overlay": false,
     "product_grid_aspect_ratio": "default",
     "enable-quick-shop": false,
