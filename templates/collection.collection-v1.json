@@ -9,39 +9,10 @@
  */
 {
   "sections": {
-    "dynamic_slideshow_C9ebLJ": {
-      "type": "dynamic-slideshow",
-      "blocks": {
-        "feature_7ynn7M": {
-          "type": "feature",
-          "settings": {
-            "image": "{{ collection.image }}",
-            "slide_title": "{{ collection.title }}",
-            "caption": "Enhance well-being with Trost Hemp Herbal Cigarettes, featuring a range of delightful variants.",
-            "button": "",
-            "link": "",
-            "alignment": "center-center",
-            "show_overlay": true,
-            "background": "#000000",
-            "opacity": 20
-          }
-        }
-      },
-      "block_order": [
-        "feature_7ynn7M"
-      ],
-      "custom_css": [
-        ".home-section {padding: 0px; margin: 0px;}"
-      ],
-      "settings": {
-        "desktop_height": "small",
-        "mobile_height": "natural",
-        "full-width": true,
-        "parallax": false,
-        "autoplay_enable": false,
-        "transition": "slide",
-        "autoplay_interval": 5
-      }
+    "collection_banner_AqHQ73": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {}
     },
     "main": {
       "type": "static-collection",
@@ -192,7 +163,7 @@
     }
   },
   "order": [
-    "dynamic_slideshow_C9ebLJ",
+    "collection_banner_AqHQ73",
     "main",
     "dynamic_image_with_text_GrPcH6",
     "dynamic_image_with_text_bqhWdk",
