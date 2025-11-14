@@ -37,7 +37,7 @@
     "show_product_secondary_image": true,
     "enable_product_details_overlay": false,
     "product_grid_aspect_ratio": "default",
-    "enable-quick-shop": false,
+    "enable-quick-shop": true,
     "facebook-url": "https://www.facebook.com/Thetrostofficial/",
     "instagram-url": "https://www.instagram.com/thetrostofficial/",
     "linkedin-url": "https://www.linkedin.com/company/thetrostofficial",
