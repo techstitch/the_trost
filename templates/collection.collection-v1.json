@@ -21,12 +21,12 @@
         "show_breadcrumbs": true,
         "show-collection-image": false,
         "rows": 11,
-        "products_per_row": 3,
-        "enable-sorting": true,
-        "enable_filter": true,
-        "collection-sidebar": true,
+        "products_per_row": 4,
+        "enable-sorting": false,
+        "enable_filter": false,
+        "collection-sidebar": false,
         "collection-sidebar-menu": "",
-        "pagination-style": "jump-to-page"
+        "pagination-style": "standard"
       }
     },
     "dynamic_image_with_text_GrPcH6": {

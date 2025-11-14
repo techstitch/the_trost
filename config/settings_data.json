@@ -1,1 +1,570 @@
-{"current":{"background-colour":"#ffffff","primary-border-colour":"#ebebeb","text-colour":"#141416","title-colour":"#141416","accent-colour":"#141416","button-text-colour":"#ffffff","logotype-link-colour":"#141416","header-action-link-colour":"#141416","nav-link-colour":"#141416","nav-link-dropdown-colour":"#141416","nav-background-colour":"#f2f2ea","nav-border-colour":"#dddddd","font_body":"montserrat_n4","font_headings":"montserrat_n6","font_headings_captialize":false,"font_headings_secondary":"montserrat_n4","font_accent":"montserrat_n4","favicon":"shopify:\/\/shop_images\/trost_motif-01.png","variant_options_style":"radio","show_quantity_selector":true,"show_payment_button":true,"enable_cart_redirection":false,"media_borders":true,"show-brand-names":true,"show_atc":false,"show_product_secondary_image":true,"enable_product_details_overlay":false,"product_grid_aspect_ratio":"default","enable-quick-shop":false,"facebook-url":"https:\/\/www.facebook.com\/Thetrostofficial\/","instagram-url":"https:\/\/www.instagram.com\/thetrostofficial\/","linkedin-url":"https:\/\/www.linkedin.com\/company\/thetrostofficial","enable_checkout_lock_icon":true,"checkout_accent_color":"#bf5b05","checkout_button_color":"#bf5b05","checkout_logo_size":"small","sections":{"static-header":{"type":"static-header","settings":{"image":"shopify:\/\/shop_images\/logo_88311a2a-10fe-46df-8f07-c7519617704f.png","header-layout":"minimal-sticky","center-header":true,"social-icons":false,"show-labels":false,"cart-icon":"cart","live_search_enabled":true,"menu":"main-menu","top-level-columns":"two-columns"}},"pxs-announcement-bar":{"type":"pxs-announcement-bar","settings":{"show_announcement":false,"announcement_home_only":false,"announcement_text":"👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Ayurvedic Doctor's🩺","announcement_text_mobile":"👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Doctor 🩺","announcement_link":"shopify:\/\/collections\/all","announcement_color":"#ffffff","announcement_background":"#1f1e1e"}},"static-footer":{"type":"static-footer","settings":{"footer-mailing-list":true,"footer-alternate":false,"footer-secondary-menu":"","show_locale_selector":true,"show_currency_selector":true,"footer-payment-options":false}},"static-faq":{"type":"static-faq","blocks":{"static-faq-0":{"type":"faq","settings":{"title":"What delivery choices are available?","content":"<ol><li><strong>Free Delivery:<\/strong> Enjoy free delivery on prepaid orders to almost all pin codes in India, serviced by our delivery partners Shiprocket.<\/li><li><strong>Same Day Delivery in NCR:<\/strong> For the National Capital Region, we offer same-day delivery through Borzo\/Wefast. Delivery charges vary based on your pin code and are borne by the customer.<\/li><li><strong>Pick-Up Option:<\/strong> If you prefer, you can also pick up your products from our dispatching offices in Delhi, Ghaziabad, and Bangalore. To choose this option, please inform our customer support at (+91 9842040040) and specify not to dispatch the product via Shiprocket.<\/li><\/ol>"}},"static-faq-1":{"type":"faq","settings":{"title":"Where do you ship to?","content":"<p>We currently ship within India. Check your location's availability during checkout. For any queries, contact our customer support.<\/p>"}},"static-faq-2":{"type":"faq","settings":{"title":"What are your shipping rates?","content":"<p>We offer free shipping for prepaid orders across India. If you choose the cash on delivery option, there is a flat fee of ₹60.<\/p>"}},"7638a251-5f24-40bc-ad4f-57663f36740c":{"type":"faq","settings":{"title":"How do I track my order?","content":"<p>Shiprocket will notify you via WhatsApp once your order has been dispatched from our New Delhi dispatching office. They will also share a tracking link with you. If you haven't received the tracking link, please reach out to our support line at (+91 9842040040), and they will assist you in obtaining the tracking information.<\/p>"}},"4031d885-092c-43e4-a2d3-8af5e64640eb":{"type":"faq","settings":{"title":"How soon will I receive my order?","content":"<p>The delivery time for your order depends on your location. Typically, orders shipped to Delhi are delivered the next day during regular days. For regions farther away, the delivery timeframe may extend to 2-3 days or 4-5 days, ensuring your order reaches you as efficiently as possible. Please keep in mind that these are general estimates, and actual delivery times may vary.<\/p>"}}},"block_order":["static-faq-0","static-faq-1","static-faq-2","7638a251-5f24-40bc-ad4f-57663f36740c","4031d885-092c-43e4-a2d3-8af5e64640eb"],"settings":{"show-breadcrumbs":true}},"static-product-recommendations":{"type":"static-product-recommendations","settings":{"show_product_recommendations":true,"product_recommendations_heading":"You may also like"}}},"content_for_index":[],"blocks":{"10191866119664032810":{"type":"shopify:\/\/apps\/1-click-sticky-add-to-cart\/blocks\/zoorix-head\/16cf6adc-8b22-4e73-be2b-b93c1acde1da","disabled":false,"settings":{}},"5605512628948384502":{"type":"shopify:\/\/apps\/bundles-upsell-pickystory\/blocks\/customer-info\/f54ff67e-3f69-4df2-845e-7476ce633252","disabled":true,"settings":{}},"15557474716127144420":{"type":"shopify:\/\/apps\/kaching-bundle-quantity-breaks\/blocks\/app-embed-block\/6c637362-a106-4a32-94ac-94dcfd68cdb8","disabled":false,"settings":{}},"14060646107696862457":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","disabled":false,"settings":{}},"15683396631634586217":{"type":"shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b","disabled":true,"settings":{"button_color":"#202a36","button_icon":"chat_bubble","button_text":"chat_with_us","button_horizontal_position":"bottom_right","button_vertical_position":"lowest","greeting_message":"👋 Hi, message us with any questions. We're happy to help!"}},"7155349627714823297":{"type":"shopify:\/\/apps\/file-uploads-by-uploadkit\/blocks\/app-embed-block\/d7b05810-6170-4288-808a-df45248c4d28","disabled":false,"settings":{}},"10746902591489815047":{"type":"shopify:\/\/apps\/rt-google-fonts-custom-fonts\/blocks\/app-embed\/2caf2c68-0038-455e-b0b9-066a7c2ad923","disabled":false,"settings":{}},"4015264832934714879":{"type":"shopify:\/\/apps\/ecomsend-popups\/blocks\/app\/a5670cf8-5705-4b01-ad9e-447033feae26","disabled":false,"settings":{}},"5059203847231188605":{"type":"shopify:\/\/apps\/smart-product-filter-search\/blocks\/app-embed\/5cc1944c-3014-4a2a-af40-7d65abc0ef73","disabled":false,"settings":{"productGridSelector":"","useCustomQuickviewTemplate":false,"customJs":"","customCss":"","customProductTemplateLoader":"{%- capture productTemplate -%}{% render 'globo.filter.product', themeTranslation: shop.metafields.globoFilter.themeTranslation.value[request.locale.iso_code] %}{%- endcapture -%}{%- unless productTemplate contains 'Liquid error' -%}<script id=\"gspfProduct\" type=\"template\/html\">{{- productTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}","customTreeTemplateLoader":"{%- capture treeTemplate -%}{% render 'globo.filter.tree' %}{%- endcapture -%}{%- unless treeTemplate contains 'Liquid error' -%}<script id=\"gspfFilterTree\" type=\"template\/html\">{{- treeTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}","customSortTemplateLoader":"{%- capture sortTemplate -%}{% render 'globo.filter.sort' %}{%- endcapture -%}{%- unless sortTemplate contains 'Liquid error' -%}<script id=\"gspfFilterSort\" type=\"template\/html\">{{- sortTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}","customSearchTemplateLoader":"{%- capture searchTemplate -%}{% render 'globo.filter.search' %}{%- endcapture -%}{%- unless searchTemplate contains 'Liquid error' -%}<script id=\"gspfSearchResult\" type=\"template\/html\">{{- searchTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}","customPaginationTemplateLoader":"{%- capture paginationTemplate -%}{% render 'globo.filter.pagination' %}{%- endcapture -%}{%- unless paginationTemplate contains 'Liquid error' -%}<script id=\"gspfPagination\" type=\"template\/html\">{{- paginationTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}","customYMMTemplateLoader":"{%- capture YMMTemplate -%}{% render 'globo.filter.form' %}{%- endcapture -%}{%- unless YMMTemplate contains 'Liquid error' -%}<script id=\"gspfForm\" type=\"template\/html\">{{- YMMTemplate | replace: \"script>\", \"scripttag>\" -}}<\/script>{%- endunless -%}"}},"6052823664294247695":{"type":"shopify:\/\/apps\/qikify-form-builder\/blocks\/app-embed\/753fa0d7-50d4-480a-b094-cff26e632c36","disabled":true,"settings":{}},"6237893613548423713":{"type":"shopify:\/\/apps\/amplify-bundles-upsell\/blocks\/main-widget-loader-script\/f54ff67e-3f69-4df2-845e-7476ce633252","disabled":true,"settings":{}},"13057770590969753118":{"type":"shopify:\/\/apps\/instafeed-story\/blocks\/app-embed\/4169bff3-1d6b-44ad-9377-2ebc3d31f01c","disabled":true,"settings":{}},"9356323809658795675":{"type":"shopify:\/\/apps\/reelup-shoppable-videos-reels\/blocks\/reelup\/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b","disabled":true,"settings":{"debugging_global_script":"","enable_reelPops":false}},"8847685616676869210":{"type":"shopify:\/\/apps\/webrex-announcement\/blocks\/app-embed\/3494d573-4520-4d27-b2eb-ba0554423f65","disabled":true,"settings":{}}}},"presets":{"Atlantic":{"accent-colour":"#4d6055","accent-hover-colour":"#3b4941","alt-product-card":false,"background-colour":"#ffffff","button-text-colour":"#ffffff","cart_message_color_scheme":"accent","checkout_accent_color":"#197bbd","checkout_body_background_color":"#fff","checkout_body_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_button_color":"#197bbd","checkout_error_color":"#e32c2b","checkout_heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_input_background_color_mode":"white","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_sidebar_background_color":"#fafafa","currency_converter_currencies":"INR GBP CAD USD AUD EUR JPY","currency_converter_default":"USD","currency_display_format":"money_with_currency_format","currency-switcher-default":"USD","currency-switcher-format":"money_format","currency-switcher-supported-currencies":"CAD USD EUR GBP AUD","enable_cart_message":true,"enable_checkout_lock_icon":false,"enable_currency_converter":true,"enable_free_shipping_bar":true,"enable_product_details_overlay":false,"enable-quick-shop":true,"font_accent":"lato_n4","font_body":"nunito_sans_n4","font_headings_captialize":false,"font_headings_secondary":"lato_n4","font_headings":"crimson_text_n4","free_shipping_min_amount":"300","header-action-link-colour":"#4d5852","header-action-link-hover-colour":"#39423d","image-borders":false,"in-stock-colour":"#4d6055","logotype-link-colour":"#39423d","logotype-link-hover-colour":"#4d6055","low-stock-colour":"#be5e73","media_borders":false,"nav-background-colour":"#4d6055","nav-border-colour":"#d4d4d4","nav-link-colour":"#4d5852","nav-link-dropdown-colour":"#ffffff","nav-link-hover-colour":"#4d6055","primary-border-colour":"#d4d4d4","product_grid_aspect_ratio":"taller","quickshop_enable_cart_redirect":false,"quickshop_fitting_guide_icon":"shirt","quickshop_gallery_enable_image_zoom":true,"quickshop_gallery_enable_video_autoplay":true,"quickshop_gallery_enable_video_looping":true,"quickshop_gallery_layout":"list","quickshop_image_zoom":true,"quickshop_show_spb":false,"quickshop_show_variant_sku":false,"quickshop_social_sharing_buttons":true,"quickshop_variant_options_style":"select","quickshop-product-email-link":false,"quickshop-product-quantity-option":true,"quickshop-thumb-orientation":"left","show_atc":true,"show_payment_button":true,"show_product_secondary_image":true,"show_quantity_selector":false,"show-brand-names":false,"show-currency-switcher":true,"show-mailing-list":true,"text-colour":"#39423d","title-colour":"#39423d"},"Plush":{"accent-colour":"#e2472f","accent-hover-colour":"#3b4941","background-colour":"#ffffff","button-text-colour":"#ffffff","cart_message_color_scheme":"accent","checkout_accent_color":"#86ac92","checkout_button_color":"#e2472f","checkout_error_color":"#e2472f","checkout_logo_position":"left","checkout_logo_size":"small","checkout_sidebar_background_color":"#fffaec","enable_cart_message":true,"enable_free_shipping_bar":true,"enable_product_details_overlay":false,"font_accent":"lato_n4","font_body":"lato_n4","font_headings_secondary":"nunito_sans_n4","font_headings":"poppins_n5","free_shipping_min_amount":"50","header-action-link-colour":"#1e1e1e","header-action-link-hover-colour":"#39423d","in-stock-colour":"#289e28","logotype-link-colour":"#1e1e1e","logotype-link-hover-colour":"#4d6055","low-stock-colour":"#e2472f","media_borders":true,"nav-background-colour":"#fffaec","nav-border-colour":"#ebebeb","nav-link-colour":"#1e1e1e","nav-link-dropdown-colour":"#1e1e1e","nav-link-hover-colour":"#4d6055","primary-border-colour":"#ebebeb","product_grid_aspect_ratio":"square","show_quantity_selector":true,"show-brand-names":false,"text-colour":"#1e1e1e","title-colour":"#1e1e1e"},"Cotton":{"accent-colour":"#1b1e3f","background-colour":"#ffffff","button-text-colour":"#ffffff","cart_message_color_scheme":"accent","checkout_accent_color":"#1b1e3f","checkout_body_background_color":"#fff","checkout_body_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_button_color":"#1b1e3f","checkout_error_color":"#e32c2b","checkout_heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_input_background_color_mode":"white","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_sidebar_background_color":"#e8e8e8","currency_converter_currencies":"INR GBP CAD USD AUD EUR JPY","currency_converter_default":"USD","currency_display_format":"money_with_currency_format","currency-switcher-default":"USD","currency-switcher-format":"money_with_currency_format","currency-switcher-supported-currencies":"USD CAD EUR GBP AUD","enable_cart_message":true,"enable_checkout_lock_icon":false,"enable_currency_converter":true,"enable_free_shipping_bar":true,"enable_product_details_overlay":false,"enable-quick-shop":true,"font_accent":"jost_n4","font_body":"serif","font_headings_captialize":false,"font_headings_secondary":"jost_n4","font_headings":"libre_caslon_text_n4","free_shipping_min_amount":"300","header-action-link-colour":"#1b1e3f","image-borders":false,"logotype-link-colour":"#222222","media_borders":false,"nav-background-colour":"#1b1e3f","nav-border-colour":"#dddddd","nav-link-colour":"#222222","nav-link-dropdown-colour":"#ffffff","primary-border-colour":"#eeeeee","product_grid_aspect_ratio":"default","quickshop_enable_cart_redirect":false,"quickshop_fitting_guide_icon":"shirt","quickshop_fitting_guide_url":"frontpage","quickshop_gallery_enable_image_zoom":true,"quickshop_gallery_enable_video_autoplay":true,"quickshop_gallery_enable_video_looping":true,"quickshop_gallery_layout":"list","quickshop_image_zoom":true,"quickshop_show_spb":true,"quickshop_show_variant_sku":false,"quickshop_social_sharing_buttons":false,"quickshop_variant_options_style":"select","quickshop-product-email-link":true,"quickshop-product-quantity-option":true,"quickshop-thumb-orientation":"left","show_atc":true,"show_product_secondary_image":true,"show_quantity_selector":true,"show-brand-names":true,"show-currency-switcher":true,"show-mailing-list":true,"text-colour":"#222222","title-colour":"#000000","variant_options_style":"radio"},"Atrium":{"accent-colour":"#713434","background-colour":"#fefefe","button-text-colour":"#ffffff","cart_message_color_scheme":"contrast","checkout_accent_color":"#197bbd","checkout_body_background_color":"#fff","checkout_body_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_button_color":"#197bbd","checkout_error_color":"#e32c2b","checkout_heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_input_background_color_mode":"white","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_sidebar_background_color":"#fafafa","currency_converter_currencies":"INR GBP CAD USD AUD EUR JPY","currency_converter_default":"USD","currency_display_format":"money_with_currency_format","currency-switcher-default":"USD","currency-switcher-format":"money_format","currency-switcher-supported-currencies":"CAD USD GBP EUR AUD","enable_cart_message":true,"enable_checkout_lock_icon":false,"enable_currency_converter":true,"enable_free_shipping_bar":true,"enable_product_details_overlay":false,"enable-quick-shop":true,"font_accent":"jost_n4","font_body":"jost_n3","font_headings_captialize":false,"font_headings_secondary":"jost_n4","font_headings":"jost_n4","free_shipping_min_amount":"750","header-action-link-colour":"#4b4b4b","image-borders":false,"logotype-link-colour":"#713434","low-stock-colour":"#713434","media_borders":false,"nav-background-colour":"#713434","nav-border-colour":"#ebebeb","nav-link-colour":"#606060","nav-link-dropdown-colour":"#ffffff","primary-border-colour":"#ebebeb","product_grid_aspect_ratio":"square","quickshop_enable_cart_redirect":false,"quickshop_fitting_guide_icon":"shirt","quickshop_gallery_enable_image_zoom":true,"quickshop_gallery_enable_video_autoplay":true,"quickshop_gallery_enable_video_looping":true,"quickshop_gallery_layout":"list","quickshop_image_zoom":true,"quickshop_show_spb":true,"quickshop_show_variant_sku":false,"quickshop_social_sharing_buttons":false,"quickshop_variant_options_style":"select","quickshop-product-email-link":true,"quickshop-product-quantity-option":true,"quickshop-thumb-orientation":"below","show_atc":false,"show_product_secondary_image":true,"show-brand-names":true,"show-currency-switcher":true,"show-mailing-list":true,"text-colour":"#606060","title-colour":"#4b4b4b"},"Parfum":{"accent-colour":"#4a454b","background-colour":"#ffffff","button-text-colour":"#ffffff","cart_message_color_scheme":"contrast","checkout_accent_color":"#197bbd","checkout_body_background_color":"#fff","checkout_body_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_button_color":"#197bbd","checkout_error_color":"#e32c2b","checkout_heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_input_background_color_mode":"white","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_sidebar_background_color":"#fafafa","currency_converter_currencies":"INR GBP CAD USD AUD EUR JPY","currency_converter_default":"USD","currency_display_format":"money_with_currency_format","currency-switcher-default":"USD","currency-switcher-format":"money_format","currency-switcher-supported-currencies":"USD CAD EUR GBP AUD","enable_cart_message":true,"enable_checkout_lock_icon":false,"enable_currency_converter":true,"enable_free_shipping_bar":true,"enable_product_details_overlay":false,"enable-quick-shop":true,"font_accent":"instrument_sans_n4","font_body":"instrument_sans_n4","font_headings_captialize":false,"font_headings_secondary":"instrument_sans_n4","font_headings":"libre_franklin_n5","free_shipping_min_amount":"75","header-action-link-colour":"#1d1c1e","image-borders":false,"in-stock-colour":"#4a454b","logotype-link-colour":"#1d1c1e","low-stock-colour":"#840e0e","media_borders":false,"nav-background-colour":"#4a454b","nav-border-colour":"#dedede","nav-link-colour":"#1d1c1e","nav-link-dropdown-colour":"#ffffff","primary-border-colour":"#dedede","product_grid_aspect_ratio":"default","quickshop_enable_cart_redirect":false,"quickshop_fitting_guide_icon":"ruler","quickshop_gallery_enable_image_zoom":true,"quickshop_gallery_enable_video_autoplay":true,"quickshop_gallery_enable_video_looping":true,"quickshop_gallery_layout":"list","quickshop_image_zoom":false,"quickshop_show_spb":false,"quickshop_show_variant_sku":false,"quickshop_social_sharing_buttons":false,"quickshop_variant_options_style":"select","quickshop-product-email-link":false,"quickshop-product-quantity-option":false,"quickshop-thumb-orientation":"left","show_atc":true,"show_payment_button":false,"show_product_secondary_image":false,"show-brand-names":true,"show-currency-switcher":true,"show-mailing-list":true,"text-colour":"#676767","title-colour":"#1d1c1e","variant_options_style":"radio"}},"platform_customizations":{"custom_css":[".reputon-testimonials-widget .reviews-holder--1wrGp .reviews-footer--b0D19 {padding: 15px; width: 100%; display: none;}",".product__price .money--last {margin-right: 14px; font-size: 30px;}",".slide .content .tagline {transition-delay: 0.5s; font-size: 15px; line-height: 1.5em;}",".slide .content .title {font-size: 30px; margin-bottom: 10px;}","body {font-family: \"Montserrat\";}",".reelUp_popup_accordion {display: none;}",".mycolumn {padding-left: 10px; padding-right: 10px;}",".gl-card-title a {color: #bf5b05; font-weight: 600;}",".gf-search-item-product-vendor {display: none;}"]}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "background-colour": "#ffffff",
+    "primary-border-colour": "#ebebeb",
+    "text-colour": "#141416",
+    "title-colour": "#141416",
+    "accent-colour": "#141416",
+    "button-text-colour": "#ffffff",
+    "logotype-link-colour": "#141416",
+    "header-action-link-colour": "#141416",
+    "nav-link-colour": "#141416",
+    "nav-link-dropdown-colour": "#141416",
+    "nav-background-colour": "#f2f2ea",
+    "nav-border-colour": "#dddddd",
+    "font_body": "montserrat_n4",
+    "font_headings": "montserrat_n6",
+    "font_headings_captialize": false,
+    "font_headings_secondary": "montserrat_n4",
+    "font_accent": "montserrat_n4",
+    "favicon": "shopify://shop_images/trost_motif-01.png",
+    "variant_options_style": "radio",
+    "show_quantity_selector": true,
+    "show_payment_button": true,
+    "enable_cart_redirection": false,
+    "media_borders": true,
+    "show-brand-names": true,
+    "show_atc": true,
+    "show_product_secondary_image": true,
+    "enable_product_details_overlay": false,
+    "product_grid_aspect_ratio": "default",
+    "enable-quick-shop": false,
+    "facebook-url": "https://www.facebook.com/Thetrostofficial/",
+    "instagram-url": "https://www.instagram.com/thetrostofficial/",
+    "linkedin-url": "https://www.linkedin.com/company/thetrostofficial",
+    "enable_checkout_lock_icon": true,
+    "checkout_accent_color": "#bf5b05",
+    "checkout_button_color": "#bf5b05",
+    "checkout_logo_size": "small",
+    "sections": {
+      "static-header": {
+        "type": "static-header",
+        "settings": {
+          "image": "shopify://shop_images/logo_88311a2a-10fe-46df-8f07-c7519617704f.png",
+          "header-layout": "minimal-sticky",
+          "center-header": true,
+          "social-icons": false,
+          "show-labels": false,
+          "cart-icon": "cart",
+          "live_search_enabled": true,
+          "menu": "main-menu",
+          "top-level-columns": "two-columns"
+        }
+      },
+      "pxs-announcement-bar": {
+        "type": "pxs-announcement-bar",
+        "settings": {
+          "show_announcement": false,
+          "announcement_home_only": false,
+          "announcement_text": "👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Ayurvedic Doctor's🩺",
+          "announcement_text_mobile": "👉🏼Exciting News🎉: Enjoy Free Shipping on All Orders! 🚚 & Free Consultation with Doctor 🩺",
+          "announcement_link": "shopify://collections/all",
+          "announcement_color": "#ffffff",
+          "announcement_background": "#1f1e1e"
+        }
+      },
+      "static-footer": {
+        "type": "static-footer",
+        "settings": {
+          "footer-mailing-list": true,
+          "footer-alternate": false,
+          "footer-secondary-menu": "",
+          "show_locale_selector": true,
+          "show_currency_selector": true,
+          "footer-payment-options": false
+        }
+      },
+      "static-faq": {
+        "type": "static-faq",
+        "blocks": {
+          "static-faq-0": {
+            "type": "faq",
+            "settings": {
+              "title": "What delivery choices are available?",
+              "content": "<ol><li><strong>Free Delivery:</strong> Enjoy free delivery on prepaid orders to almost all pin codes in India, serviced by our delivery partners Shiprocket.</li><li><strong>Same Day Delivery in NCR:</strong> For the National Capital Region, we offer same-day delivery through Borzo/Wefast. Delivery charges vary based on your pin code and are borne by the customer.</li><li><strong>Pick-Up Option:</strong> If you prefer, you can also pick up your products from our dispatching offices in Delhi, Ghaziabad, and Bangalore. To choose this option, please inform our customer support at (+91 9842040040) and specify not to dispatch the product via Shiprocket.</li></ol>"
+            }
+          },
+          "static-faq-1": {
+            "type": "faq",
+            "settings": {
+              "title": "Where do you ship to?",
+              "content": "<p>We currently ship within India. Check your location's availability during checkout. For any queries, contact our customer support.</p>"
+            }
+          },
+          "static-faq-2": {
+            "type": "faq",
+            "settings": {
+              "title": "What are your shipping rates?",
+              "content": "<p>We offer free shipping for prepaid orders across India. If you choose the cash on delivery option, there is a flat fee of ₹60.</p>"
+            }
+          },
+          "7638a251-5f24-40bc-ad4f-57663f36740c": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I track my order?",
+              "content": "<p>Shiprocket will notify you via WhatsApp once your order has been dispatched from our New Delhi dispatching office. They will also share a tracking link with you. If you haven't received the tracking link, please reach out to our support line at (+91 9842040040), and they will assist you in obtaining the tracking information.</p>"
+            }
+          },
+          "4031d885-092c-43e4-a2d3-8af5e64640eb": {
+            "type": "faq",
+            "settings": {
+              "title": "How soon will I receive my order?",
+              "content": "<p>The delivery time for your order depends on your location. Typically, orders shipped to Delhi are delivered the next day during regular days. For regions farther away, the delivery timeframe may extend to 2-3 days or 4-5 days, ensuring your order reaches you as efficiently as possible. Please keep in mind that these are general estimates, and actual delivery times may vary.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "static-faq-0",
+          "static-faq-1",
+          "static-faq-2",
+          "7638a251-5f24-40bc-ad4f-57663f36740c",
+          "4031d885-092c-43e4-a2d3-8af5e64640eb"
+        ],
+        "settings": {
+          "show-breadcrumbs": true
+        }
+      },
+      "static-product-recommendations": {
+        "type": "static-product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "product_recommendations_heading": "You may also like"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "10191866119664032810": {
+        "type": "shopify://apps/1-click-sticky-add-to-cart/blocks/zoorix-head/16cf6adc-8b22-4e73-be2b-b93c1acde1da",
+        "disabled": false,
+        "settings": {}
+      },
+      "5605512628948384502": {
+        "type": "shopify://apps/bundles-upsell-pickystory/blocks/customer-info/f54ff67e-3f69-4df2-845e-7476ce633252",
+        "disabled": true,
+        "settings": {}
+      },
+      "15557474716127144420": {
+        "type": "shopify://apps/kaching-bundle-quantity-breaks/blocks/app-embed-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": true,
+        "settings": {
+          "button_color": "#202a36",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": "👋 Hi, message us with any questions. We're happy to help!"
+        }
+      },
+      "7155349627714823297": {
+        "type": "shopify://apps/file-uploads-by-uploadkit/blocks/app-embed-block/d7b05810-6170-4288-808a-df45248c4d28",
+        "disabled": false,
+        "settings": {}
+      },
+      "10746902591489815047": {
+        "type": "shopify://apps/rt-google-fonts-custom-fonts/blocks/app-embed/2caf2c68-0038-455e-b0b9-066a7c2ad923",
+        "disabled": false,
+        "settings": {}
+      },
+      "4015264832934714879": {
+        "type": "shopify://apps/ecomsend-popups/blocks/app/a5670cf8-5705-4b01-ad9e-447033feae26",
+        "disabled": false,
+        "settings": {}
+      },
+      "5059203847231188605": {
+        "type": "shopify://apps/smart-product-filter-search/blocks/app-embed/5cc1944c-3014-4a2a-af40-7d65abc0ef73",
+        "disabled": false,
+        "settings": {
+          "productGridSelector": "",
+          "useCustomQuickviewTemplate": false,
+          "customJs": "",
+          "customCss": "",
+          "customProductTemplateLoader": "{%- capture productTemplate -%}{% render 'globo.filter.product', themeTranslation: shop.metafields.globoFilter.themeTranslation.value[request.locale.iso_code] %}{%- endcapture -%}{%- unless productTemplate contains 'Liquid error' -%}<script id=\"gspfProduct\" type=\"template/html\">{{- productTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customTreeTemplateLoader": "{%- capture treeTemplate -%}{% render 'globo.filter.tree' %}{%- endcapture -%}{%- unless treeTemplate contains 'Liquid error' -%}<script id=\"gspfFilterTree\" type=\"template/html\">{{- treeTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customSortTemplateLoader": "{%- capture sortTemplate -%}{% render 'globo.filter.sort' %}{%- endcapture -%}{%- unless sortTemplate contains 'Liquid error' -%}<script id=\"gspfFilterSort\" type=\"template/html\">{{- sortTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customSearchTemplateLoader": "{%- capture searchTemplate -%}{% render 'globo.filter.search' %}{%- endcapture -%}{%- unless searchTemplate contains 'Liquid error' -%}<script id=\"gspfSearchResult\" type=\"template/html\">{{- searchTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customPaginationTemplateLoader": "{%- capture paginationTemplate -%}{% render 'globo.filter.pagination' %}{%- endcapture -%}{%- unless paginationTemplate contains 'Liquid error' -%}<script id=\"gspfPagination\" type=\"template/html\">{{- paginationTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customYMMTemplateLoader": "{%- capture YMMTemplate -%}{% render 'globo.filter.form' %}{%- endcapture -%}{%- unless YMMTemplate contains 'Liquid error' -%}<script id=\"gspfForm\" type=\"template/html\">{{- YMMTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}"
+        }
+      },
+      "6052823664294247695": {
+        "type": "shopify://apps/qikify-form-builder/blocks/app-embed/753fa0d7-50d4-480a-b094-cff26e632c36",
+        "disabled": true,
+        "settings": {}
+      },
+      "6237893613548423713": {
+        "type": "shopify://apps/amplify-bundles-upsell/blocks/main-widget-loader-script/f54ff67e-3f69-4df2-845e-7476ce633252",
+        "disabled": true,
+        "settings": {}
+      },
+      "13057770590969753118": {
+        "type": "shopify://apps/instafeed-story/blocks/app-embed/4169bff3-1d6b-44ad-9377-2ebc3d31f01c",
+        "disabled": true,
+        "settings": {}
+      },
+      "9356323809658795675": {
+        "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+        "disabled": true,
+        "settings": {
+          "debugging_global_script": "",
+          "enable_reelPops": false
+        }
+      },
+      "8847685616676869210": {
+        "type": "shopify://apps/webrex-announcement/blocks/app-embed/3494d573-4520-4d27-b2eb-ba0554423f65",
+        "disabled": true,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {
+    "Atlantic": {
+      "accent-colour": "#4d6055",
+      "accent-hover-colour": "#3b4941",
+      "alt-product-card": false,
+      "background-colour": "#ffffff",
+      "button-text-colour": "#ffffff",
+      "cart_message_color_scheme": "accent",
+      "checkout_accent_color": "#197bbd",
+      "checkout_body_background_color": "#fff",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_input_background_color_mode": "white",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_sidebar_background_color": "#fafafa",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "currency_display_format": "money_with_currency_format",
+      "currency-switcher-default": "USD",
+      "currency-switcher-format": "money_format",
+      "currency-switcher-supported-currencies": "CAD USD EUR GBP AUD",
+      "enable_cart_message": true,
+      "enable_checkout_lock_icon": false,
+      "enable_currency_converter": true,
+      "enable_free_shipping_bar": true,
+      "enable_product_details_overlay": false,
+      "enable-quick-shop": true,
+      "font_accent": "lato_n4",
+      "font_body": "nunito_sans_n4",
+      "font_headings_captialize": false,
+      "font_headings_secondary": "lato_n4",
+      "font_headings": "crimson_text_n4",
+      "free_shipping_min_amount": "300",
+      "header-action-link-colour": "#4d5852",
+      "header-action-link-hover-colour": "#39423d",
+      "image-borders": false,
+      "in-stock-colour": "#4d6055",
+      "logotype-link-colour": "#39423d",
+      "logotype-link-hover-colour": "#4d6055",
+      "low-stock-colour": "#be5e73",
+      "media_borders": false,
+      "nav-background-colour": "#4d6055",
+      "nav-border-colour": "#d4d4d4",
+      "nav-link-colour": "#4d5852",
+      "nav-link-dropdown-colour": "#ffffff",
+      "nav-link-hover-colour": "#4d6055",
+      "primary-border-colour": "#d4d4d4",
+      "product_grid_aspect_ratio": "taller",
+      "quickshop_enable_cart_redirect": false,
+      "quickshop_fitting_guide_icon": "shirt",
+      "quickshop_gallery_enable_image_zoom": true,
+      "quickshop_gallery_enable_video_autoplay": true,
+      "quickshop_gallery_enable_video_looping": true,
+      "quickshop_gallery_layout": "list",
+      "quickshop_image_zoom": true,
+      "quickshop_show_spb": false,
+      "quickshop_show_variant_sku": false,
+      "quickshop_social_sharing_buttons": true,
+      "quickshop_variant_options_style": "select",
+      "quickshop-product-email-link": false,
+      "quickshop-product-quantity-option": true,
+      "quickshop-thumb-orientation": "left",
+      "show_atc": true,
+      "show_payment_button": true,
+      "show_product_secondary_image": true,
+      "show_quantity_selector": false,
+      "show-brand-names": false,
+      "show-currency-switcher": true,
+      "show-mailing-list": true,
+      "text-colour": "#39423d",
+      "title-colour": "#39423d"
+    },
+    "Plush": {
+      "accent-colour": "#e2472f",
+      "accent-hover-colour": "#3b4941",
+      "background-colour": "#ffffff",
+      "button-text-colour": "#ffffff",
+      "cart_message_color_scheme": "accent",
+      "checkout_accent_color": "#86ac92",
+      "checkout_button_color": "#e2472f",
+      "checkout_error_color": "#e2472f",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_sidebar_background_color": "#fffaec",
+      "enable_cart_message": true,
+      "enable_free_shipping_bar": true,
+      "enable_product_details_overlay": false,
+      "font_accent": "lato_n4",
+      "font_body": "lato_n4",
+      "font_headings_secondary": "nunito_sans_n4",
+      "font_headings": "poppins_n5",
+      "free_shipping_min_amount": "50",
+      "header-action-link-colour": "#1e1e1e",
+      "header-action-link-hover-colour": "#39423d",
+      "in-stock-colour": "#289e28",
+      "logotype-link-colour": "#1e1e1e",
+      "logotype-link-hover-colour": "#4d6055",
+      "low-stock-colour": "#e2472f",
+      "media_borders": true,
+      "nav-background-colour": "#fffaec",
+      "nav-border-colour": "#ebebeb",
+      "nav-link-colour": "#1e1e1e",
+      "nav-link-dropdown-colour": "#1e1e1e",
+      "nav-link-hover-colour": "#4d6055",
+      "primary-border-colour": "#ebebeb",
+      "product_grid_aspect_ratio": "square",
+      "show_quantity_selector": true,
+      "show-brand-names": false,
+      "text-colour": "#1e1e1e",
+      "title-colour": "#1e1e1e"
+    },
+    "Cotton": {
+      "accent-colour": "#1b1e3f",
+      "background-colour": "#ffffff",
+      "button-text-colour": "#ffffff",
+      "cart_message_color_scheme": "accent",
+      "checkout_accent_color": "#1b1e3f",
+      "checkout_body_background_color": "#fff",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_button_color": "#1b1e3f",
+      "checkout_error_color": "#e32c2b",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_input_background_color_mode": "white",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_sidebar_background_color": "#e8e8e8",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "currency_display_format": "money_with_currency_format",
+      "currency-switcher-default": "USD",
+      "currency-switcher-format": "money_with_currency_format",
+      "currency-switcher-supported-currencies": "USD CAD EUR GBP AUD",
+      "enable_cart_message": true,
+      "enable_checkout_lock_icon": false,
+      "enable_currency_converter": true,
+      "enable_free_shipping_bar": true,
+      "enable_product_details_overlay": false,
+      "enable-quick-shop": true,
+      "font_accent": "jost_n4",
+      "font_body": "serif",
+      "font_headings_captialize": false,
+      "font_headings_secondary": "jost_n4",
+      "font_headings": "libre_caslon_text_n4",
+      "free_shipping_min_amount": "300",
+      "header-action-link-colour": "#1b1e3f",
+      "image-borders": false,
+      "logotype-link-colour": "#222222",
+      "media_borders": false,
+      "nav-background-colour": "#1b1e3f",
+      "nav-border-colour": "#dddddd",
+      "nav-link-colour": "#222222",
+      "nav-link-dropdown-colour": "#ffffff",
+      "primary-border-colour": "#eeeeee",
+      "product_grid_aspect_ratio": "default",
+      "quickshop_enable_cart_redirect": false,
+      "quickshop_fitting_guide_icon": "shirt",
+      "quickshop_fitting_guide_url": "frontpage",
+      "quickshop_gallery_enable_image_zoom": true,
+      "quickshop_gallery_enable_video_autoplay": true,
+      "quickshop_gallery_enable_video_looping": true,
+      "quickshop_gallery_layout": "list",
+      "quickshop_image_zoom": true,
+      "quickshop_show_spb": true,
+      "quickshop_show_variant_sku": false,
+      "quickshop_social_sharing_buttons": false,
+      "quickshop_variant_options_style": "select",
+      "quickshop-product-email-link": true,
+      "quickshop-product-quantity-option": true,
+      "quickshop-thumb-orientation": "left",
+      "show_atc": true,
+      "show_product_secondary_image": true,
+      "show_quantity_selector": true,
+      "show-brand-names": true,
+      "show-currency-switcher": true,
+      "show-mailing-list": true,
+      "text-colour": "#222222",
+      "title-colour": "#000000",
+      "variant_options_style": "radio"
+    },
+    "Atrium": {
+      "accent-colour": "#713434",
+      "background-colour": "#fefefe",
+      "button-text-colour": "#ffffff",
+      "cart_message_color_scheme": "contrast",
+      "checkout_accent_color": "#197bbd",
+      "checkout_body_background_color": "#fff",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_input_background_color_mode": "white",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_sidebar_background_color": "#fafafa",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "currency_display_format": "money_with_currency_format",
+      "currency-switcher-default": "USD",
+      "currency-switcher-format": "money_format",
+      "currency-switcher-supported-currencies": "CAD USD GBP EUR AUD",
+      "enable_cart_message": true,
+      "enable_checkout_lock_icon": false,
+      "enable_currency_converter": true,
+      "enable_free_shipping_bar": true,
+      "enable_product_details_overlay": false,
+      "enable-quick-shop": true,
+      "font_accent": "jost_n4",
+      "font_body": "jost_n3",
+      "font_headings_captialize": false,
+      "font_headings_secondary": "jost_n4",
+      "font_headings": "jost_n4",
+      "free_shipping_min_amount": "750",
+      "header-action-link-colour": "#4b4b4b",
+      "image-borders": false,
+      "logotype-link-colour": "#713434",
+      "low-stock-colour": "#713434",
+      "media_borders": false,
+      "nav-background-colour": "#713434",
+      "nav-border-colour": "#ebebeb",
+      "nav-link-colour": "#606060",
+      "nav-link-dropdown-colour": "#ffffff",
+      "primary-border-colour": "#ebebeb",
+      "product_grid_aspect_ratio": "square",
+      "quickshop_enable_cart_redirect": false,
+      "quickshop_fitting_guide_icon": "shirt",
+      "quickshop_gallery_enable_image_zoom": true,
+      "quickshop_gallery_enable_video_autoplay": true,
+      "quickshop_gallery_enable_video_looping": true,
+      "quickshop_gallery_layout": "list",
+      "quickshop_image_zoom": true,
+      "quickshop_show_spb": true,
+      "quickshop_show_variant_sku": false,
+      "quickshop_social_sharing_buttons": false,
+      "quickshop_variant_options_style": "select",
+      "quickshop-product-email-link": true,
+      "quickshop-product-quantity-option": true,
+      "quickshop-thumb-orientation": "below",
+      "show_atc": false,
+      "show_product_secondary_image": true,
+      "show-brand-names": true,
+      "show-currency-switcher": true,
+      "show-mailing-list": true,
+      "text-colour": "#606060",
+      "title-colour": "#4b4b4b"
+    },
+    "Parfum": {
+      "accent-colour": "#4a454b",
+      "background-colour": "#ffffff",
+      "button-text-colour": "#ffffff",
+      "cart_message_color_scheme": "contrast",
+      "checkout_accent_color": "#197bbd",
+      "checkout_body_background_color": "#fff",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_input_background_color_mode": "white",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_sidebar_background_color": "#fafafa",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "currency_display_format": "money_with_currency_format",
+      "currency-switcher-default": "USD",
+      "currency-switcher-format": "money_format",
+      "currency-switcher-supported-currencies": "USD CAD EUR GBP AUD",
+      "enable_cart_message": true,
+      "enable_checkout_lock_icon": false,
+      "enable_currency_converter": true,
+      "enable_free_shipping_bar": true,
+      "enable_product_details_overlay": false,
+      "enable-quick-shop": true,
+      "font_accent": "instrument_sans_n4",
+      "font_body": "instrument_sans_n4",
+      "font_headings_captialize": false,
+      "font_headings_secondary": "instrument_sans_n4",
+      "font_headings": "libre_franklin_n5",
+      "free_shipping_min_amount": "75",
+      "header-action-link-colour": "#1d1c1e",
+      "image-borders": false,
+      "in-stock-colour": "#4a454b",
+      "logotype-link-colour": "#1d1c1e",
+      "low-stock-colour": "#840e0e",
+      "media_borders": false,
+      "nav-background-colour": "#4a454b",
+      "nav-border-colour": "#dedede",
+      "nav-link-colour": "#1d1c1e",
+      "nav-link-dropdown-colour": "#ffffff",
+      "primary-border-colour": "#dedede",
+      "product_grid_aspect_ratio": "default",
+      "quickshop_enable_cart_redirect": false,
+      "quickshop_fitting_guide_icon": "ruler",
+      "quickshop_gallery_enable_image_zoom": true,
+      "quickshop_gallery_enable_video_autoplay": true,
+      "quickshop_gallery_enable_video_looping": true,
+      "quickshop_gallery_layout": "list",
+      "quickshop_image_zoom": false,
+      "quickshop_show_spb": false,
+      "quickshop_show_variant_sku": false,
+      "quickshop_social_sharing_buttons": false,
+      "quickshop_variant_options_style": "select",
+      "quickshop-product-email-link": false,
+      "quickshop-product-quantity-option": false,
+      "quickshop-thumb-orientation": "left",
+      "show_atc": true,
+      "show_payment_button": false,
+      "show_product_secondary_image": false,
+      "show-brand-names": true,
+      "show-currency-switcher": true,
+      "show-mailing-list": true,
+      "text-colour": "#676767",
+      "title-colour": "#1d1c1e",
+      "variant_options_style": "radio"
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".reputon-testimonials-widget .reviews-holder--1wrGp .reviews-footer--b0D19 {padding: 15px; width: 100%; display: none;}",
+      ".product__price .money--last {margin-right: 14px; font-size: 30px;}",
+      ".slide .content .tagline {transition-delay: 0.5s; font-size: 15px; line-height: 1.5em;}",
+      ".slide .content .title {font-size: 30px; margin-bottom: 10px;}",
+      "body {font-family: \"Montserrat\";}",
+      ".reelUp_popup_accordion {display: none;}",
+      ".mycolumn {padding-left: 10px; padding-right: 10px;}",
+      ".gl-card-title a {color: #bf5b05; font-weight: 600;}",
+      ".gf-search-item-product-vendor {display: none;}"
+    ]
+  }
+}
