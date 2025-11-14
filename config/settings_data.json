@@ -32,7 +32,7 @@
     "show_payment_button": true,
     "enable_cart_redirection": false,
     "media_borders": true,
-    "show-brand-names": true,
+    "show-brand-names": false,
     "show_atc": false,
     "show_product_secondary_image": true,
     "enable_product_details_overlay": false,

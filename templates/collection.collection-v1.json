@@ -9,62 +9,29 @@
  */
 {
   "sections": {
-    "dynamic_slideshow_C9ebLJ": {
-      "type": "dynamic-slideshow",
-      "blocks": {
-        "feature_7ynn7M": {
-          "type": "feature",
-          "settings": {
-            "image": "{{ collection.image }}",
-            "slide_title": "{{ collection.title }}",
-            "caption": "Enhance well-being with Trost Hemp Herbal Cigarettes, featuring a range of delightful variants.",
-            "button": "",
-            "link": "",
-            "alignment": "center-center",
-            "show_overlay": true,
-            "background": "#000000",
-            "opacity": 20
-          }
-        }
-      },
-      "block_order": [
-        "feature_7ynn7M"
-      ],
-      "custom_css": [
-        ".home-section {padding: 0px; margin: 0px;}"
-      ],
-      "settings": {
-        "desktop_height": "small",
-        "mobile_height": "natural",
-        "full-width": true,
-        "parallax": false,
-        "autoplay_enable": false,
-        "transition": "slide",
-        "autoplay_interval": 5
-      }
+    "collection_banner_AqHQ73": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {}
     },
     "main": {
       "type": "static-collection",
       "custom_css": [],
       "settings": {
-        "show_breadcrumbs": true,
+        "show_breadcrumbs": false,
         "show-collection-image": false,
         "rows": 11,
-        "products_per_row": 3,
-        "enable-sorting": true,
-        "enable_filter": true,
-        "collection-sidebar": true,
+        "products_per_row": 4,
+        "enable-sorting": false,
+        "enable_filter": false,
+        "collection-sidebar": false,
         "collection-sidebar-menu": "",
-        "pagination-style": "jump-to-page"
+        "pagination-style": "standard"
       }
     },
     "dynamic_image_with_text_GrPcH6": {
       "type": "dynamic-image-with-text",
       "disabled": true,
-      "custom_css": [
-        ".picture-block-content {max-width: 80%; text-align: left;}",
-        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
-      ],
       "settings": {
         "margin": true,
         "image": "shopify://shop_images/What_are_hemp_herbal_cigarettes.png",
@@ -79,10 +46,6 @@
     "dynamic_image_with_text_bqhWdk": {
       "type": "dynamic-image-with-text",
       "disabled": true,
-      "custom_css": [
-        ".picture-block-content {max-width: 80%; text-align: left;}",
-        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
-      ],
       "settings": {
         "margin": false,
         "image": "shopify://shop_images/What_s_Inside_A_Trost_Hemp_Herbal_Cigarette.png",
@@ -97,10 +60,6 @@
     "dynamic_image_with_text_q8Hbgw": {
       "type": "dynamic-image-with-text",
       "disabled": true,
-      "custom_css": [
-        ".picture-block-content {max-width: 80%; text-align: left;}",
-        ".picture-block-heading {font-size: 30px; line-height: 35px;}"
-      ],
       "settings": {
         "margin": false,
         "image": "shopify://shop_images/What_are_the_health_benefits_of_hemp_herbal_cigarettes.png",
@@ -192,7 +151,7 @@
     }
   },
   "order": [
-    "dynamic_slideshow_C9ebLJ",
+    "collection_banner_AqHQ73",
     "main",
     "dynamic_image_with_text_GrPcH6",
     "dynamic_image_with_text_bqhWdk",
