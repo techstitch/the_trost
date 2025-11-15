@@ -10,13 +10,13 @@
 {% endcomment %}
 
 {% liquid
-  assign product = product | default: nil
+  assign product = product | default: null
   assign countdown_timer = countdown_timer | default: false
   assign enable_product_details_overlay = settings.enable_product_details_overlay
-  assign brandNames = settings.show-brand-names
+  assign brandNames = settings['show-brand-names']
   assign media_borders = settings.media_borders
   assign enableATC = settings.show_atc
-  assign enableQuickshop = settings.enable-quick-shop
+  assign enableQuickshop = settings['enable-quick-shop']
   assign onboarding = onboarding | default: false
   assign selected_variant = product.selected_or_first_available_variant
 %}
@@ -210,21 +210,11 @@
     <figure class="product-card-figure">
       {% if onboarding == false %}
         {% if product.featured_media %}
-          {%
-            render 'rimg',
-            img: product.featured_media.preview_image,
-            size: '600x',
-            lazy: true,
-          %}
+          {% render 'rimg', img: product.featured_media.preview_image, size: '600x', lazy: true %}
 
           {% if settings.show_product_secondary_image and product.media.size > 1 %}
             {% assign second_image = product.media[1].preview_image %}
-            {%
-              render 'rimg',
-              img: second_image,
-              size: '600x',
-              lazy: true,
-            %}
+            {% render 'rimg', img: second_image, size: '600x', lazy: true %}
           {% endif %}
         {% else %}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -236,12 +226,23 @@
       {% unless onboarding %}
         <a
           href="{{ product.url | within: collection }}"
-          {% if media_borders %}class="with-border"{% endif %}
+          {% if media_borders %}
+            class="with-border"
+          {% endif %}
           tabindex="-1"
           aria-label="{{ product.title | escape }}"
         ></a>
       {% endunless %}
+      {% render 'product-badges', itemType: product %}
+    </figure>
 
+    {% if template.name != 'password' %}
+      <div class="product-card-footer">
+        {% if settings.enable_product_details_overlay and countdown_timer == false %}
+          {{ product_card_interactions }}
+        {% else %}
+          {{ product_card_details }}
+        {% endif %}
       <{% if onboarding %}div{% else %}a{% endif %}
         class="
           product-card-overlay
@@ -267,20 +268,6 @@
           {% endif %}
         </div>
       </{% if onboarding %}div{% else %}a{% endif %}>
-
-      {%
-        render 'product-badges',
-        itemType: product,
-      %}
-    </figure>
-
-    {% if template.name != 'password' %}
-      <div class="product-card-footer">
-        {% if settings.enable_product_details_overlay and countdown_timer == false %}
-          {{ product_card_interactions }}
-        {% else %}
-          {{ product_card_details }}
-        {% endif %}
       </div>
 
       <div class="product-card-footer-mobile">
